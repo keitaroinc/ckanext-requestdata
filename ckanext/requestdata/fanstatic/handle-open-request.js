@@ -64,9 +64,9 @@ this.ckan.module('handle-open-request', function($) {
 
           if (data.success) {
             if (payload.data_shared === true) {
-              className = 'icon-thumbs-up'
+              className = 'fa fa-thumbs-up'
             } else {
-              className = 'icon-thumbs-down'
+              className = 'fa fa-thumbs-down'
             }
 
             this._disableActionButtons(payload.data_shared)

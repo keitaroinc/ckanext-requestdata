@@ -189,3 +189,7 @@ def role_in_org(user_id, org_name):
     for user in org.get('users', []):
         if user.get('id') == user_id:
             return user.get('capacity')
+
+
+def check_ckan_version(min_version=None, max_version=None):
+    return toolkit.check_ckan_version(min_version, max_version)

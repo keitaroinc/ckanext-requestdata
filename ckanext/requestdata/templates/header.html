@@ -1,6 +1,7 @@
 {% ckan_extends %}
 
 {% set is_hdx_portal = h.requestdata_is_hdx_portal() %}
+{% set is_ckan_greater_than_27 = h.requestdata_check_ckan_version(min_version='2.7') %}
 
 {% block header_account_logged %}
   {% if is_hdx_portal %}
@@ -9,7 +10,12 @@
     {% if c.userobj.sysadmin %}
       <li>
         <a href="{{ h.url_for(controller='admin', action='index') }}" title="{{ _('Sysadmin settings') }}">
-          <i class="icon-legal" aria-hidden="true"></i>
+          {% if is_ckan_greater_than_27 %}
+            {% set icon_legal = 'fa fa-legal' %}
+          {% else %}
+            {% set icon_legal = 'icon-legal' %}
+          {% endif %}      
+          <i class="{{ icon_legal }}" aria-hidden="true"></i>
           <span class="text">{{ _('Admin') }}</span>
         </a>
       </li>
@@ -19,7 +25,12 @@
     {% if not notification_seen and not is_hdx_portal %}
       <li>
         <a href="{{ h.url_for('requestdata_my_requests', id=c.userobj.name) }}" title="{{ _('New data request') }}">
-          <i class="icon-circle" aria-hidden="true"></i>
+          {% if is_ckan_greater_than_27 %}
+            {% set circle_icon = 'fa fa-circle' %}
+          {% else %}
+            {% set circle_icon = 'icon-circle' %}
+          {% endif %}   
+          <i class="{{ circle_icon }}" aria-hidden="true"></i>
           <span class="text">{{ _('New data request') }}</span>
         </a>
       </li>
@@ -33,8 +44,8 @@
     {% set new_activities = h.new_activities() %}
     <li class="notifications {% if new_activities > 0 %}notifications-important{% endif %}">
       {% set notifications_tooltip = ngettext('Dashboard (%(num)d new item)', 'Dashboard (%(num)d new items)', new_activities) %}
-      <a href="{{ h.url_for(controller='user', action='dashboard') }}" title="{{ notifications_tooltip }}">
-        <i class="icon-dashboard" aria-hidden="true"></i>
+      <a href="{{ h.url_for('user.dashboard') }}" title="{{ notifications_tooltip }}">
+        <i class="fa fa-dashboard" aria-hidden="true"></i>
         <span class="text">{{ _('Dashboard') }}</span>
         <span class="badge">{{ new_activities }}</span>
       </a>
@@ -42,7 +53,12 @@
     {% block header_account_settings_link %}
       <li>
         <a href="{{ h.url_for(controller='user', action='edit', id=c.userobj.name) }}" title="{{ _('Edit settings') }}">
-          <i class="icon-cog" aria-hidden="true"></i>
+          {% if is_ckan_greater_than_27 %}
+            {% set cog_icon = 'fa fa-cog' %}
+          {% else %}
+            {% set cog_icon = 'icon-cog' %}
+          {% endif %}  
+          <i class="{{ cog_icon }}" aria-hidden="true"></i>
           <span class="text">{{ _('Settings') }}</span>
         </a>
       </li>
@@ -50,7 +66,12 @@
     {% block header_account_log_out_link %}
       <li>
         <a href="{{ h.url_for('/user/_logout') }}" title="{{ _('Log out') }}">
-          <i class="icon-signout" aria-hidden="true"></i>
+          {% if is_ckan_greater_than_27 %}
+            {% set signout_icon = 'fa fa-sign-out' %}
+          {% else %}
+            {% set signout_icon = 'icon-signout' %}
+          {% endif %}  
+          <i class="{{ signout_icon }}" aria-hidden="true"></i>
           <span class="text">{{ _('Log out') }}</span>
         </a>
       </li>

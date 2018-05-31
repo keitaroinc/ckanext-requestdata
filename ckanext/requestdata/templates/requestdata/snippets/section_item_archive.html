@@ -9,6 +9,7 @@ Example usage:
 
 #}
 
+{% set is_ckan_greater_than_27 = h.requestdata_check_ckan_version(min_version='2.7') %}
 {% resource 'requestdata/expand-dataset.js' %}
 {% set package_url = h.url_for(controller='package', action='read', id=item.package_id) %}
 
@@ -38,7 +39,12 @@ Example usage:
     </div>
 
     <div data-module="expand-dataset">
-      <i class="{% block collapse_icon %}icon-chevron-right archive-requests-arrow{% endblock %}" data-toggle="collapse" data-target="#{{ item.package_id }}"></i>
+      {% if is_ckan_greater_than_27 %}
+        {% set chevron_icon = 'fa fa-chevron-right' %}
+      {% else %}
+        {% set chevron_icon = 'icon-chevron-right' %}
+      {% endif %}   
+      <i class="{% block collapse_icon %} {{chevron_icon}} archive-requests-arrow{% endblock %}" data-toggle="collapse" data-target="#{{ item.package_id }}"></i>
     </div>
   </div>
 </div>

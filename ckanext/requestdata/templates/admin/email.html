@@ -2,7 +2,7 @@
 
 {% import 'macros/form.html' as form %}
 {% set action_url = h.url_for('ckanadmin_email') %}
-
+{% set is_ckan_greater_than_27 = h.requestdata_check_ckan_version(min_version='2.7') %}
 {% block primary_content_inner %}
    <form method="post" action="{{ action_url }}"class="form-horizontal col-sm-12" id="email-body-form">
       {{ form.textarea('email_header', id='field-header', label=_('Header'), value=data.email_header, error='',is_required=true,attrs={'required':'required'}) }}
@@ -17,7 +17,12 @@
 {% block secondary_content %}
   <div class="module module-narrow module-shallow">
     <h2 class="module-heading">
-      <i class="icon-info-sign"></i>
+      {% if is_ckan_greater_than_27 %}
+        {% set email_icon = 'fa fa-info-circle' %}
+      {% else %}
+        {% set email_icon = 'icon-info-sign' %}
+      {% endif %}        
+      <i class="{{ email_icon }}"></i>
       {{ _('CKAN email options') }}
     </h2>
     <div class="module-content">

@@ -15,7 +15,7 @@ clean_dict = logic.clean_dict
 try:
     # Support CKAN 2.6
     redirect = base.redirect
-except ImportError:
+except AttributeError:
     # Redirect is not redirect_to in CKAN 2.7
     redirect = h.redirect_to
 abort = base.abort
