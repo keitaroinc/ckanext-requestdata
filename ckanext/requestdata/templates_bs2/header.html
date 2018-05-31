@@ -1,0 +1,92 @@
+{% ckan_extends %}
+
+{% set is_hdx_portal = h.requestdata_is_hdx_portal() %}
+{% set is_ckan_greater_than_27 = h.requestdata_check_ckan_version(min_version='2.7') %}
+
+{% block header_account_logged %}
+  {% if is_hdx_portal %}
+    {{ super() }}
+  {% else %}
+    {% if c.userobj.sysadmin %}
+      <li>
+        <a href="{{ h.url_for(controller='admin', action='index') }}" title="{{ _('Sysadmin settings') }}">
+          {% if is_ckan_greater_than_27 %}
+            {% set icon_legal = 'fa fa-legal' %}
+          {% else %}
+            {% set icon_legal = 'icon-legal' %}
+          {% endif %}      
+          <i class="{{ icon_legal }}" aria-hidden="true"></i>
+          <span class="text">{{ _('Admin') }}</span>
+        </a>
+      </li>
+    {% endif %}
+
+    {% set notification_seen = h.requestdata_get_notification() %}
+    {% if not notification_seen and not is_hdx_portal %}
+      <li>
+        <a href="{{ h.url_for('requestdata_my_requests', id=c.userobj.name) }}" title="{{ _('New data request') }}">
+          {% if is_ckan_greater_than_27 %}
+            {% set circle_icon = 'fa fa-circle' %}
+          {% else %}
+            {% set circle_icon = 'icon-circle' %}
+          {% endif %}   
+          <i class="{{ circle_icon }}" aria-hidden="true"></i>
+          <span class="text">{{ _('New data request') }}</span>
+        </a>
+      </li>
+    {% endif %}
+    <li>
+      <a href="{{ h.url_for(controller='user', action='read', id=c.userobj.name) }}" class="image" title="{{ _('View profile') }}">
+        {{ h.gravatar((c.userobj.email_hash if c and c.userobj else ''), size=22) }}
+        <span class="username">{{ c.userobj.display_name }}</span>
+      </a>
+    </li>
+    {% set new_activities = h.new_activities() %}
+    <li class="notifications {% if new_activities > 0 %}notifications-important{% endif %}">
+      {% set notifications_tooltip = ngettext('Dashboard (%(num)d new item)', 'Dashboard (%(num)d new items)', new_activities) %}
+      <a href="{{ h.url_for('user.dashboard') }}" title="{{ notifications_tooltip }}">
+        <i class="fa fa-dashboard" aria-hidden="true"></i>
+        <span class="text">{{ _('Dashboard') }}</span>
+        <span class="badge">{{ new_activities }}</span>
+      </a>
+    </li>
+    {% block header_account_settings_link %}
+      <li>
+        <a href="{{ h.url_for(controller='user', action='edit', id=c.userobj.name) }}" title="{{ _('Edit settings') }}">
+          {% if is_ckan_greater_than_27 %}
+            {% set cog_icon = 'fa fa-cog' %}
+          {% else %}
+            {% set cog_icon = 'icon-cog' %}
+          {% endif %}  
+          <i class="{{ cog_icon }}" aria-hidden="true"></i>
+          <span class="text">{{ _('Settings') }}</span>
+        </a>
+      </li>
+    {% endblock %}
+    {% block header_account_log_out_link %}
+      <li>
+        <a href="{{ h.url_for('/user/_logout') }}" title="{{ _('Log out') }}">
+          {% if is_ckan_greater_than_27 %}
+            {% set signout_icon = 'fa fa-sign-out' %}
+          {% else %}
+            {% set signout_icon = 'icon-signout' %}
+          {% endif %}  
+          <i class="{{ signout_icon }}" aria-hidden="true"></i>
+          <span class="text">{{ _('Log out') }}</span>
+        </a>
+      </li>
+    {% endblock %}
+  {% endif %}
+{% endblock %}
+
+{% block header_account_notlogged %}
+
+  {% if not is_hdx_portal %}
+    <li>{% link_for _('Login'), controller='user', action='login' %}</li>
+    {% if h.check_access('user_create') %}
+      <li>{% link_for _('Register'), controller='user', action='register', class_='sub' %}</li>
+    {% endif %}
+  {% else %}
+    {{ super() }}
+  {% endif %}
+{% endblock %}

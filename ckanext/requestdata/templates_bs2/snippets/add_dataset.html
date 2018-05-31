@@ -1,0 +1,63 @@
+{% resource 'requestdata/add-dataset.js' %}
+{% set is_ckan_greater_than_27 = h.requestdata_check_ckan_version(min_version='2.7') %}
+
+<a class="btn btn-primary" data-module="add-dataset-modal">
+    {% if is_ckan_greater_than_27 %}
+      {% set square_icon = 'fa fa-plus-square' %}
+    {% else %}
+      {% set square_icon = 'icon-plus-sign-alt' %}
+    {% endif %}    
+  <i class="{{ square_icon }}"></i> {{ _('Add Dataset') }}
+</a>
+
+<div class="modal-backdrop add-dataset-modal-backdrop"></div>
+
+<div class="add-dataset-modal">
+  <button type="button" class="close" data-dismiss="modal">×</button>
+  <div class="add-dataset-modal-box">
+    <div class="modal-body">
+      <h3>Add full dataset</h3>
+      {% if is_ckan_greater_than_27 %}
+        {% set square_icon = 'plus-square' %}
+      {% else %}
+        {% set square_icon = 'icon-plus-sign-alt' %}
+      {% endif %}
+      {% link_for _('Add Dataset'), controller='package', action='new', class_='btn btn-primary', icon=square_icon %}
+      <div class="add-dataset-modal-description">
+        <p>This option is suitable if:</p>
+        <ul>
+          <li>Your data is ready to be shared</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="add-dataset-modal-box">
+    <div class="modal-body">
+      <h3>Add metadata-only</h3>
+
+      {% if group %}
+        {% set params = {'group': group, 'metadata': 'true'} %}
+      {% else %}
+        {% set params = {'metadata': 'true'} %}
+      {% endif %}
+      {% set url = h.add_url_param(controller='package', action='new', new_params=params) %}
+
+      <a class="btn btn-primary" href="{{ url }}">
+        {% if is_ckan_greater_than_27 %}
+          {% set square_icon = 'fa fa-plus-square' %}
+        {% else %}
+          {% set square_icon = 'icon-plus-sign-alt' %}
+        {% endif %}   
+        <i class="{{ square_icon }}"></i> {{ _('Add metadata') }}
+      </a>
+      <div class="add-dataset-modal-description">
+        <p>This option is suitable if:</p>
+        <ul>
+          <li>You want to be in control of who can access your data</li>
+          <li>You are not finished collecting data</li>
+          <li>You have a plan to collect data</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

@@ -28,7 +28,7 @@
 
       {% trans url=h.url_for(controller='package', action='new_resource', id=pkg.name) %}
         <p class="empty">The metadata is available for this dataset. To access the full dataset, please request data.</p>
-        <a href="#" class="btn btn-default pull-right" style="margin-top: 10px;"
+        <a href="#" class="btn pull-right" style="margin-top: 10px;"
            data-module="modal-form"
            data-module-template_file="request_contact.html"
            data-module-submit_action="{{ requestdata_action }}"

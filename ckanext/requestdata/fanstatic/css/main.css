@@ -198,6 +198,7 @@
 
 .add-dataset-modal-backdrop {
   display: none;
+  opacity: 0.5;
 }
 .requested-data-container-item {
 
@@ -489,4 +490,12 @@ h3 {
 .requested-data-container__header--requested {
   position: absolute;
   left: 32%;
+}
+
+.modal-footer {
+  border-top: none;
+}
+
+.dropdown-menu {
+  min-width: 180px;
 }
