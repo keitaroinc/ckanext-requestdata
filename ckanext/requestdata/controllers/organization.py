@@ -60,7 +60,7 @@ class OrganizationController(organization.OrganizationController):
         reverse = True
         order = 'last_request_created_at'
         q_organization = ''
-        current_order_name = 'Most Recent'
+        current_order_name = _('Most Recent')
 
         for item in request_params:
             if item == 'filter_by_maintainers':
@@ -92,18 +92,18 @@ class OrganizationController(organization.OrganizationController):
                 if 'asc' in order:
                     reverse = False
                     order = 'title'
-                    current_order_name = 'Alphabetical (A-Z)'
+                    current_order_name = _('Alphabetical (A-Z)')
                 elif 'desc' in order:
                     reverse = True
                     order = 'title'
-                    current_order_name = 'Alphabetical (Z-A)'
+                    current_order_name = _('Alphabetical (Z-A)')
                 elif 'most_recent' in order:
                     reverse = True
                     order = 'last_request_created_at'
                 elif 'shared' in order:
-                    current_order_name = 'Sharing Rate'
+                    current_order_name = _('Sharing Rate')
                 elif 'requests' in order:
-                    current_order_name = 'Requests Rate'
+                    current_order_name = _('Requests Rate')
 
                 for x in requests:
                     package = \

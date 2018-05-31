@@ -34,7 +34,7 @@ this.ckan.module('modal-form', function($) {
             var dialogResult = true
 
             if (is_current_user_a_maintainer === 'True') {
-                var dialogResult = window.confirm('Request own dataset\n\nWARNING: You are a maintainer of the dataset you are requesting. Do you wish to continue making this request?')
+                var dialogResult = window.confirm(this._('Request own dataset\n\nWARNING: You are a maintainer of the dataset you are requesting. Do you wish to continue making this request?'))
             }
 
             if (dialogResult) {
@@ -116,7 +116,7 @@ this.ckan.module('modal-form', function($) {
                     var hasError = element.parentElement.querySelector('.error-block')
 
                     if (!hasError) {
-                        this._showInputError(element, 'Missing value')
+                        this._showInputError(element, this._('Missing value'))
                     }
 
                     submit = false

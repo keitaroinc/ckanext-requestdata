@@ -26,7 +26,7 @@
           {% if more_orgs.append(org.title) %}{% endif %}
         {% endfor %}
         {% set more_orgs = more_orgs | join(', ') %}
-        | <a href="{{ org_url }}">{{ orgs[0].title }}</a> <span title="{{ more_orgs }}">(more)</span>
+        | <a href="{{ org_url }}">{{ orgs[0].title }}</a> <span title="{{ more_orgs }}">({{ _('more') }})</span>
       {% endif %}
     {% endif %}
     <p class="requested-data-container__content-item--requested-by-date">
@@ -36,9 +36,9 @@
       {% endif %}
 
       {% if c.userobj.sysadmin %}
-         <span><b>Sysadmin -</b></span>
+         <span><b>{{ _('Sysadmin') }} -</b></span>
       {% endif %}
-      <span>Requested on {{ h.render_datetime(item.created_at, date_format='%-d %B %Y') }}</span>
+      <span>{{ _('Requested on') }} {{ h.render_datetime(item.created_at, date_format='%-d %B %Y') }}</span>
     </p>
 
     <p class="requested-data-container__content-item--requested-by-message">{{ item.message_content }}</p>

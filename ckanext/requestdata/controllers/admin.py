@@ -128,19 +128,19 @@ class AdminController(AdminController):
                     if 'asc' in order:
                         reverse = False
                         order = 'title'
-                        current_order_name = 'Alphabetical (A-Z)'
+                        current_order_name = _('Alphabetical (A-Z)')
                     elif 'desc' in order:
                         reverse = True
                         order = 'title'
-                        current_order_name = 'Alphabetical (Z-A)'
+                        current_order_name = _('Alphabetical (Z-A)')
                     elif 'most_recent' in order:
                         reverse = True
                         order = 'last_request_created_at'
-                        current_order_name = 'Most Recent'
+                        current_order_name = _('Most Recent')
                     elif 'shared' in order:
-                        current_order_name = 'Sharing Rate'
+                        current_order_name = _('Sharing Rate')
                     elif 'requests' in order:
-                        current_order_name = 'Requests Rate'
+                        current_order_name = _('Requests Rate')
 
                     data = {
                         'org': q_organization,
@@ -332,7 +332,7 @@ class AdminController(AdminController):
             else:
                 order = 'last_request_created_at'
                 reverse = True
-                current_order_name = 'Most Recent'
+                current_order_name = _('Most Recent')
 
             org['current_order_name'] = current_order_name
 

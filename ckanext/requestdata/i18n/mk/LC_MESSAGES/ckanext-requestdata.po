@@ -1,0 +1,693 @@
+# Macedonian translations for ckanext-requestdata.
+# Copyright (C) 2018 ORGANIZATION
+# This file is distributed under the same license as the ckanext-requestdata
+# project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2018.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: ckanext-requestdata 0.0.1\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2018-05-31 23:42+0200\n"
+"PO-Revision-Date: 2018-05-31 23:42+0200\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: mk\n"
+"Language-Team: mk <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.3.4\n"
+
+#: ckanext/requestdata/emailer.py:79
+msgid "Email message was successfully sent."
+msgstr ""
+
+#: ckanext/requestdata/emailer.py:87
+msgid "Invalid email recepient, maintainer not found"
+msgstr ""
+
+#: ckanext/requestdata/emailer.py:99
+msgid "An error occured while sending the email. Try again."
+msgstr ""
+
+#: ckanext/requestdata/helpers.py:67
+msgid "Not authorized to see this package."
+msgstr ""
+
+#: ckanext/requestdata/helpers.py:69
+msgid "Package not found."
+msgstr ""
+
+#: ckanext/requestdata/helpers.py:155
+msgid "string cannot be parsed"
+msgstr ""
+
+#: ckanext/requestdata/controllers/admin.py:58
+msgid "Successfully updated."
+msgstr ""
+
+#: ckanext/requestdata/controllers/admin.py:87
+#: ckanext/requestdata/controllers/organization.py:48
+#: ckanext/requestdata/controllers/user.py:53
+#: ckanext/requestdata/controllers/user.py:58
+msgid "Not authorized to see this page."
+msgstr ""
+
+#: ckanext/requestdata/controllers/admin.py:131
+#: ckanext/requestdata/controllers/organization.py:95
+#: ckanext/requestdata/controllers/user.py:78
+#: ckanext/requestdata/templates/requestdata/snippets/order_requests.html:23
+msgid "Alphabetical (A-Z)"
+msgstr ""
+
+#: ckanext/requestdata/controllers/admin.py:135
+#: ckanext/requestdata/controllers/organization.py:99
+#: ckanext/requestdata/controllers/user.py:82
+#: ckanext/requestdata/templates/requestdata/snippets/order_requests.html:24
+msgid "Alphabetical (Z-A)"
+msgstr ""
+
+#: ckanext/requestdata/controllers/admin.py:139
+#: ckanext/requestdata/controllers/admin.py:335
+#: ckanext/requestdata/controllers/organization.py:63
+#: ckanext/requestdata/controllers/user.py:66
+#: ckanext/requestdata/templates/requestdata/snippets/order_requests.html:22
+msgid "Most Recent"
+msgstr ""
+
+#: ckanext/requestdata/controllers/admin.py:141
+#: ckanext/requestdata/controllers/organization.py:104
+#: ckanext/requestdata/controllers/user.py:71
+#: ckanext/requestdata/templates/requestdata/snippets/order_requests.html:26
+msgid "Sharing Rate"
+msgstr ""
+
+#: ckanext/requestdata/controllers/admin.py:143
+#: ckanext/requestdata/controllers/organization.py:106
+#: ckanext/requestdata/controllers/user.py:74
+#: ckanext/requestdata/templates/requestdata/snippets/order_requests.html:25
+msgid "Requests Rate"
+msgstr ""
+
+#: ckanext/requestdata/controllers/package.py:62
+msgid "Unauthorized to create a dataset."
+msgstr ""
+
+#: ckanext/requestdata/controllers/request_data.py:97
+msgid ""
+"<br><br> This dataset's maintainer does not exist.        Go to your "
+"organisation's <a href=\"\">Requested Data</a>         page to see the "
+"new request. Please also edit the dataset and assign          a new "
+"maintainer."
+msgstr ""
+
+#: ckanext/requestdata/controllers/request_data.py:105
+msgid ""
+"<br><br><strong> Please accept or decline the request        as soon as "
+"you can by visiting the         <a href=\"\">My Requests</a> "
+"page.</strong>"
+msgstr ""
+
+#: ckanext/requestdata/controllers/request_data.py:121
+msgid ""
+"<br><br> Go to <a href=\"\">                    Requested data</a> page "
+"in organization admin."
+msgstr ""
+
+#: ckanext/requestdata/controllers/request_data.py:130
+msgid ""
+"\n"
+"        <br/><br/>\n"
+"        <small>\n"
+"          <p>\n"
+"            <a href=\"  \"></a>\n"
+"          </p>\n"
+"          <p>\n"
+"            <a href=\"  \">            Sign up for our newsletter</a> |"
+"             <a href=\"  \">Follow us on Twitter</a>             | <a "
+"href=\"mailto: \">Contact us</a>\n"
+"          </p>\n"
+"        </small>\n"
+"\n"
+"    "
+msgstr ""
+
+#: ckanext/requestdata/controllers/request_data.py:168
+msgid "Unauthorized to update this dataset."
+msgstr ""
+
+#: ckanext/requestdata/controllers/request_data.py:215
+msgid "Dataset maintainer email not found."
+msgstr ""
+
+#: ckanext/requestdata/controllers/request_data.py:240
+msgid ": New data request \""
+msgstr ""
+
+#: ckanext/requestdata/controllers/request_data.py:272
+msgid "Request sent, but email message was not sent."
+msgstr ""
+
+#: ckanext/requestdata/controllers/user.py:170
+msgid "User not found"
+msgstr ""
+
+#: ckanext/requestdata/controllers/user.py:172
+msgid "Not authorized to see this page"
+msgstr ""
+
+#: ckanext/requestdata/controllers/user.py:204
+msgid "The email you provided is invalid."
+msgstr ""
+
+#: ckanext/requestdata/controllers/user.py:229
+#: ckanext/requestdata/fanstatic/modal-form.js:119
+msgid "Missing value"
+msgstr ""
+
+#: ckanext/requestdata/controllers/user.py:238
+#: ckanext/requestdata/controllers/user.py:317
+msgid "Not authorized to use this action."
+msgstr ""
+
+#: ckanext/requestdata/controllers/user.py:251
+msgid ": Data request "
+msgstr ""
+
+#: ckanext/requestdata/controllers/user.py:257
+msgid "<br><br> You can contact the maintainer on this email address: "
+msgstr ""
+
+#: ckanext/requestdata/controllers/user.py:276
+msgid "Message was sent successfully"
+msgstr ""
+
+#: ckanext/requestdata/controllers/user.py:330
+msgid "Request's state successfully updated."
+msgstr ""
+
+#: ckanext/requestdata/fanstatic/modal-form.js:37
+msgid ""
+"Request own dataset\n"
+"\n"
+"WARNING: You are a maintainer of the dataset you are requesting. Do you "
+"wish to continue making this request?"
+msgstr ""
+
+#: ckanext/requestdata/logic/actions.py:114
+msgid "Request with provided 'id' cannot be found"
+msgstr ""
+
+#: ckanext/requestdata/logic/auth.py:12
+msgid "Only registered users can request data."
+msgstr ""
+
+#: ckanext/requestdata/logic/auth.py:21 ckanext/requestdata/logic/auth.py:54
+#: ckanext/requestdata/logic/auth.py:67
+msgid "You don't have access to this request data."
+msgstr ""
+
+#: ckanext/requestdata/logic/auth.py:38
+msgid "Organization not found."
+msgstr ""
+
+#: ckanext/requestdata/logic/validators.py:14
+msgid "Please provide a valid email address."
+msgstr ""
+
+#: ckanext/requestdata/logic/validators.py:22
+msgid "The state parameter must be new, open or archive."
+msgstr ""
+
+#: ckanext/requestdata/logic/validators.py:30
+msgid "The {0} parameter must be a Boolean value."
+msgstr ""
+
+#: ckanext/requestdata/logic/validators.py:70
+msgid "The user with email \"{0}\" is not part of this organization."
+msgstr ""
+
+#: ckanext/requestdata/logic/validators.py:75
+msgid "The user with email \"{0}\" does not exist."
+msgstr ""
+
+#: ckanext/requestdata/logic/validators.py:86
+msgid "The flag parameter must be request, replied, declined, or shared"
+msgstr ""
+
+#: ckanext/requestdata/templates/header.html:11
+msgid "Sysadmin settings"
+msgstr ""
+
+#: ckanext/requestdata/templates/header.html:13
+msgid "Admin"
+msgstr ""
+
+#: ckanext/requestdata/templates/header.html:21
+#: ckanext/requestdata/templates/header.html:23
+msgid "New data request"
+msgstr ""
+
+#: ckanext/requestdata/templates/header.html:28
+#: ckanext/requestdata/templates/requestdata/snippets/requested_by_container.html:15
+#: ckanext/requestdata/templates/requestdata/snippets/section_item_new.html:34
+msgid "View profile"
+msgstr ""
+
+#: ckanext/requestdata/templates/header.html:35
+#, python-format
+msgid "Dashboard (%(num)d new item)"
+msgid_plural "Dashboard (%(num)d new items)"
+msgstr[0] ""
+msgstr[1] ""
+
+#: ckanext/requestdata/templates/header.html:38
+msgid "Dashboard"
+msgstr ""
+
+#: ckanext/requestdata/templates/header.html:44
+msgid "Edit settings"
+msgstr ""
+
+#: ckanext/requestdata/templates/header.html:46
+msgid "Settings"
+msgstr ""
+
+#: ckanext/requestdata/templates/header.html:52
+#: ckanext/requestdata/templates/header.html:54
+msgid "Log out"
+msgstr ""
+
+#: ckanext/requestdata/templates/header.html:64
+msgid "Login"
+msgstr ""
+
+#: ckanext/requestdata/templates/header.html:66
+msgid "Register"
+msgstr ""
+
+#: ckanext/requestdata/templates/admin/all_requests_data.html:11
+msgid "Download"
+msgstr ""
+
+#: ckanext/requestdata/templates/admin/all_requests_data.html:21
+msgid "Data Requests"
+msgstr ""
+
+#: ckanext/requestdata/templates/admin/all_requests_data.html:33
+#: ckanext/requestdata/templates/requestdata/my_requested_data.html:28
+#: ckanext/requestdata/templates/requestdata/organization_requested_data.html:30
+msgid "New"
+msgstr ""
+
+#: ckanext/requestdata/templates/admin/all_requests_data.html:34
+#: ckanext/requestdata/templates/requestdata/my_requested_data.html:29
+#: ckanext/requestdata/templates/requestdata/organization_requested_data.html:31
+msgid "Open"
+msgstr ""
+
+#: ckanext/requestdata/templates/admin/all_requests_data.html:41
+#: ckanext/requestdata/templates/requestdata/organization_requested_data.html:38
+msgid "Archive"
+msgstr ""
+
+#: ckanext/requestdata/templates/admin/base.html:5
+#: ckanext/requestdata/templates/ajax_snippets/request_contact.html:13
+msgid "Email"
+msgstr ""
+
+#: ckanext/requestdata/templates/admin/base.html:6
+msgid "Requested Data"
+msgstr ""
+
+#: ckanext/requestdata/templates/admin/email.html:8
+msgid "Header"
+msgstr ""
+
+#: ckanext/requestdata/templates/admin/email.html:9
+msgid "Body"
+msgstr ""
+
+#: ckanext/requestdata/templates/admin/email.html:10
+msgid "Footer"
+msgstr ""
+
+#: ckanext/requestdata/templates/admin/email.html:12
+msgid "Update Email Form"
+msgstr ""
+
+#: ckanext/requestdata/templates/admin/email.html:21
+msgid "CKAN email options"
+msgstr ""
+
+#: ckanext/requestdata/templates/admin/email.html:25
+msgid ""
+"<p><strong>Header:</strong>This sentence contains important alerts to be "
+"read before a user reads your message.</p>"
+msgstr ""
+
+#: ckanext/requestdata/templates/admin/email.html:26
+msgid ""
+"<p><strong>Body:</strong>This is for the message you want to deliver. All"
+" necessary information should go here.</p>"
+msgstr ""
+
+#: ckanext/requestdata/templates/admin/email.html:27
+msgid ""
+"<p><strong>Footer:</strong>The last sentence. Here you can add "
+"copyrights, links, disclosures or portal/organization information.</p>"
+msgstr ""
+
+#: ckanext/requestdata/templates/admin/email.html:28
+msgid ""
+"<p><strong>Formating:</strong>You can use generic terms for the email "
+"template. Just surround one of the available terms in <b>{ }</b> and they"
+" will be converted."
+msgstr ""
+
+#: ckanext/requestdata/templates/admin/email.html:29
+msgid "<b>e.g</b>"
+msgstr ""
+
+#: ckanext/requestdata/templates/admin/email.html:30
+msgid "<p>Hi {maintainers} will be displayed as Hi Chris, John and Erica</p></p>"
+msgstr ""
+
+#: ckanext/requestdata/templates/admin/email.html:31
+msgid "<p><strong>Available terms:</strong>"
+msgstr ""
+
+#: ckanext/requestdata/templates/admin/email.html:33
+msgid "<li><b>name</b>: full name or user name of the requester</li>"
+msgstr ""
+
+#: ckanext/requestdata/templates/admin/email.html:34
+msgid ""
+"<li><b>data_maintainers</b>: full name or user name of the dataset "
+"maintainers</li>"
+msgstr ""
+
+#: ckanext/requestdata/templates/admin/email.html:35
+msgid "<li><b>dataset</b>: requested dataset title </li>"
+msgstr ""
+
+#: ckanext/requestdata/templates/admin/email.html:36
+msgid "<li><b>message</b>: comment field from data request form</li>"
+msgstr ""
+
+#: ckanext/requestdata/templates/admin/email.html:37
+msgid "<li><b>organization</b>: list of all organizations</li>"
+msgstr ""
+
+#: ckanext/requestdata/templates/admin/email.html:38
+msgid "<li><b>email</b>: email address from the data requester</li>"
+msgstr ""
+
+#: ckanext/requestdata/templates/ajax_snippets/reject_request_form.html:6
+msgid "Reject the request"
+msgstr ""
+
+#: ckanext/requestdata/templates/ajax_snippets/reject_request_form.html:11
+#: ckanext/requestdata/templates/ajax_snippets/reply_request_form.html:14
+msgid "Message content"
+msgstr ""
+
+#: ckanext/requestdata/templates/ajax_snippets/reject_request_form.html:15
+#: ckanext/requestdata/templates/ajax_snippets/reply_request_form.html:22
+#: ckanext/requestdata/templates/ajax_snippets/request_contact.html:18
+msgid "Cancel"
+msgstr ""
+
+#: ckanext/requestdata/templates/ajax_snippets/reject_request_form.html:16
+#: ckanext/requestdata/templates/ajax_snippets/reply_request_form.html:23
+#: ckanext/requestdata/templates/ajax_snippets/request_contact.html:19
+msgid "Submit"
+msgstr ""
+
+#: ckanext/requestdata/templates/ajax_snippets/reply_request_form.html:6
+msgid "Reply to the request"
+msgstr ""
+
+#: ckanext/requestdata/templates/ajax_snippets/reply_request_form.html:16
+msgid "Reply email"
+msgstr ""
+
+#: ckanext/requestdata/templates/ajax_snippets/reply_request_form.html:18
+msgid "Upload file"
+msgstr ""
+
+#: ckanext/requestdata/templates/ajax_snippets/request_contact.html:6
+msgid "Contact the dataset owner"
+msgstr ""
+
+#: ckanext/requestdata/templates/ajax_snippets/request_contact.html:7
+msgid ""
+"Use the form to ask a question or provide comments about this dataset to "
+"the owner."
+msgstr ""
+
+#: ckanext/requestdata/templates/ajax_snippets/request_contact.html:12
+msgid "Name"
+msgstr ""
+
+#: ckanext/requestdata/templates/ajax_snippets/request_contact.html:12
+msgid "eg. Your name"
+msgstr ""
+
+#: ckanext/requestdata/templates/ajax_snippets/request_contact.html:13
+msgid "Your email"
+msgstr ""
+
+#: ckanext/requestdata/templates/ajax_snippets/request_contact.html:14
+msgid "Comments"
+msgstr ""
+
+#: ckanext/requestdata/templates/ajax_snippets/request_contact.html:14
+msgid "eg. Message content"
+msgstr ""
+
+#: ckanext/requestdata/templates/organization/read_base.html:9
+#: ckanext/requestdata/templates/requestdata/organization_requested_data.html:9
+#: ckanext/requestdata/templates/requestdata/organization_requested_data.html:14
+#: ckanext/requestdata/templates/requestdata/organization_requested_data.html:28
+msgid "Dataset Requests"
+msgstr ""
+
+#: ckanext/requestdata/templates/package/snippets/additional_info.html:6
+msgid "Source"
+msgstr ""
+
+#: ckanext/requestdata/templates/package/snippets/additional_info.html:17
+#: ckanext/requestdata/templates/package/snippets/additional_info.html:22
+msgid "Author"
+msgstr ""
+
+#: ckanext/requestdata/templates/package/snippets/additional_info.html:29
+#: ckanext/requestdata/templates/package/snippets/additional_info.html:34
+msgid "Maintainer"
+msgstr ""
+
+#: ckanext/requestdata/templates/package/snippets/additional_info.html:41
+msgid "Version"
+msgstr ""
+
+#: ckanext/requestdata/templates/package/snippets/additional_info.html:48
+msgid "State"
+msgstr ""
+
+#: ckanext/requestdata/templates/package/snippets/additional_info.html:54
+msgid "Last Updated"
+msgstr ""
+
+#: ckanext/requestdata/templates/package/snippets/additional_info.html:62
+msgid "Created"
+msgstr ""
+
+#: ckanext/requestdata/templates/package/snippets/package_form.html:9
+msgid "Create"
+msgstr ""
+
+#: ckanext/requestdata/templates/package/snippets/package_form.html:11
+msgid "Next: Add Data"
+msgstr ""
+
+#: ckanext/requestdata/templates/package/snippets/package_metadata_fields.html:18
+msgid "Maintainers"
+msgstr ""
+
+#: ckanext/requestdata/templates/package/snippets/package_metadata_fields.html:18
+msgid "joe@example.com"
+msgstr ""
+
+#: ckanext/requestdata/templates/package/snippets/resources_list.html:6
+msgid "Data and Resources"
+msgstr ""
+
+#: ckanext/requestdata/templates/package/snippets/resources_list.html:29
+#, python-format
+msgid ""
+" <p class=\"empty\">The metadata is available for this dataset. To access"
+" the full dataset, please request data.</p> <a href=\"#\" class=\"btn "
+"pull-right\" style=\"margin-top: 10px;\"            data-module=\"modal-"
+"form\"            data-module-template_file=\"request_contact.html\""
+"            data-module-submit_action=\"%(requestdata_action)s\""
+"            data-module-post_data=\"%(request_post_data)s\"            "
+"data-module-is_logged_in=\"%(is_logged_in)s\"            data-module-"
+"is_hdx=\"%(is_hdx)s\"            data-module-"
+"redirect_url=\"%(redirect_url)s\"            data-module-"
+"is_current_user_a_maintainer=\"%(is_current_user_a_maintainer)s\""
+"         >Request data</a> "
+msgstr ""
+
+#: ckanext/requestdata/templates/requestdata/my_requested_data.html:6
+msgid "Users"
+msgstr ""
+
+#: ckanext/requestdata/templates/requestdata/my_requested_data.html:8
+#: ckanext/requestdata/templates/requestdata/my_requested_data.html:12
+#: ckanext/requestdata/templates/requestdata/my_requested_data.html:26
+#: ckanext/requestdata/templates/user/read_base.html:7
+msgid "My Requests"
+msgstr ""
+
+#: ckanext/requestdata/templates/requestdata/my_requested_data.html:35
+msgid "Archived"
+msgstr ""
+
+#: ckanext/requestdata/templates/requestdata/organization_requested_data.html:4
+msgid "Organizations"
+msgstr ""
+
+#: ckanext/requestdata/templates/requestdata/snippets/filter_requests.html:20
+msgid "Filter by"
+msgstr ""
+
+#: ckanext/requestdata/templates/requestdata/snippets/filter_requests.html:43
+msgid "Apply"
+msgstr ""
+
+#: ckanext/requestdata/templates/requestdata/snippets/filter_requests.html:44
+msgid "Reset"
+msgstr ""
+
+#: ckanext/requestdata/templates/requestdata/snippets/order_requests.html:16
+msgid "Order by"
+msgstr ""
+
+#: ckanext/requestdata/templates/requestdata/snippets/requested_by_container.html:29
+msgid "more"
+msgstr ""
+
+#: ckanext/requestdata/templates/requestdata/snippets/requested_by_container.html:39
+msgid "Sysadmin"
+msgstr ""
+
+#: ckanext/requestdata/templates/requestdata/snippets/requested_by_container.html:41
+msgid "Requested on"
+msgstr ""
+
+#: ckanext/requestdata/templates/requestdata/snippets/section_base.html:23
+msgid "Requested by"
+msgstr ""
+
+#: ckanext/requestdata/templates/requestdata/snippets/section_base.html:24
+msgid "Actions"
+msgstr ""
+
+#: ckanext/requestdata/templates/requestdata/snippets/section_base.html:35
+msgid "No requests found."
+msgstr ""
+
+#: ckanext/requestdata/templates/requestdata/snippets/section_item_archive.html:23
+msgid "Requests"
+msgstr ""
+
+#: ckanext/requestdata/templates/requestdata/snippets/section_item_archive.html:26
+#: ckanext/requestdata/templates/requestdata/snippets/section_item_archive.html:59
+msgid "Replied"
+msgstr ""
+
+#: ckanext/requestdata/templates/requestdata/snippets/section_item_archive.html:31
+#: ckanext/requestdata/templates/requestdata/snippets/section_item_archive.html:55
+msgid "Denied"
+msgstr ""
+
+#: ckanext/requestdata/templates/requestdata/snippets/section_item_archive.html:36
+msgid "Shared"
+msgstr ""
+
+#: ckanext/requestdata/templates/requestdata/snippets/section_item_archive.html:64
+msgid "Dataset Shared"
+msgstr ""
+
+#: ckanext/requestdata/templates/requestdata/snippets/section_item_archive.html:67
+msgid "Dataset Not Shared"
+msgstr ""
+
+#: ckanext/requestdata/templates/requestdata/snippets/section_item_new.html:30
+msgid "Maintained by"
+msgstr ""
+
+#: ckanext/requestdata/templates/requestdata/snippets/section_item_new.html:37
+msgid "Not found"
+msgstr ""
+
+#: ckanext/requestdata/templates/requestdata/snippets/section_item_new.html:73
+msgid "Reply"
+msgstr ""
+
+#: ckanext/requestdata/templates/requestdata/snippets/section_item_new.html:86
+msgid "Decline"
+msgstr ""
+
+#: ckanext/requestdata/templates/requestdata/snippets/section_item_open.html:32
+msgid "Keep track of who you share datasets with. Did you share the dataset?"
+msgstr ""
+
+#: ckanext/requestdata/templates/requestdata/snippets/section_item_open.html:41
+msgid "Yes"
+msgstr ""
+
+#: ckanext/requestdata/templates/requestdata/snippets/section_item_open.html:50
+msgid "No"
+msgstr ""
+
+#: ckanext/requestdata/templates/snippets/add_dataset.html:4
+#: ckanext/requestdata/templates/snippets/add_dataset.html:14
+msgid "Add Dataset"
+msgstr ""
+
+#: ckanext/requestdata/templates/snippets/add_dataset.html:13
+msgid "Add full dataset"
+msgstr ""
+
+#: ckanext/requestdata/templates/snippets/add_dataset.html:16
+#: ckanext/requestdata/templates/snippets/add_dataset.html:38
+msgid "This option is suitable if:"
+msgstr ""
+
+#: ckanext/requestdata/templates/snippets/add_dataset.html:18
+msgid "Your data is ready to be shared"
+msgstr ""
+
+#: ckanext/requestdata/templates/snippets/add_dataset.html:25
+msgid "Add metadata-only"
+msgstr ""
+
+#: ckanext/requestdata/templates/snippets/add_dataset.html:35
+msgid "Add metadata"
+msgstr ""
+
+#: ckanext/requestdata/templates/snippets/add_dataset.html:40
+msgid "You want to be in control of who can access your data"
+msgstr ""
+
+#: ckanext/requestdata/templates/snippets/add_dataset.html:41
+msgid "You are not finished collecting data"
+msgstr ""
+
+#: ckanext/requestdata/templates/snippets/add_dataset.html:42
+msgid "You have a plan to collect data"
+msgstr ""
+

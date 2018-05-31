@@ -8,6 +8,7 @@ from email.MIMEBase import MIMEBase
 from email import Encoders
 from smtplib import SMTPRecipientsRefused
 from pylons import config
+from ckan.plugins.toolkit import _
 
 
 log = logging.getLogger(__name__)
@@ -75,7 +76,7 @@ def send_email(content, to, subject, file=None):
         s.quit()
         response_dict = {
             'success': True,
-            'message': 'Email message was successfully sent.'
+            'message': _('Email message was successfully sent.')
         }
         return response_dict
     except SMTPRecipientsRefused:
@@ -83,8 +84,9 @@ def send_email(content, to, subject, file=None):
             'success': False,
             'error': {
                 'fields': {
-                    'recepient': 'Invalid email recepient, maintainer not '
-                    'found'
+                    'recepient': _(
+                        'Invalid email recepient, maintainer not found'
+                    )
                 }
             }
         }
@@ -94,6 +96,6 @@ def send_email(content, to, subject, file=None):
                      'the SMTP settings?')
         error_dict = {
             'success': False,
-            'message': 'An error occured while sending the email. Try again.'
+            'message': _('An error occured while sending the email. Try again.')
         }
         return error_dict

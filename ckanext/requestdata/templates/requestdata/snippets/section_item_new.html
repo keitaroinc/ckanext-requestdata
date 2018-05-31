@@ -27,14 +27,14 @@ Example usage:
 
       {% if template_type != 'user' %}
         <p style="font-weight: initial;">
-          <span>Maintained by </span>
+          <span>{{ _('Maintained by') }} </span>
           {% if item.maintainers %}
             {% for m in item.maintainers %}
               {% set profile = h.url_for(controller='user', action='read', id=m.id) %}
               <a href="{{ profile }}" title="{{ _('View profile') }}">{{ m.fullname }}</a>{% if not loop.last %}, {% endif %}
             {% endfor %}
           {% else %}
-            <span>Not found</span>
+            <span>{{ _('Not found') }}</span>
           {% endif %}
         </p>
       {% endif %}
@@ -70,7 +70,7 @@ Example usage:
             data-module-redirect_url="{{ redirect_url }}"
             data-module-refresh_on_success="1"
             data-module-disable_action_buttons="1"
-            data-module-message_content="{{ item.message_content }}">Reply</a>
+            data-module-message_content="{{ item.message_content }}">{{ _('Reply') }}</a>
       </div>|&nbsp;
       <div class="requested-data-container-inline">
          <a {% block reject_buttton_class %} class="requested-data-container__actions--reject" {% endblock %}
@@ -83,7 +83,7 @@ Example usage:
               data-module-redirect_url="{{ redirect_url }}"
               data-module-refresh_on_success="1"
               data-module-disable_action_buttons="1"
-              data-module-message_content="{{ item.message_content }}" style="border-color: transparent;">Decline</a>
+              data-module-message_content="{{ item.message_content }}" style="border-color: transparent;">{{ _('Decline') }}</a>
       </div>
     </div>
   </div>

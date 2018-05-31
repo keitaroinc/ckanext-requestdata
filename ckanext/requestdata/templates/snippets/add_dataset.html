@@ -10,19 +10,19 @@
   <button type="button" class="close" data-dismiss="modal">×</button>
   <div class="add-dataset-modal-box">
     <div class="modal-body">
-      <h3>Add full dataset</h3>
+      <h3>{{ _('Add full dataset') }}</h3>
       {% link_for _('Add Dataset'), controller='package', action='new', class_='btn btn-primary', icon='plus-sign-alt' %}
       <div class="add-dataset-modal-description">
-        <p>This option is suitable if:</p>
+        <p>{{ _('This option is suitable if:') }}</p>
         <ul>
-          <li>Your data is ready to be shared</li>
+          <li>{{ _('Your data is ready to be shared') }}</li>
         </ul>
       </div>
     </div>
   </div>
   <div class="add-dataset-modal-box">
     <div class="modal-body">
-      <h3>Add metadata-only</h3>
+      <h3>{{ _('Add metadata-only') }}</h3>
 
       {% if group %}
         {% set params = {'group': group, 'metadata': 'true'} %}
@@ -35,11 +35,11 @@
         <i class="icon-plus-sign-alt"></i> {{ _('Add metadata') }}
       </a>
       <div class="add-dataset-modal-description">
-        <p>This option is suitable if:</p>
+        <p>{{ _('This option is suitable if:') }}</p>
         <ul>
-          <li>You want to be in control of who can access your data</li>
-          <li>You are not finished collecting data</li>
-          <li>You have a plan to collect data</li>
+          <li>{{ _('You want to be in control of who can access your data') }}</li>
+          <li>{{ _('You are not finished collecting data') }}</li>
+          <li>{{ _('You have a plan to collect data') }}</li>
         </ul>
       </div>
     </div>
