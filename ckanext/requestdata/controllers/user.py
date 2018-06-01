@@ -1,11 +1,10 @@
 import json
 from paste.deploy.converters import asbool
-from pylons import config
 from email_validator import validate_email
 from ckan.lib import base
 from ckan import logic, model
 from ckan.plugins import toolkit
-from ckan.common import c, _, request
+from ckan.common import c, _, request, config
 from ckan import authz
 import ckan.lib.helpers as h
 from ckanext.requestdata.emailer import send_email
