@@ -1,4 +1,7 @@
+{%- if not h.requestdata_enable_visibility() -%}
 {% resource 'requestdata/disable-visibility.js' %}
+{%- endif -%}
+
 
 {% ckan_extends %}
 

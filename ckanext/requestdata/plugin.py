@@ -188,6 +188,8 @@ class RequestdataPlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm):
                 helpers.role_in_org,
             'requestdata_check_ckan_version':
                 helpers.check_ckan_version,
+            'requestdata_enable_visibility':
+                helpers.enable_visibility
         }
 
     # IDatasetForm

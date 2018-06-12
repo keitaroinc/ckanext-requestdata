@@ -7,7 +7,7 @@ import json
 from paste.deploy.converters import asbool
 
 from ckan import model, logic
-from ckan.common import c, _, request
+from ckan.common import c, _, request, config
 from ckan.lib import base
 from ckan.plugins import toolkit
 from ckan.model.user import User
@@ -193,3 +193,18 @@ def role_in_org(user_id, org_name):
 
 def check_ckan_version(min_version=None, max_version=None):
     return toolkit.check_ckan_version(min_version, max_version)
+
+def enable_visibility():
+    """Check whether to enable the visibility dropdown in dataset/new.
+
+    The default is to disable. This value is controlled by the CKAN configuration value
+    ``ckanext.requestdata.enable_visibilty``.
+
+    Returns ``True`` if visibility is enabled in the configuration, otherwise ``False``.
+    """
+    visibility = config.get('ckanext.requestdata.enable_visibilty', False)
+    if not visibility:
+        return False
+    if isinstance(visibility, str):
+        return visibility.lower() in ['true', 'yes', 't', '1']
+    return False
