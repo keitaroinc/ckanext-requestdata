@@ -1,6 +1,7 @@
 {% ckan_extends %}
 
 {% block package_additional_info %}
+  {{ super() }}
   {% if pkg_dict.url %}
     <tr>
       <th scope="row" class="dataset-label">{{ _('Source') }}</th>

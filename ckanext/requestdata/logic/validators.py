@@ -3,6 +3,7 @@ from paste.deploy.converters import asbool
 
 from ckan.plugins.toolkit import _
 from ckan.plugins.toolkit import get_action
+from ckan.logic import NotFound
 
 
 def email_validator(key, data, errors, context):
@@ -39,11 +40,14 @@ def members_in_org_validator(key, data, errors, context):
         'id': owner_org
     }
     user_ids = []
-
-    members_in_org = get_action('member_list')(context, data_dict)
+    try:
+        members_in_org = get_action('member_list')(context, data_dict)
+    except NotFound:
+        members_in_org = []
 
     # member_list returns more than just users, so we need to extract only
     # users
+    
     members_in_org = [member for member in members_in_org
                       if member[1] == 'user']
 
