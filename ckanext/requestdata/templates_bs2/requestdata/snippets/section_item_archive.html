@@ -21,20 +21,20 @@ Example usage:
 
     {% set counters = h.requestdata_get_request_counters(item.package_id) %}
     <div class="requested-data-container__content-item-counters">
-      <span><span style="font-size: 20px;">{{ counters.requests }}</span> {{ _('Requests') }}</span>
+      <span><span style="font-size: 20px;">{{ counters.requests }}</span> Requests</span>
       <span>
         <img src="/images/icons/reply.svg" class="requested-data-container__content-item-counters--icon requested-data-container__content-item-counters--replied" />
-        <span>{{ counters.replied }} {{ _('Replied') }}</span>
+        <span>{{ counters.replied }} Replied</span>
       </span>
 
       <span>
         <img src="/images/icons/declined.svg" class="requested-data-container__content-item-counters--icon" />
-        <span>{{ counters.declined }} {{ _('Denied') }}</span>
+        <span>{{ counters.declined }} Denied</span>
       </span>
 
       <span>
         <img src="/images/icons/shared.svg" class="requested-data-container__content-item-counters--icon" />
-        <span>{{ counters.shared }} {{ _('Shared') }}</span>
+        <span>{{ counters.shared }} Shared</span>
       </span>
     </div>
 
@@ -58,19 +58,19 @@ Example usage:
           {% if x.rejected %}
             <div style="margin-right: 2px;">
               <img src="/images/icons/declined.svg" class="requested-data-container__content-item-counters--icon" />
-              <span class="requested-data-container__collapse--status-text">{{ _('Denied') }} ({{ h.render_datetime(x.modified_at, date_format='%-d %B %Y') }})</span>
+              <span class="requested-data-container__collapse--status-text">Denied ({{ h.render_datetime(x.modified_at, date_format='%-d %B %Y') }})</span>
             </div>
           {% else %}
             <img src="/images/icons/reply.svg" class="requested-data-container__content-item-counters--icon requested-data-container__content-item-counters--replied" />
-            <span class="requested-data-container__collapse--status-text">{{ _('Replied') }} ({{ h.render_datetime(x.modified_at, date_format='%-d %B %Y') }})</span>
+            <span class="requested-data-container__collapse--status-text">Replied ({{ h.render_datetime(x.modified_at, date_format='%-d %B %Y') }})</span>
 
             <div style="margin-top: 8px;">
             {% if x.data_shared %}
               <img src="/images/icons/shared.svg" class="requested-data-container__content-item-counters--icon" />
-              <span class="requested-data-container__collapse--status-text">{{ _('Dataset Shared') }}</span>
+              <span class="requested-data-container__collapse--status-text">Dataset Shared</span>
             {% else %}
               <img src="/images/icons/declined.svg" class="requested-data-container__content-item-counters--icon" />
-              <span class="requested-data-container__collapse--status-text">{{ _('Dataset Not Shared') }}</span>
+              <span class="requested-data-container__collapse--status-text">Dataset Not Shared</span>
             {% endif %}
             </div>
           {% endif %}

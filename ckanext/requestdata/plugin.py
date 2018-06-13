@@ -82,9 +82,14 @@ class RequestdataPlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm,
                     controller=request_data_controller,
                     action='send_request')
 
+        is_ckan_greater_than_27 = helpers.check_ckan_version(min_version='2.7')
+        if is_ckan_greater_than_27:
+            envelope_icon = 'envelope-o'
+        else:
+            envelope_icon = 'envelope-alt'
         map.connect('ckanadmin_email', '/ckan-admin/email',
                     controller=admin_controller,
-                    action='email', ckan_icon='envelope-alt')
+                    action='email', ckan_icon=envelope_icon)
 
         map.connect('ckanadmin_requests_data', '/ckan-admin/requests_data',
                     controller=admin_controller,
@@ -183,7 +188,9 @@ class RequestdataPlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm,
             'requestdata_get_orgs_for_user':
                 helpers.get_orgs_for_user,
             'requestdata_role_in_org':
-                helpers.role_in_org
+                helpers.role_in_org,
+            'requestdata_check_ckan_version':
+                helpers.check_ckan_version,
         }
 
     # IDatasetForm

@@ -13,8 +13,8 @@ this.ckan.module('expand-dataset', function($) {
     },
     _onArrowClick: function(event) {
       var arrow = this.el.find('i')
-      var iconRight = 'icon-chevron-right' 
-      var iconDown = 'icon-chevron-down'
+      var iconRight = 'fa fa-chevron-right' 
+      var iconDown = 'fa fa-chevron-down'
       var prefix = ''
 
       if (arrow.hasClass('glyphicon')) {
