@@ -9,64 +9,65 @@ msgstr ""
 "Project-Id-Version: ckanext-requestdata 0.0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-05-31 23:42+0200\n"
-"PO-Revision-Date: 2018-05-31 23:42+0200\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"PO-Revision-Date: 2018-06-09 00:35+0200\n"
 "Language: mk\n"
 "Language-Team: mk <LL@li.org>\n"
-"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.3.4\n"
+"Last-Translator: \n"
+"X-Generator: Poedit 2.0.8\n"
 
 #: ckanext/requestdata/emailer.py:79
 msgid "Email message was successfully sent."
-msgstr ""
+msgstr "Е-пошта пораката беше успешно испратена."
 
 #: ckanext/requestdata/emailer.py:87
 msgid "Invalid email recepient, maintainer not found"
-msgstr ""
+msgstr "Невалиден приемник за е-пошта, не е пронајден одржувач"
 
 #: ckanext/requestdata/emailer.py:99
 msgid "An error occured while sending the email. Try again."
-msgstr ""
+msgstr "Се појави грешка при испраќање на е-поштата. Обидете се повторно."
 
 #: ckanext/requestdata/helpers.py:67
 msgid "Not authorized to see this package."
-msgstr ""
+msgstr "Не се овластени да пристапите до овој податочен сет."
 
 #: ckanext/requestdata/helpers.py:69
 msgid "Package not found."
-msgstr ""
+msgstr "Податочниот сет не е пронајден."
 
 #: ckanext/requestdata/helpers.py:155
 msgid "string cannot be parsed"
-msgstr ""
+msgstr "низата не може да се разложи"
 
 #: ckanext/requestdata/controllers/admin.py:58
 msgid "Successfully updated."
-msgstr ""
+msgstr "Успешно ажурирано."
 
 #: ckanext/requestdata/controllers/admin.py:87
 #: ckanext/requestdata/controllers/organization.py:48
 #: ckanext/requestdata/controllers/user.py:53
 #: ckanext/requestdata/controllers/user.py:58
 msgid "Not authorized to see this page."
-msgstr ""
+msgstr "Не се овластени да пристапите до оваа страница."
 
 #: ckanext/requestdata/controllers/admin.py:131
 #: ckanext/requestdata/controllers/organization.py:95
 #: ckanext/requestdata/controllers/user.py:78
 #: ckanext/requestdata/templates/requestdata/snippets/order_requests.html:23
 msgid "Alphabetical (A-Z)"
-msgstr ""
+msgstr "По азбучен ред (А-Ш)"
 
 #: ckanext/requestdata/controllers/admin.py:135
 #: ckanext/requestdata/controllers/organization.py:99
 #: ckanext/requestdata/controllers/user.py:82
 #: ckanext/requestdata/templates/requestdata/snippets/order_requests.html:24
 msgid "Alphabetical (Z-A)"
-msgstr ""
+msgstr "По азбучен ред (Ш-А)"
 
 #: ckanext/requestdata/controllers/admin.py:139
 #: ckanext/requestdata/controllers/admin.py:335
@@ -74,46 +75,53 @@ msgstr ""
 #: ckanext/requestdata/controllers/user.py:66
 #: ckanext/requestdata/templates/requestdata/snippets/order_requests.html:22
 msgid "Most Recent"
-msgstr ""
+msgstr "Неодамнешни"
 
 #: ckanext/requestdata/controllers/admin.py:141
 #: ckanext/requestdata/controllers/organization.py:104
 #: ckanext/requestdata/controllers/user.py:71
 #: ckanext/requestdata/templates/requestdata/snippets/order_requests.html:26
 msgid "Sharing Rate"
-msgstr ""
+msgstr "Стапка на споделување"
 
 #: ckanext/requestdata/controllers/admin.py:143
 #: ckanext/requestdata/controllers/organization.py:106
 #: ckanext/requestdata/controllers/user.py:74
 #: ckanext/requestdata/templates/requestdata/snippets/order_requests.html:25
 msgid "Requests Rate"
-msgstr ""
+msgstr "Стапка на барање"
 
 #: ckanext/requestdata/controllers/package.py:62
 msgid "Unauthorized to create a dataset."
-msgstr ""
+msgstr "Не сте овластени за да креирате податочен сет."
 
 #: ckanext/requestdata/controllers/request_data.py:97
 msgid ""
 "<br><br> This dataset's maintainer does not exist.        Go to your "
-"organisation's <a href=\"\">Requested Data</a>         page to see the "
-"new request. Please also edit the dataset and assign          a new "
-"maintainer."
+"organisation's <a href=\"\">Requested Data</a>         page to see the new "
+"request. Please also edit the dataset and assign          a new maintainer."
 msgstr ""
+"<br><br> Одржувачот на овој податочен сет не постои.        Одете на "
+"страницата на вашата организација <a href=\"\">Барани податоци</a>         за "
+"да го видите новото барање. Ве молиме исто така променете го податочниот сет и "
+"доделете         нов одржувач."
 
 #: ckanext/requestdata/controllers/request_data.py:105
 msgid ""
-"<br><br><strong> Please accept or decline the request        as soon as "
-"you can by visiting the         <a href=\"\">My Requests</a> "
-"page.</strong>"
+"<br><br><strong> Please accept or decline the request        as soon as you "
+"can by visiting the         <a href=\"\">My Requests</a> page.</strong>"
 msgstr ""
+"<br><br><strong> Ве молиме прифатете го или одбијте го барањето        веднаш "
+"штом ќе можете преку посета на         <a href=\"\">Мои барања</a> страница.</"
+"strong>"
 
 #: ckanext/requestdata/controllers/request_data.py:121
 msgid ""
-"<br><br> Go to <a href=\"\">                    Requested data</a> page "
-"in organization admin."
+"<br><br> Go to <a href=\"\">                    Requested data</a> page in "
+"organization admin."
 msgstr ""
+"<br><br> Одете на <a href=\"\">                    Побарани податоци</a> "
+"страница во организацискиот администратор."
 
 #: ckanext/requestdata/controllers/request_data.py:130
 msgid ""
@@ -124,570 +132,617 @@ msgid ""
 "            <a href=\"  \"></a>\n"
 "          </p>\n"
 "          <p>\n"
-"            <a href=\"  \">            Sign up for our newsletter</a> |"
-"             <a href=\"  \">Follow us on Twitter</a>             | <a "
-"href=\"mailto: \">Contact us</a>\n"
+"            <a href=\"  \">            Sign up for our newsletter</a> "
+"|             <a href=\"  \">Follow us on Twitter</a>             | <a href="
+"\"mailto: \">Contact us</a>\n"
 "          </p>\n"
 "        </small>\n"
 "\n"
 "    "
 msgstr ""
+"\n"
+"        <br/><br/>\n"
+"        <small>\n"
+"          <p>\n"
+"            <a href=\"  \"></a>\n"
+"          </p>\n"
+"          <p>\n"
+"            <a href=\"  \">            Пријавете се за нашиот билтен</a> "
+"|             <a href=\"  \">Следете нè на Твитер</a>             | <a href="
+"\"mailto: \">Контактирајте нè </a>\n"
+"          </p>\n"
+"        </small>\n"
+"\n"
+"    "
 
 #: ckanext/requestdata/controllers/request_data.py:168
 msgid "Unauthorized to update this dataset."
-msgstr ""
+msgstr "Не сте овластени за да го ажурирате овој податочен сет."
 
 #: ckanext/requestdata/controllers/request_data.py:215
 msgid "Dataset maintainer email not found."
-msgstr ""
+msgstr "Не е пронајдена е-пошта на одржувачот на податочни сетови."
 
 #: ckanext/requestdata/controllers/request_data.py:240
 msgid ": New data request \""
-msgstr ""
+msgstr ": Ново барање за податоци \""
 
 #: ckanext/requestdata/controllers/request_data.py:272
 msgid "Request sent, but email message was not sent."
-msgstr ""
+msgstr "Барањето е испратено, но пораката за е-пошта не беше испратена."
 
 #: ckanext/requestdata/controllers/user.py:170
 msgid "User not found"
-msgstr ""
+msgstr "Корисникот не е пронајден"
 
 #: ckanext/requestdata/controllers/user.py:172
 msgid "Not authorized to see this page"
-msgstr ""
+msgstr "Не се овластени да пристапите до оваа страница"
 
 #: ckanext/requestdata/controllers/user.py:204
 msgid "The email you provided is invalid."
-msgstr ""
+msgstr "Е-поштата што ја дадовте е неважечка."
 
 #: ckanext/requestdata/controllers/user.py:229
 #: ckanext/requestdata/fanstatic/modal-form.js:119
 msgid "Missing value"
-msgstr ""
+msgstr "Недостасува вредност"
 
 #: ckanext/requestdata/controllers/user.py:238
 #: ckanext/requestdata/controllers/user.py:317
 msgid "Not authorized to use this action."
-msgstr ""
+msgstr "Не сте овластени да ја користите оваа акција."
 
 #: ckanext/requestdata/controllers/user.py:251
 msgid ": Data request "
-msgstr ""
+msgstr ": Барање за податоци "
 
 #: ckanext/requestdata/controllers/user.py:257
 msgid "<br><br> You can contact the maintainer on this email address: "
-msgstr ""
+msgstr "r> <br> Можете да контактирате со одржувачот на оваа адреса: "
 
 #: ckanext/requestdata/controllers/user.py:276
 msgid "Message was sent successfully"
-msgstr ""
+msgstr "Пораката беше успешно испратена"
 
 #: ckanext/requestdata/controllers/user.py:330
 msgid "Request's state successfully updated."
-msgstr ""
+msgstr "Состојбата на барањето е успешно ажурирана."
 
 #: ckanext/requestdata/fanstatic/modal-form.js:37
 msgid ""
 "Request own dataset\n"
 "\n"
-"WARNING: You are a maintainer of the dataset you are requesting. Do you "
-"wish to continue making this request?"
+"WARNING: You are a maintainer of the dataset you are requesting. Do you wish "
+"to continue making this request?"
 msgstr ""
+"Побарајте свој податочен сет\n"
+"\n"
+"ПРЕДУПРЕДУВАЊЕ: Вие сте одржувач на податочниот сет што го барате. Дали сакате "
+"да продолжите да го правите ова барање?"
 
 #: ckanext/requestdata/logic/actions.py:114
 msgid "Request with provided 'id' cannot be found"
-msgstr ""
+msgstr "Барањето со дадено \"ид\" не може да се најде"
 
 #: ckanext/requestdata/logic/auth.py:12
 msgid "Only registered users can request data."
-msgstr ""
+msgstr "Само регистрираните корисници можат да побараат податоци."
 
 #: ckanext/requestdata/logic/auth.py:21 ckanext/requestdata/logic/auth.py:54
 #: ckanext/requestdata/logic/auth.py:67
 msgid "You don't have access to this request data."
-msgstr ""
+msgstr "Немате пристап до податоците од ова барање."
 
 #: ckanext/requestdata/logic/auth.py:38
 msgid "Organization not found."
-msgstr ""
+msgstr "Организацијата не е пронајдена."
 
 #: ckanext/requestdata/logic/validators.py:14
 msgid "Please provide a valid email address."
-msgstr ""
+msgstr "Ве молиме обезбедете валидна адреса на е-пошта."
 
 #: ckanext/requestdata/logic/validators.py:22
 msgid "The state parameter must be new, open or archive."
-msgstr ""
+msgstr "Параметарот на состојбата мора да биде нов, отворен или архивиран."
 
 #: ckanext/requestdata/logic/validators.py:30
 msgid "The {0} parameter must be a Boolean value."
-msgstr ""
+msgstr "Параметрот {0} мора да биде Булова вредност."
 
 #: ckanext/requestdata/logic/validators.py:70
 msgid "The user with email \"{0}\" is not part of this organization."
-msgstr ""
+msgstr "Корисникот со е-пошта \"{0}\" не е дел од оваа организација."
 
 #: ckanext/requestdata/logic/validators.py:75
 msgid "The user with email \"{0}\" does not exist."
-msgstr ""
+msgstr "Корисникот со е-пошта \"{0}\" не постои."
 
 #: ckanext/requestdata/logic/validators.py:86
 msgid "The flag parameter must be request, replied, declined, or shared"
 msgstr ""
+"Параметарот на знамето мора да биде барање, одговорено, одбиено или споделено"
 
 #: ckanext/requestdata/templates/header.html:11
 msgid "Sysadmin settings"
-msgstr ""
+msgstr "Подесувања на системски администратор"
 
 #: ckanext/requestdata/templates/header.html:13
 msgid "Admin"
-msgstr ""
+msgstr "Администратор"
 
 #: ckanext/requestdata/templates/header.html:21
 #: ckanext/requestdata/templates/header.html:23
 msgid "New data request"
-msgstr ""
+msgstr "Барање за нови податоци"
 
 #: ckanext/requestdata/templates/header.html:28
 #: ckanext/requestdata/templates/requestdata/snippets/requested_by_container.html:15
 #: ckanext/requestdata/templates/requestdata/snippets/section_item_new.html:34
 msgid "View profile"
-msgstr ""
+msgstr "Видете го профилот"
 
 #: ckanext/requestdata/templates/header.html:35
 #, python-format
 msgid "Dashboard (%(num)d new item)"
 msgid_plural "Dashboard (%(num)d new items)"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Контролна табла (%(num)d нова ставка)"
+msgstr[1] "Контролна табла (%(num)d нови ставки)"
 
 #: ckanext/requestdata/templates/header.html:38
 msgid "Dashboard"
-msgstr ""
+msgstr "Контролна табла"
 
 #: ckanext/requestdata/templates/header.html:44
 msgid "Edit settings"
-msgstr ""
+msgstr "Променете подесувања"
 
 #: ckanext/requestdata/templates/header.html:46
 msgid "Settings"
-msgstr ""
+msgstr "Подесувања"
 
 #: ckanext/requestdata/templates/header.html:52
 #: ckanext/requestdata/templates/header.html:54
 msgid "Log out"
-msgstr ""
+msgstr "Одјавете се"
 
 #: ckanext/requestdata/templates/header.html:64
 msgid "Login"
-msgstr ""
+msgstr "Најавете се"
 
 #: ckanext/requestdata/templates/header.html:66
 msgid "Register"
-msgstr ""
+msgstr "Регистрирајте се"
 
 #: ckanext/requestdata/templates/admin/all_requests_data.html:11
 msgid "Download"
-msgstr ""
+msgstr "Преземете"
 
 #: ckanext/requestdata/templates/admin/all_requests_data.html:21
 msgid "Data Requests"
-msgstr ""
+msgstr "Барања за податоци"
 
 #: ckanext/requestdata/templates/admin/all_requests_data.html:33
 #: ckanext/requestdata/templates/requestdata/my_requested_data.html:28
 #: ckanext/requestdata/templates/requestdata/organization_requested_data.html:30
 msgid "New"
-msgstr ""
+msgstr "Ново"
 
 #: ckanext/requestdata/templates/admin/all_requests_data.html:34
 #: ckanext/requestdata/templates/requestdata/my_requested_data.html:29
 #: ckanext/requestdata/templates/requestdata/organization_requested_data.html:31
 msgid "Open"
-msgstr ""
+msgstr "Отворено"
 
 #: ckanext/requestdata/templates/admin/all_requests_data.html:41
 #: ckanext/requestdata/templates/requestdata/organization_requested_data.html:38
 msgid "Archive"
-msgstr ""
+msgstr "Архива"
 
 #: ckanext/requestdata/templates/admin/base.html:5
 #: ckanext/requestdata/templates/ajax_snippets/request_contact.html:13
 msgid "Email"
-msgstr ""
+msgstr "Е-пошта"
 
 #: ckanext/requestdata/templates/admin/base.html:6
 msgid "Requested Data"
-msgstr ""
+msgstr "Побарани податоци"
 
 #: ckanext/requestdata/templates/admin/email.html:8
 msgid "Header"
-msgstr ""
+msgstr "Заглавие"
 
 #: ckanext/requestdata/templates/admin/email.html:9
 msgid "Body"
-msgstr ""
+msgstr "Тело"
 
 #: ckanext/requestdata/templates/admin/email.html:10
 msgid "Footer"
-msgstr ""
+msgstr "Подножје"
 
 #: ckanext/requestdata/templates/admin/email.html:12
 msgid "Update Email Form"
-msgstr ""
+msgstr "Ажурирајте го формуларот за е-пошта"
 
 #: ckanext/requestdata/templates/admin/email.html:21
 msgid "CKAN email options"
-msgstr ""
+msgstr "CKAN опции за е-пошта"
 
 #: ckanext/requestdata/templates/admin/email.html:25
 msgid ""
-"<p><strong>Header:</strong>This sentence contains important alerts to be "
-"read before a user reads your message.</p>"
+"<p><strong>Header:</strong>This sentence contains important alerts to be read "
+"before a user reads your message.</p>"
 msgstr ""
+"<p><strong>Заглавие:</strong>Оваа реченица содржи важни предупредувања кои "
+"треба да се прочитаат пред некој корисник да ја прочита вашата порака.</p>"
 
 #: ckanext/requestdata/templates/admin/email.html:26
 msgid ""
-"<p><strong>Body:</strong>This is for the message you want to deliver. All"
-" necessary information should go here.</p>"
+"<p><strong>Body:</strong>This is for the message you want to deliver. All "
+"necessary information should go here.</p>"
 msgstr ""
+"<p><strong>Тело:</strong>Ова е за пораката што сакате да ја испорачате. Сите "
+"потребни информации треба да одат овде.</p>"
 
 #: ckanext/requestdata/templates/admin/email.html:27
 msgid ""
-"<p><strong>Footer:</strong>The last sentence. Here you can add "
-"copyrights, links, disclosures or portal/organization information.</p>"
+"<p><strong>Footer:</strong>The last sentence. Here you can add copyrights, "
+"links, disclosures or portal/organization information.</p>"
 msgstr ""
+"<p><strong>Подножје:</strong>Последната реченица. Овде можете да додадете "
+"авторски права, линкови, обелоденувања или информации за портал/организација. "
+"</p>"
 
 #: ckanext/requestdata/templates/admin/email.html:28
 msgid ""
 "<p><strong>Formating:</strong>You can use generic terms for the email "
-"template. Just surround one of the available terms in <b>{ }</b> and they"
-" will be converted."
+"template. Just surround one of the available terms in <b>{ }</b> and they will "
+"be converted."
 msgstr ""
+"<p><strong>Форматирање:</strong>Можете да ги користите општите термини за "
+"шаблонот за е-пошта. Само заокружете еден од достапните термини во<b>{ }</b> и "
+"тие ќе бидат конвертирани."
 
 #: ckanext/requestdata/templates/admin/email.html:29
 msgid "<b>e.g</b>"
-msgstr ""
+msgstr "<b>пр.</b>"
 
 #: ckanext/requestdata/templates/admin/email.html:30
 msgid "<p>Hi {maintainers} will be displayed as Hi Chris, John and Erica</p></p>"
 msgstr ""
+"<p>Здраво {maintainers} ќе бидат прикажани како Здраво Кристијан, Јован и "
+"Елена</p></p>"
 
 #: ckanext/requestdata/templates/admin/email.html:31
 msgid "<p><strong>Available terms:</strong>"
-msgstr ""
+msgstr "<p><strong>Достапни услови:</strong>"
 
 #: ckanext/requestdata/templates/admin/email.html:33
 msgid "<li><b>name</b>: full name or user name of the requester</li>"
-msgstr ""
+msgstr "<li><b>име</b>: целосно име или корисничко име на барателот</li>"
 
 #: ckanext/requestdata/templates/admin/email.html:34
 msgid ""
 "<li><b>data_maintainers</b>: full name or user name of the dataset "
 "maintainers</li>"
 msgstr ""
+"<li><b>одржувачи_на_податоци</b>: целосно име или корисничко име на "
+"одржувачите на податочни сетови</li>"
 
 #: ckanext/requestdata/templates/admin/email.html:35
 msgid "<li><b>dataset</b>: requested dataset title </li>"
-msgstr ""
+msgstr "<li><b>податочен сет</b>: побаран наслов на податочниот сет </li>"
 
 #: ckanext/requestdata/templates/admin/email.html:36
 msgid "<li><b>message</b>: comment field from data request form</li>"
 msgstr ""
+"<li><b>порака</b>: поле за коментар од формуларот за барање на податоци</li>"
 
 #: ckanext/requestdata/templates/admin/email.html:37
 msgid "<li><b>organization</b>: list of all organizations</li>"
-msgstr ""
+msgstr "<li><b>организација</b>: список на сите организации</li>"
 
 #: ckanext/requestdata/templates/admin/email.html:38
 msgid "<li><b>email</b>: email address from the data requester</li>"
-msgstr ""
+msgstr "<li><b>е-пошта</b>: е-пошта од барателот на податоци</li>"
 
 #: ckanext/requestdata/templates/ajax_snippets/reject_request_form.html:6
 msgid "Reject the request"
-msgstr ""
+msgstr "Одбијте го барањето"
 
 #: ckanext/requestdata/templates/ajax_snippets/reject_request_form.html:11
 #: ckanext/requestdata/templates/ajax_snippets/reply_request_form.html:14
 msgid "Message content"
-msgstr ""
+msgstr "Содржина на пораката"
 
 #: ckanext/requestdata/templates/ajax_snippets/reject_request_form.html:15
 #: ckanext/requestdata/templates/ajax_snippets/reply_request_form.html:22
 #: ckanext/requestdata/templates/ajax_snippets/request_contact.html:18
 msgid "Cancel"
-msgstr ""
+msgstr "Откажете"
 
 #: ckanext/requestdata/templates/ajax_snippets/reject_request_form.html:16
 #: ckanext/requestdata/templates/ajax_snippets/reply_request_form.html:23
 #: ckanext/requestdata/templates/ajax_snippets/request_contact.html:19
 msgid "Submit"
-msgstr ""
+msgstr "Испратете"
 
 #: ckanext/requestdata/templates/ajax_snippets/reply_request_form.html:6
 msgid "Reply to the request"
-msgstr ""
+msgstr "Одговорете на барањето"
 
 #: ckanext/requestdata/templates/ajax_snippets/reply_request_form.html:16
 msgid "Reply email"
-msgstr ""
+msgstr "Одговорете е-пошта"
 
 #: ckanext/requestdata/templates/ajax_snippets/reply_request_form.html:18
 msgid "Upload file"
-msgstr ""
+msgstr "Прикачете датотека"
 
 #: ckanext/requestdata/templates/ajax_snippets/request_contact.html:6
 msgid "Contact the dataset owner"
-msgstr ""
+msgstr "Контактирајте го сопственикот на овој податочен сет"
 
 #: ckanext/requestdata/templates/ajax_snippets/request_contact.html:7
 msgid ""
-"Use the form to ask a question or provide comments about this dataset to "
-"the owner."
+"Use the form to ask a question or provide comments about this dataset to the "
+"owner."
 msgstr ""
+"Користете го формуларот за да поставите прашање или да дадете коментари за "
+"овој податочен сет, на сопственикот."
 
 #: ckanext/requestdata/templates/ajax_snippets/request_contact.html:12
 msgid "Name"
-msgstr ""
+msgstr "Име"
 
 #: ckanext/requestdata/templates/ajax_snippets/request_contact.html:12
 msgid "eg. Your name"
-msgstr ""
+msgstr "пр: Вашето име"
 
 #: ckanext/requestdata/templates/ajax_snippets/request_contact.html:13
 msgid "Your email"
-msgstr ""
+msgstr "Вашата е-пошта"
 
 #: ckanext/requestdata/templates/ajax_snippets/request_contact.html:14
 msgid "Comments"
-msgstr ""
+msgstr "Коментари"
 
 #: ckanext/requestdata/templates/ajax_snippets/request_contact.html:14
 msgid "eg. Message content"
-msgstr ""
+msgstr "пр. Содржина на пораката"
 
 #: ckanext/requestdata/templates/organization/read_base.html:9
 #: ckanext/requestdata/templates/requestdata/organization_requested_data.html:9
 #: ckanext/requestdata/templates/requestdata/organization_requested_data.html:14
 #: ckanext/requestdata/templates/requestdata/organization_requested_data.html:28
 msgid "Dataset Requests"
-msgstr ""
+msgstr "Барања за податочни сетови"
 
 #: ckanext/requestdata/templates/package/snippets/additional_info.html:6
 msgid "Source"
-msgstr ""
+msgstr "Извор"
 
 #: ckanext/requestdata/templates/package/snippets/additional_info.html:17
 #: ckanext/requestdata/templates/package/snippets/additional_info.html:22
 msgid "Author"
-msgstr ""
+msgstr "Автор"
 
 #: ckanext/requestdata/templates/package/snippets/additional_info.html:29
 #: ckanext/requestdata/templates/package/snippets/additional_info.html:34
 msgid "Maintainer"
-msgstr ""
+msgstr "Одржувач"
 
 #: ckanext/requestdata/templates/package/snippets/additional_info.html:41
 msgid "Version"
-msgstr ""
+msgstr "Верзија"
 
 #: ckanext/requestdata/templates/package/snippets/additional_info.html:48
 msgid "State"
-msgstr ""
+msgstr "Состојба"
 
 #: ckanext/requestdata/templates/package/snippets/additional_info.html:54
 msgid "Last Updated"
-msgstr ""
+msgstr "Последно ажурирано"
 
 #: ckanext/requestdata/templates/package/snippets/additional_info.html:62
 msgid "Created"
-msgstr ""
+msgstr "Креирано"
 
 #: ckanext/requestdata/templates/package/snippets/package_form.html:9
 msgid "Create"
-msgstr ""
+msgstr "Креирајте"
 
 #: ckanext/requestdata/templates/package/snippets/package_form.html:11
 msgid "Next: Add Data"
-msgstr ""
+msgstr "Следно: Додадете податоци"
 
 #: ckanext/requestdata/templates/package/snippets/package_metadata_fields.html:18
 msgid "Maintainers"
-msgstr ""
+msgstr "Одржувачи"
 
 #: ckanext/requestdata/templates/package/snippets/package_metadata_fields.html:18
 msgid "joe@example.com"
-msgstr ""
+msgstr "joe@primer.com"
 
 #: ckanext/requestdata/templates/package/snippets/resources_list.html:6
 msgid "Data and Resources"
-msgstr ""
+msgstr "Податоци и ресурси"
 
 #: ckanext/requestdata/templates/package/snippets/resources_list.html:29
 #, python-format
 msgid ""
-" <p class=\"empty\">The metadata is available for this dataset. To access"
-" the full dataset, please request data.</p> <a href=\"#\" class=\"btn "
-"pull-right\" style=\"margin-top: 10px;\"            data-module=\"modal-"
-"form\"            data-module-template_file=\"request_contact.html\""
-"            data-module-submit_action=\"%(requestdata_action)s\""
-"            data-module-post_data=\"%(request_post_data)s\"            "
-"data-module-is_logged_in=\"%(is_logged_in)s\"            data-module-"
-"is_hdx=\"%(is_hdx)s\"            data-module-"
-"redirect_url=\"%(redirect_url)s\"            data-module-"
-"is_current_user_a_maintainer=\"%(is_current_user_a_maintainer)s\""
-"         >Request data</a> "
+" <p class=\"empty\">The metadata is available for this dataset. To access the "
+"full dataset, please request data.</p> <a href=\"#\" class=\"btn pull-right\" "
+"style=\"margin-top: 10px;\"            data-module=\"modal-form\"            "
+"data-module-template_file=\"request_contact.html\"            data-module-"
+"submit_action=\"%(requestdata_action)s\"            data-module-post_data="
+"\"%(request_post_data)s\"            data-module-is_logged_in="
+"\"%(is_logged_in)s\"            data-module-is_hdx=\"%(is_hdx)s\"            "
+"data-module-redirect_url=\"%(redirect_url)s\"            data-module-"
+"is_current_user_a_maintainer=\"%(is_current_user_a_maintainer)s\"         "
+">Request data</a> "
 msgstr ""
+" <p class=\"empty\">Мета податоците се достапни за овој податочен сет. За да "
+"пристапите кон целосниот податочен сет, ве молиме побарајте податоци.</p> <a "
+"href=\"#\" class=\"btn pull-right\" style=\"margin-top: 10px;\"            "
+"data-module=\"modal-form\"            data-module-template_file="
+"\"request_contact.html\"            data-module-submit_action="
+"\"%(requestdata_action)s\"            data-module-post_data="
+"\"%(request_post_data)s\"            data-module-is_logged_in="
+"\"%(is_logged_in)s\"            data-module-is_hdx=\"%(is_hdx)s\"            "
+"data-module-redirect_url=\"%(redirect_url)s\"            data-module-"
+"is_current_user_a_maintainer=\"%(is_current_user_a_maintainer)s\"         "
+">Побарајте податоци</a> "
 
 #: ckanext/requestdata/templates/requestdata/my_requested_data.html:6
 msgid "Users"
-msgstr ""
+msgstr "Корисници"
 
 #: ckanext/requestdata/templates/requestdata/my_requested_data.html:8
 #: ckanext/requestdata/templates/requestdata/my_requested_data.html:12
 #: ckanext/requestdata/templates/requestdata/my_requested_data.html:26
 #: ckanext/requestdata/templates/user/read_base.html:7
 msgid "My Requests"
-msgstr ""
+msgstr "Мои барања"
 
 #: ckanext/requestdata/templates/requestdata/my_requested_data.html:35
 msgid "Archived"
-msgstr ""
+msgstr "Архивирано"
 
 #: ckanext/requestdata/templates/requestdata/organization_requested_data.html:4
 msgid "Organizations"
-msgstr ""
+msgstr "Организации"
 
 #: ckanext/requestdata/templates/requestdata/snippets/filter_requests.html:20
 msgid "Filter by"
-msgstr ""
+msgstr "Филтрирај според"
 
 #: ckanext/requestdata/templates/requestdata/snippets/filter_requests.html:43
 msgid "Apply"
-msgstr ""
+msgstr "Примени"
 
 #: ckanext/requestdata/templates/requestdata/snippets/filter_requests.html:44
 msgid "Reset"
-msgstr ""
+msgstr "Ресетирај"
 
 #: ckanext/requestdata/templates/requestdata/snippets/order_requests.html:16
 msgid "Order by"
-msgstr ""
+msgstr "Редослед според"
 
 #: ckanext/requestdata/templates/requestdata/snippets/requested_by_container.html:29
 msgid "more"
-msgstr ""
+msgstr "повеќе"
 
 #: ckanext/requestdata/templates/requestdata/snippets/requested_by_container.html:39
 msgid "Sysadmin"
-msgstr ""
+msgstr "Системски администратор"
 
 #: ckanext/requestdata/templates/requestdata/snippets/requested_by_container.html:41
 msgid "Requested on"
-msgstr ""
+msgstr "Побарано на"
 
 #: ckanext/requestdata/templates/requestdata/snippets/section_base.html:23
 msgid "Requested by"
-msgstr ""
+msgstr "Побарано од"
 
 #: ckanext/requestdata/templates/requestdata/snippets/section_base.html:24
 msgid "Actions"
-msgstr ""
+msgstr "Акции"
 
 #: ckanext/requestdata/templates/requestdata/snippets/section_base.html:35
 msgid "No requests found."
-msgstr ""
+msgstr "Не се пронајдени барања."
 
 #: ckanext/requestdata/templates/requestdata/snippets/section_item_archive.html:23
 msgid "Requests"
-msgstr ""
+msgstr "Барања"
 
 #: ckanext/requestdata/templates/requestdata/snippets/section_item_archive.html:26
 #: ckanext/requestdata/templates/requestdata/snippets/section_item_archive.html:59
 msgid "Replied"
-msgstr ""
+msgstr "Одговорено"
 
 #: ckanext/requestdata/templates/requestdata/snippets/section_item_archive.html:31
 #: ckanext/requestdata/templates/requestdata/snippets/section_item_archive.html:55
 msgid "Denied"
-msgstr ""
+msgstr "Одбиено"
 
 #: ckanext/requestdata/templates/requestdata/snippets/section_item_archive.html:36
 msgid "Shared"
-msgstr ""
+msgstr "Споделено"
 
 #: ckanext/requestdata/templates/requestdata/snippets/section_item_archive.html:64
 msgid "Dataset Shared"
-msgstr ""
+msgstr "Податочниот сет е споделен"
 
 #: ckanext/requestdata/templates/requestdata/snippets/section_item_archive.html:67
 msgid "Dataset Not Shared"
-msgstr ""
+msgstr "Податочниот сет не е споделен"
 
 #: ckanext/requestdata/templates/requestdata/snippets/section_item_new.html:30
 msgid "Maintained by"
-msgstr ""
+msgstr "Одржувано од"
 
 #: ckanext/requestdata/templates/requestdata/snippets/section_item_new.html:37
 msgid "Not found"
-msgstr ""
+msgstr "Не е пронајдено"
 
 #: ckanext/requestdata/templates/requestdata/snippets/section_item_new.html:73
 msgid "Reply"
-msgstr ""
+msgstr "Одговорете"
 
 #: ckanext/requestdata/templates/requestdata/snippets/section_item_new.html:86
 msgid "Decline"
-msgstr ""
+msgstr "Одбијте"
 
 #: ckanext/requestdata/templates/requestdata/snippets/section_item_open.html:32
 msgid "Keep track of who you share datasets with. Did you share the dataset?"
 msgstr ""
+"Следете со кого споделувате податочни сетови. Дали го споделивте податочниот "
+"сет?"
 
 #: ckanext/requestdata/templates/requestdata/snippets/section_item_open.html:41
 msgid "Yes"
-msgstr ""
+msgstr "Да"
 
 #: ckanext/requestdata/templates/requestdata/snippets/section_item_open.html:50
 msgid "No"
-msgstr ""
+msgstr "Не"
 
 #: ckanext/requestdata/templates/snippets/add_dataset.html:4
 #: ckanext/requestdata/templates/snippets/add_dataset.html:14
 msgid "Add Dataset"
-msgstr ""
+msgstr "Додадете податочен сет"
 
 #: ckanext/requestdata/templates/snippets/add_dataset.html:13
 msgid "Add full dataset"
-msgstr ""
+msgstr "Додадете целосен податочен сет"
 
 #: ckanext/requestdata/templates/snippets/add_dataset.html:16
 #: ckanext/requestdata/templates/snippets/add_dataset.html:38
 msgid "This option is suitable if:"
-msgstr ""
+msgstr "Оваа опција е погодна ако:"
 
 #: ckanext/requestdata/templates/snippets/add_dataset.html:18
 msgid "Your data is ready to be shared"
-msgstr ""
+msgstr "Вашите податоци се подготвени да бидат споделени"
 
 #: ckanext/requestdata/templates/snippets/add_dataset.html:25
 msgid "Add metadata-only"
-msgstr ""
+msgstr "Додадете само мета податоци"
 
 #: ckanext/requestdata/templates/snippets/add_dataset.html:35
 msgid "Add metadata"
-msgstr ""
+msgstr "Додадете мета податоци"
 
 #: ckanext/requestdata/templates/snippets/add_dataset.html:40
 msgid "You want to be in control of who can access your data"
-msgstr ""
+msgstr "Сакате да контролирате кој може да пристапи до вашите податоци"
 
 #: ckanext/requestdata/templates/snippets/add_dataset.html:41
 msgid "You are not finished collecting data"
-msgstr ""
+msgstr "Не завршивте со собирањето на податоци"
 
 #: ckanext/requestdata/templates/snippets/add_dataset.html:42
 msgid "You have a plan to collect data"
-msgstr ""
-
+msgstr "Имате план да собирате податоци"
