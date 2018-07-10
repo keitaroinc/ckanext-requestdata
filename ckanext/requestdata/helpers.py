@@ -152,7 +152,7 @@ def convert_str_to_json(data):
     try:
         return json.loads(data)
     except Exception:
-        return 'string cannot be parsed'
+        return _('string cannot be parsed')
 
 
 def is_hdx_portal():

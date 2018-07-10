@@ -17,7 +17,7 @@ Example usage:
      data-module-org_name="{{ org_name }}"
      data-module-type="{{ type }}"
      class="filter-requests dropdown">
-  <span style="text-transform: uppercase;">Filter by:&nbsp;</span>
+  <span style="text-transform: uppercase;">{{ _('Filter by') }}:&nbsp;</span>
     <a class="dropdown-toggle" data-toggle="dropdown">
       <span class="filter-requests-text">{{ title }}</span>
       <span class="caret"></span>
@@ -40,8 +40,8 @@ Example usage:
         {% endfor %}
       </div>
       <div class="sysadmin-requests-container__dropdown-buttons">
-        <button class="btn btn-small" type="button" data-action="apply">Apply</button>
-        <button class="btn btn-small" type="button" data-action="reset">Reset</button>
+        <button class="btn btn-small" type="button" data-action="apply">{{ _('Apply') }}</button>
+        <button class="btn btn-small" type="button" data-action="reset">{{ _('Reset') }}</button>
       </div>
     </div>
 </div>

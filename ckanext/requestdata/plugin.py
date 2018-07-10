@@ -6,9 +6,11 @@ from ckanext.requestdata.logic import actions
 from ckanext.requestdata.logic import auth
 from ckanext.requestdata import helpers
 from ckanext.requestdata.logic import validators
+from ckan.lib.plugins import DefaultTranslation
 
 
-class RequestdataPlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm):
+class RequestdataPlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm,
+                        DefaultTranslation):
     plugins.implements(plugins.IConfigurer)
     plugins.implements(plugins.IRoutes, inherit=True)
     plugins.implements(plugins.IConfigurable)
@@ -17,6 +19,7 @@ class RequestdataPlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm):
     plugins.implements(plugins.ITemplateHelpers)
     plugins.implements(plugins.IDatasetForm)
     plugins.implements(plugins.IPackageController, inherit=True)
+    plugins.implements(plugins.ITranslation)
 
     # IConfigurer
 

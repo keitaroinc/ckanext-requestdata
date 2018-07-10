@@ -111,7 +111,7 @@ def request_show(context, data_dict):
     requestdata = ckanextRequestdata.get(id=id)
 
     if requestdata is None:
-        raise NotFound('Request with provided \'id\' cannot be found')
+        raise NotFound(_('Request with provided \'id\' cannot be found'))
 
     out = requestdata.as_dict()
 

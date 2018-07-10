@@ -62,23 +62,23 @@ class UserController(BaseController):
         requests_archive = []
         reverse = True
         order = 'last_request_created_at'
-        current_order_name = 'Most Recent'
+        current_order_name = _('Most Recent')
 
         if order_by is not '':
             if 'shared' in order_by:
                 order = 'shared'
-                current_order_name = 'Sharing Rate'
+                current_order_name = _('Sharing Rate')
             elif 'requests' in order_by:
                 order = 'requests'
-                current_order_name = 'Requests Rate'
+                current_order_name = _('Requests Rate')
             elif 'asc' in order_by:
                 reverse = False
                 order = 'title'
-                current_order_name = 'Alphabetical (A-Z)'
+                current_order_name = _('Alphabetical (A-Z)')
             elif 'desc' in order_by:
                 reverse = True
                 order = 'title'
-                current_order_name = 'Alphabetical (Z-A)'
+                current_order_name = _('Alphabetical (Z-A)')
             elif 'most_recent' in order_by:
                 reverse = True
                 order = 'last_request_created_at'
@@ -200,7 +200,7 @@ class UserController(BaseController):
                     'success': False,
                     'error': {
                         'fields': {
-                            'email': 'The email you provided is invalid.'
+                            'email': _('The email you provided is invalid.')
                         }
                     }
                 }
@@ -225,7 +225,7 @@ class UserController(BaseController):
             payload = {
                 'success': False,
                 'error': {
-                    'message_content': 'Missing value'
+                    'message_content': _('Missing value')
                 }
             }
 
@@ -247,14 +247,14 @@ class UserController(BaseController):
 
         to = data['send_to']
 
-        subject = config.get('ckan.site_title') + ': Data request ' +\
+        subject = config.get('ckan.site_title') + _(': Data request ') +\
             request_action
 
         file = data.get('file_upload')
 
         if request_action == 'reply':
-            message_content += '<br><br> You can contact the maintainer on '\
-                'this email address: ' + reply_email
+            message_content += _('<br><br> You can contact the maintainer on '\
+                'this email address: ') + reply_email
 
         response = send_email(message_content, to, subject, file=file)
 
@@ -272,7 +272,7 @@ class UserController(BaseController):
 
         success = {
             'success': True,
-            'message': 'Message was sent successfully'
+            'message': _('Message was sent successfully')
         }
 
         action_name = 'requestdata_increment_request_data_counters'
@@ -326,7 +326,7 @@ class UserController(BaseController):
 
         success = {
             'success': True,
-            'message': 'Request\'s state successfully updated.'
+            'message': _('Request\'s state successfully updated.')
         }
 
         return json.dumps(success)

@@ -94,17 +94,17 @@ def _get_email_configuration(
                                 {'id': dataset_name}).get('owner_org')
         url = toolkit.url_for('requestdata_organization_requests',
                               id=owner_org, qualified=True)
-        email_body += '<br><br> This dataset\'s maintainer does not exist.\
-         Go to your organisation\'s <a href="' + url + '">Requested Data</a>\
-          page to see the new request. Please also edit the dataset and assign\
-           a new maintainer.'
+        email_body += _('<br><br> This dataset\'s maintainer does not exist.\
+        Go to your organisation\'s <a href="' + url + '">Requested Data</a>\
+         page to see the new request. Please also edit the dataset and assign\
+          a new maintainer.')
     else:
         url = \
             toolkit.url_for('requestdata_my_requests',
                             id=data_owner, qualified=True)
-        email_body += '<br><br><strong> Please accept or decline the request\
-         as soon as you can by visiting the \
-         <a href="' + url + '">My Requests</a> page.</strong>'
+        email_body += _('<br><br><strong> Please accept or decline the request\
+        as soon as you can by visiting the \
+        <a href="' + url + '">My Requests</a> page.</strong>')
 
     organizations =\
         _get_action('organization_list_for_user', {'id': data_owner})
@@ -118,9 +118,8 @@ def _get_email_configuration(
                 url = \
                     toolkit.url_for('requestdata_organization_requests',
                                     id=org['name'], qualified=True)
-                email_body += '<br><br> Go to <a href="' + url + '">\
-                              Requested data</a> page in organization admin.'
-
+                email_body += _('<br><br> Go to <a href="' + url + '">\
+                    Requested data</a> page in organization admin.')
     site_url = config.get('ckan.site_url')
     site_title = config.get('ckan.site_title')
     newsletter_url = config.get('ckanext.requestdata.newsletter_url', site_url)
@@ -128,7 +127,7 @@ def _get_email_configuration(
         config.get('ckanext.requestdata.twitter_url', 'https://twitter.com')
     contact_email = config.get('ckanext.requestdata.contact_email', '')
 
-    email_footer += """
+    email_footer += _("""
         <br/><br/>
         <small>
           <p>
@@ -142,7 +141,7 @@ def _get_email_configuration(
           </p>
         </small>
 
-    """
+    """)
 
     result = email_header + '<br><br>' + email_body + '<br><br>' + email_footer
 
@@ -213,7 +212,7 @@ class RequestDataController(BaseController):
                     'success': False,
                     'error': {
                         'fields': {
-                            'email': 'Dataset maintainer email not found.'
+                            'email': _('Dataset maintainer email not found.')
                         }
                     }
                 }
@@ -238,8 +237,7 @@ class RequestDataController(BaseController):
                 except NotFound:
                     pass
             mail_subject =\
-                config.get('ckan.site_title') + ': New data request "'\
-                                                + dataset_title + '"'
+                config.get('ckan.site_title') + _(': New data request "') + dataset_title + '"'
 
             if len(users_email) == 0:
                 admins = self._org_admins_for_dataset(dataset_name)
@@ -271,7 +269,7 @@ class RequestDataController(BaseController):
         else:
             message = {
                 'success': True,
-                'message': 'Request sent, but email message was not sent.'
+                'message': _('Request sent, but email message was not sent.')
             }
 
             return json.dumps(message)

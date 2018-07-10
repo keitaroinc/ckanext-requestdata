@@ -35,7 +35,7 @@ def request_list_for_organization(context, data_dict):
     try:
         organization = get_action('organization_show')(context, payload)
     except logic.NotFound:
-        raise logic.ValidationError('Organization not found.')
+        raise logic.ValidationError(_('Organization not found.'))
 
     for user in organization['users']:
 
