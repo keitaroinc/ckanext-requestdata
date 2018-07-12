@@ -5,6 +5,7 @@ from ckan.common import c, _, request
 from ckan.controllers import organization
 from collections import Counter
 from ckanext.requestdata import helpers
+import ckanext.requestdata.utils as utils
 
 
 get_action = logic.get_action
@@ -16,18 +17,6 @@ abort = base.abort
 render = base.render
 BaseController = base.BaseController
 
-
-def _get_context():
-    return {
-        'model': model,
-        'session': model.Session,
-        'user': c.user or c.author,
-        'auth_user_obj': c.userobj
-    }
-
-
-def _get_action(action, data_dict):
-    return toolkit.get_action(action)(_get_context(), data_dict)
 
 
 class OrganizationController(organization.OrganizationController):
@@ -41,11 +30,15 @@ class OrganizationController(organization.OrganizationController):
         '''
 
         try:
-            requests = _get_action('requestdata_request_list_for_organization',
+            requests = utils.get_action('requestdata_request_list_for_organization',
                                    {'org_id': id})
 
         except NotAuthorized:
             abort(403, _('Not authorized to see this page.'))
+
+
+        maintainer_field_name = utils.get_maintainer_field_name()
+        users_cache = {}  # temporay cache, to avoid making unnecessary calls to 'user_show'
 
         group_type = self._ensure_controller_matches_group_type(id)
         context = {
@@ -73,7 +66,8 @@ class OrganizationController(organization.OrganizationController):
                     if maintainers[0] != '*all*':
                         for i in maintainers:
                             try:
-                                user = _get_action('user_show', {'id': i})
+                                user = user_cache.get(i) or utils.get_action('user_show', {'id': i})
+                                users_cache[i] = user
                                 maintainers_ids.append(user['id'])
                             except NotFound:
                                 pass
@@ -107,27 +101,28 @@ class OrganizationController(organization.OrganizationController):
 
                 for x in requests:
                     package = \
-                        _get_action('package_show', {'id': x['package_id']})
+                        utils.get_action('package_show', {'id': x['package_id']})
                     count = \
-                        _get_action('requestdata_request_data_counters_get',
+                        utils.get_action('requestdata_request_data_counters_get',
                                     {'package_id': x['package_id']})
                     x['title'] = package['title']
                     x['shared'] = count.shared
                     x['requests'] = count.requests
                     data_dict = {'id': package['owner_org']}
-                    current_org = _get_action('organization_show', data_dict)
+                    current_org = utils.get_action('organization_show', data_dict)
                     x['name'] = current_org['name']
 
         maintainers = []
         for item in requests:
-            package = _get_action('package_show', {'id': item['package_id']})
-            package_maintainer_ids = package['maintainer'].split(',')
+            package = utils.get_action('package_show', {'id': item['package_id']})
+            package_maintainer_ids = package[maintainer_field_name].split(',')
             item['title'] = package['title']
             package_maintainers = []
 
             for maint_id in package_maintainer_ids:
                 try:
-                    user = _get_action('user_show', {'id': maint_id})
+                    user = users_cache.get(maint_id) or utils.get_action('user_show', {'id': maint_id})
+                    users_cache[maint_id] = user
                     username = user['name']
                     name = user['fullname']
 
@@ -135,7 +130,7 @@ class OrganizationController(organization.OrganizationController):
                         name = username
 
                     payload = {
-                               'id': maint_id,
+                               'id': user['id'],
                                'name': name,
                                'username': username,
                                'fullname': name}
@@ -147,7 +142,7 @@ class OrganizationController(organization.OrganizationController):
 
         copy_of_maintainers = maintainers
         maintainers = dict((item['id'], item) for item in maintainers).values()
-        organ = _get_action('organization_show', {'id': id})
+        organ = utils.get_action('organization_show', {'id': id})
 
         # Count how many requests each maintainer has
         for main in maintainers:
@@ -162,8 +157,8 @@ class OrganizationController(organization.OrganizationController):
         for i, r in enumerate(requests[:]):
             maintainer_found = False
 
-            package = _get_action('package_show', {'id': r['package_id']})
-            package_maintainer_ids = package['maintainer'].split(',')
+            package = utils.get_action('package_show', {'id': r['package_id']})
+            package_maintainer_ids = package[maintainer_field_name].split(',')
             is_hdx = helpers.is_hdx_portal()
 
             if is_hdx:
@@ -171,13 +166,13 @@ class OrganizationController(organization.OrganizationController):
                 maintainer_ids = []
                 for maintainer_name in package_maintainer_ids:
                     try:
-                        main_ids = \
-                            _get_action('user_show', {'id': maintainer_name})
+                        main_ids = users_cache.get(maintainer_name) or utils.get_action('user_show', {'id': maintainer_name})
+                        users_cache[maintainer_name] = main_ids
                         maintainer_ids.append(main_ids['id'])
                     except NotFound:
                         pass
             data_dict = {'id': package['owner_org']}
-            organ = _get_action('organization_show', data_dict)
+            organ = utils.get_action('organization_show', data_dict)
 
             # Check if current request is part of a filtered maintainer
             for x in filtered_maintainers:
@@ -223,7 +218,7 @@ class OrganizationController(organization.OrganizationController):
                                               reverse=reverse)
 
         counters =\
-            _get_action('requestdata_request_data_counters_get_by_org',
+            utils.get_action('requestdata_request_data_counters_get_by_org',
                         {'org_id': organ['id']})
 
         extra_vars = {

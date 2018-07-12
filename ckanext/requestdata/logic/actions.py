@@ -75,12 +75,19 @@ def request_create(context, data_dict):
             else:
                 user = User.get(id)
             data = ckanextMaintainers()
-            data.maintainer_id = user.id
             data.request_data_id = requestdata.id
-            data.email = user.email
+            if user:
+                data.email = user.email
+                data.maintainer_id = user.id
+            else:
+                data.email = id
+                data.maintainer_id = id
             maintainers_list.append(data)
         except NotFound:
-            pass
+            data = ckanextMaintainers()
+            data.maintainer_id = id
+            data.email = id
+            maintainers_list.append(data)
 
     out = ckanextMaintainers.insert_all(maintainers_list, requestdata.id)
 

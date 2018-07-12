@@ -29,7 +29,8 @@ class PackageController(_PackageController):
 
         # Handle metadata-only datasets
         if has_query_param('metadata'):
-            package_type = 'requestdata-metadata-only'
+            #package_type = 'requestdata-metadata-only'
+            package_type = 'dataset'
             form_vars = {
                 'errors': {},
                 'dataset_type': package_type,

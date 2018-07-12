@@ -35,7 +35,11 @@ def boolean_validator(key, data, errors, context):
 def members_in_org_validator(key, data, errors, context):
     maintainers = data[key].split(',')
     model = context['model']
-    owner_org = data[('owner_org',)]
+    owner_org = data.get(('owner_org',))
+    if owner_org is None:
+        owner_org = data.get('owner_org')
+    print ' ===> owner org ->', owner_org
+    print ' ===> type:', type(owner_org)
     data_dict = {
         'id': owner_org
     }

@@ -17,6 +17,7 @@ SMTP_SERVER = config.get('smtp.server', '')
 SMTP_USER = config.get('smtp.user', '')
 SMTP_PASSWORD = config.get('smtp.password', '')
 SMTP_FROM = config.get('smtp.mail_from')
+SMTP_TLS = config.get('smtp.tls', '')
 
 
 def send_email(content, to, subject, file=None):
@@ -71,7 +72,11 @@ def send_email(content, to, subject, file=None):
     try:
         s = smtplib.SMTP(SMTP_SERVER)
         if SMTP_USER:
-            s.login(SMTP_USER, SMTP_PASSWORD)
+            if SMTP_TLS:
+                s.ehlo()
+                s.starttls()
+        print '[%s][%s]' % (SMTP_USER, SMTP_PASSWORD)
+        s.login(SMTP_USER, SMTP_PASSWORD)
         s.sendmail(from_, to, msg.as_string())
         s.quit()
         response_dict = {

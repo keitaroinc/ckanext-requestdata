@@ -17,6 +17,7 @@ import json
 from cStringIO import StringIO
 from collections import Counter
 from ckanext.requestdata import helpers
+import ckanext.requestdata.utils as utils
 
 from ckan.common import response, request
 
@@ -24,19 +25,6 @@ NotFound = logic.NotFound
 NotAuthorized = logic.NotAuthorized
 
 abort = base.abort
-
-
-def _get_context():
-    return {
-        'model': model,
-        'session': model.Session,
-        'user': c.user or c.author,
-        'auth_user_obj': c.userobj
-    }
-
-
-def _get_action(action, data_dict):
-    return toolkit.get_action(action)(_get_context(), data_dict)
 
 
 class AdminController(AdminController):
@@ -53,7 +41,7 @@ class AdminController(AdminController):
             try:
                 data_dict = dict(request.POST)
                 del data_dict['save']
-                data = _get_action('config_option_update', data_dict)
+                data = utils.get_action('config_option_update', data_dict)
                 h.flash_success(_('Successfully updated.'))
             except logic.ValidationError, e:
                 errors = e.error_dict
@@ -81,9 +69,11 @@ class AdminController(AdminController):
 
         '''
         try:
-            requests = _get_action('requestdata_request_list_for_sysadmin', {})
+            requests = utils.get_action('requestdata_request_list_for_sysadmin', {})
         except NotAuthorized:
             abort(403, _('Not authorized to see this page.'))
+
+        maintainer_field_name  =utils.get_maintainer_field_name()
         organizations = []
         tmp_orgs = []
         filtered_maintainers = []
@@ -105,7 +95,7 @@ class AdminController(AdminController):
                     if maintainers[0] != '*all*':
                         for i in maintainers:
                             try:
-                                user = _get_action('user_show', {'id': i})
+                                user = utils.get_action('user_show', {'id': i})
                                 maintainers_ids.append(user['id'])
                             except NotFound:
                                 pass
@@ -152,26 +142,26 @@ class AdminController(AdminController):
 
                 for x in requests:
                     package =\
-                        _get_action('package_show', {'id': x['package_id']})
+                        utils.get_action('package_show', {'id': x['package_id']})
                     count = \
-                        _get_action('requestdata_request_data_counters_get',
+                        utils.get_action('requestdata_request_data_counters_get',
                                     {'package_id': x['package_id']})
                     if count:
                         x['shared'] = count.shared
                         x['requests'] = count.requests
                     x['title'] = package['title']
                     data_dict = {'id': package['owner_org']}
-                    current_org = _get_action('organization_show', data_dict)
+                    current_org = utils.get_action('organization_show', data_dict)
                     x['name'] = current_org['name']
 
         # Group requests by organization
         for item in requests:
             try:
                 package = \
-                    _get_action('package_show', {'id': item['package_id']})
-                package_maintainer_ids = package['maintainer'].split(',')
+                    utils.get_action('package_show', {'id': item['package_id']})
+                package_maintainer_ids = package[maintainer_field_name].split(',')
                 data_dict = {'id': package['owner_org']}
-                org = _get_action('organization_show', data_dict)
+                org = utils.get_action('organization_show', data_dict)
                 item['title'] = package['title']
             except NotFound, e:
                 # package was not found, possibly deleted
@@ -194,9 +184,10 @@ class AdminController(AdminController):
             username = ''
             for id in package_maintainer_ids:
                 try:
-                    user = _get_action('user_show', {'id': id})
+                    user = utils.get_action('user_show', {'id': id})
+                    id = user['id']
                     username = user['name']
-                    name = user['fullname']
+                    name = user['fullname'] or user['name']
                     payload = {
                         'id': id,
                         'name': name,
@@ -211,7 +202,7 @@ class AdminController(AdminController):
                     pass
             item['maintainers'] = maintainers
             counters = \
-                _get_action('requestdata_request_data_counters_get_by_org',
+                utils.get_action('requestdata_request_data_counters_get_by_org',
                             {'org_id': org['id']})
 
             if org['id'] not in tmp_orgs:
@@ -280,8 +271,8 @@ class AdminController(AdminController):
             for i, r in enumerate(total_organizations):
                 maintainer_found = False
 
-                package = _get_action('package_show', {'id': r['package_id']})
-                package_maintainer_ids = package['maintainer'].split(',')
+                package = utils.get_action('package_show', {'id': r['package_id']})
+                package_maintainer_ids = package[maintainer_field_name].split(',')
                 is_hdx = requestdata_helper.is_hdx_portal()
 
                 if is_hdx:
@@ -290,13 +281,13 @@ class AdminController(AdminController):
                     for maintainer_name in package_maintainer_ids:
                         try:
                             main_ids =\
-                                _get_action('user_show',
+                                utils.get_action('user_show',
                                             {'id': maintainer_name})
                             maintainer_ids.append(main_ids['id'])
                         except NotFound:
                             pass
                 data_dict = {'id': package['owner_org']}
-                organ = _get_action('organization_show', data_dict)
+                organ = utils.get_action('organization_show', data_dict)
 
                 # Check if current request is part of a filtered maintainer
                 for x in filtered_maintainers:
@@ -354,7 +345,7 @@ class AdminController(AdminController):
                    key=lambda (x, y): y['requests'], reverse=True)
 
         total_requests_counters =\
-            _get_action('requestdata_request_data_counters_get_all', {})
+            utils.get_action('requestdata_request_data_counters_get_all', {})
         extra_vars = {
             'organizations': organizations,
             'organizations_for_filters': organizations_for_filters,
@@ -372,7 +363,7 @@ class AdminController(AdminController):
 
         file_format = request.query_string
         requests = \
-            _get_action('requestdata_request_list_for_sysadmin', {})
+            utils.get_action('requestdata_request_list_for_sysadmin', {})
         s = StringIO()
 
         if 'json' in file_format.lower():

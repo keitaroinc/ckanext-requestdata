@@ -1,5 +1,6 @@
 import ckan.plugins as plugins
 import ckan.plugins.toolkit as toolkit
+from ckan.logic import get_action
 
 from ckanext.requestdata.model import setup as model_setup
 from ckanext.requestdata.logic import actions
@@ -7,6 +8,8 @@ from ckanext.requestdata.logic import auth
 from ckanext.requestdata import helpers
 from ckanext.requestdata.logic import validators
 from ckan.lib.plugins import DefaultTranslation
+
+import ckanext.requestdata.utils as utils
 
 
 class RequestdataPlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm,
@@ -123,6 +126,9 @@ class RequestdataPlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm,
     # IActions
 
     def get_actions(self):
+        package_create = get_action('package_create')
+        package_update = get_action('package_update')
+        package_show = get_action('package_show')
         return {
             'requestdata_request_create': actions.request_create,
             'requestdata_request_show': actions.request_show,
@@ -146,7 +152,13 @@ class RequestdataPlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm,
             'requestdata_request_data_counters_get_all':
             actions.request_data_counters_get_all,
             'requestdata_request_data_counters_get_by_org':
-            actions.request_data_counters_get_by_org
+            actions.request_data_counters_get_by_org,
+            # 'package_create':
+            # get_package_action_override(package_create, validate_request_for_metadata),
+            # 'package_update':
+            # get_package_action_override(package_update, validate_request_for_metadata),
+            'package_show':
+            package_show_override(package_show),
         }
 
     # IAuthFunctions
@@ -252,3 +264,76 @@ class RequestdataPlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm,
             search_params.update({'fq': fq})
 
         return search_params
+
+
+
+# move this to other location
+
+def get_package_action_override(package_action, override):
+    from ckan import logic
+    @logic.chained_action
+    def _package_action(prev, context, data_dict):
+        return override(package_action, context, data_dict)
+    
+    return _package_action
+
+
+def validate_request_for_metadata(package_action, context, data_dict):
+    from ckanext.requestdata.logic.validators import members_in_org_validator
+    from ckan import logic
+
+
+    import json
+    print json.dumps(data_dict, indent=2)
+
+    not_empty = toolkit.get_validator('not_empty')
+
+    errors = {
+        'maintainer_email': []
+    }
+
+    try:
+        not_empty('maintainer_email', data_dict, errors, context)
+    except:
+        pass
+    
+    if errors['maintainer_email']:
+        raise logic.ValidationError(errors)
+
+    members_in_org_validator('maintainer_email', data_dict, errors, context)
+
+    if errors['maintainer_email']:
+        raise logic.ValidationError(errors)
+    
+    return package_action(context, data_dict)
+
+
+def package_show_override(package_show):
+    def _package_show(context, data_dict):
+        result = package_show(context, data_dict)
+        from ckan.controllers.admin import get_sysadmins
+        sysadmin = get_sysadmins()[0].name
+        sysadmin_context = {'user': sysadmin, 'ignore_auth': True}
+
+        maintainer_field_name = utils.get_maintainer_field_name()
+        print " ===> maintainer_field_name:", maintainer_field_name
+        if result.get(maintainer_field_name):
+            maintainers = result[maintainer_field_name]
+
+            maintainer_emails = []
+
+            for maintainer_email in maintainers.split(','):
+                maintainer_email = maintainer_email.strip()
+                if utils.looks_like_ckan_id(maintainer_email):
+                    try:
+                        user = get_action('user_show')(sysadmin_context, {'id': maintainer_email})
+                        maintainer_email = user['email']
+                    except:
+                        raise
+                maintainer_emails.append(maintainer_email)
+            
+            result[maintainer_field_name] = ','.join(maintainer_emails)
+
+        return result
+    
+    return _package_show
