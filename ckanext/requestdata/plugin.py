@@ -129,6 +129,7 @@ class RequestdataPlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm,
         package_create = get_action('package_create')
         package_update = get_action('package_update')
         package_show = get_action('package_show')
+        user_show = get_action('user_show')
         return {
             'requestdata_request_create': actions.request_create,
             'requestdata_request_show': actions.request_show,
@@ -159,6 +160,7 @@ class RequestdataPlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm,
             # get_package_action_override(package_update, validate_request_for_metadata),
             'package_show':
             package_show_override(package_show),
+            'user_show': actions.user_show_override(user_show)
         }
 
     # IAuthFunctions
@@ -267,47 +269,6 @@ class RequestdataPlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm,
 
 
 
-# move this to other location
-
-def get_package_action_override(package_action, override):
-    from ckan import logic
-    @logic.chained_action
-    def _package_action(prev, context, data_dict):
-        return override(package_action, context, data_dict)
-    
-    return _package_action
-
-
-def validate_request_for_metadata(package_action, context, data_dict):
-    from ckanext.requestdata.logic.validators import members_in_org_validator
-    from ckan import logic
-
-
-    import json
-    print json.dumps(data_dict, indent=2)
-
-    not_empty = toolkit.get_validator('not_empty')
-
-    errors = {
-        'maintainer_email': []
-    }
-
-    try:
-        not_empty('maintainer_email', data_dict, errors, context)
-    except:
-        pass
-    
-    if errors['maintainer_email']:
-        raise logic.ValidationError(errors)
-
-    members_in_org_validator('maintainer_email', data_dict, errors, context)
-
-    if errors['maintainer_email']:
-        raise logic.ValidationError(errors)
-    
-    return package_action(context, data_dict)
-
-
 def package_show_override(package_show):
     def _package_show(context, data_dict):
         result = package_show(context, data_dict)
@@ -316,7 +277,6 @@ def package_show_override(package_show):
         sysadmin_context = {'user': sysadmin, 'ignore_auth': True}
 
         maintainer_field_name = utils.get_maintainer_field_name()
-        print " ===> maintainer_field_name:", maintainer_field_name
         if result.get(maintainer_field_name):
             maintainers = result[maintainer_field_name]
 

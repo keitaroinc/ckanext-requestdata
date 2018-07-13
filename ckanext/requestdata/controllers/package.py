@@ -7,6 +7,7 @@ from ckan.plugins import toolkit
 from ckan.controllers.package import PackageController as _PackageController
 import ckan.lib.navl.dictization_functions as dict_fns
 from ckanext.requestdata.helpers import has_query_param
+from ckanext.requestdata.utils import use_standard_package_type
 
 get_action = logic.get_action
 NotAuthorized = logic.NotAuthorized
@@ -29,8 +30,8 @@ class PackageController(_PackageController):
 
         # Handle metadata-only datasets
         if has_query_param('metadata'):
-            #package_type = 'requestdata-metadata-only'
-            package_type = 'dataset'
+            package_type = 'dataset' if use_standard_package_type() else 'requestdata-metadata-only'
+
             form_vars = {
                 'errors': {},
                 'dataset_type': package_type,

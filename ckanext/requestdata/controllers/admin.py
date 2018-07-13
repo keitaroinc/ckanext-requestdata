@@ -73,7 +73,7 @@ class AdminController(AdminController):
         except NotAuthorized:
             abort(403, _('Not authorized to see this page.'))
 
-        maintainer_field_name  =utils.get_maintainer_field_name()
+        maintainer_field_name = utils.get_maintainer_field_name()
         organizations = []
         tmp_orgs = []
         filtered_maintainers = []
@@ -141,11 +141,9 @@ class AdminController(AdminController):
                     q_organizations.append(data)
 
                 for x in requests:
-                    package =\
-                        utils.get_action('package_show', {'id': x['package_id']})
-                    count = \
-                        utils.get_action('requestdata_request_data_counters_get',
-                                    {'package_id': x['package_id']})
+                    package = utils.get_action('package_show', {'id': x['package_id']})
+                    count = utils.get_action('requestdata_request_data_counters_get',
+                                             {'package_id': x['package_id']})
                     if count:
                         x['shared'] = count.shared
                         x['requests'] = count.requests
@@ -201,9 +199,8 @@ class AdminController(AdminController):
                 except NotFound:
                     pass
             item['maintainers'] = maintainers
-            counters = \
-                utils.get_action('requestdata_request_data_counters_get_by_org',
-                            {'org_id': org['id']})
+            counters = utils.get_action('requestdata_request_data_counters_get_by_org',
+                                        {'org_id': org['id']})
 
             if org['id'] not in tmp_orgs:
                 data = {
@@ -280,9 +277,7 @@ class AdminController(AdminController):
                     maintainer_ids = []
                     for maintainer_name in package_maintainer_ids:
                         try:
-                            main_ids =\
-                                utils.get_action('user_show',
-                                            {'id': maintainer_name})
+                            main_ids = utils.get_action('user_show', {'id': maintainer_name})
                             maintainer_ids.append(main_ids['id'])
                         except NotFound:
                             pass

@@ -2,6 +2,7 @@ from ckan.lib import base
 from ckan.common import c, _
 from ckan import logic
 from ckanext.requestdata import emailer
+from ckanext.requestdata import utils
 from ckan.plugins import toolkit
 from ckan.controllers.admin import get_sysadmins
 
@@ -22,19 +23,6 @@ abort = base.abort
 BaseController = base.BaseController
 
 
-def _get_context():
-    return {
-        'model': model,
-        'session': model.Session,
-        'user': c.user or c.author,
-        'auth_user_obj': c.userobj
-    }
-
-
-def _get_action(action, data_dict):
-    return toolkit.get_action(action)(_get_context(), data_dict)
-
-
 def _get_email_configuration(
         user_name, data_owner, dataset_name, email, message, organization,
         data_maintainers, only_org_admins=False):
@@ -46,7 +34,7 @@ def _get_email_configuration(
 
     try:
         is_user_sysadmin = \
-            _get_action('user_show', {'id': c.user}).get('sysadmin')
+            utils.get_action('user_show', {'id': c.user}).get('sysadmin')
     except NotFound:
         pass
 
@@ -90,8 +78,7 @@ def _get_email_configuration(
         email_footer = email_footer.replace(avaiable_terms[i], new_terms[i])
 
     if only_org_admins:
-        owner_org = _get_action('package_show',
-                                {'id': dataset_name}).get('owner_org')
+        owner_org = utils.get_action('package_show', {'id': dataset_name}).get('owner_org')
         url = toolkit.url_for('requestdata_organization_requests',
                               id=owner_org, qualified=True)
         email_body += _('<br><br> This dataset\'s maintainer does not exist.\
@@ -107,9 +94,9 @@ def _get_email_configuration(
         <a href="' + url + '">My Requests</a> page.</strong>')
 
     organizations =\
-        _get_action('organization_list_for_user', {'id': data_owner})
+        utils.get_action('organization_list_for_user', {'id': data_owner})
 
-    package = _get_action('package_show', {'id': dataset_name})
+    package = utils.get_action('package_show', {'id': dataset_name})
 
     if not only_org_admins:
         for org in organizations:
@@ -160,10 +147,11 @@ class RequestDataController(BaseController):
         '''
         context = {'model': model, 'session': model.Session,
                    'user': c.user, 'auth_user_obj': c.userobj}
+        maintainer_field_name = utils.get_maintainer_field_name()
         try:
             if p.toolkit.request.method == 'POST':
                 data = dict(toolkit.request.POST)
-                _get_action('requestdata_request_create', data)
+                utils.get_action('requestdata_request_create', data)
         except NotAuthorized:
             abort(403, _('Unauthorized to update this dataset.'))
         except ValidationError as e:
@@ -177,7 +165,7 @@ class RequestDataController(BaseController):
             return json.dumps(error)
 
         data_dict = {'id': data['package_id']}
-        package = _get_action('package_show', data_dict)
+        package = utils.get_action('package_show', data_dict)
         sender_name = data.get('sender_name', '')
         user_obj = context['auth_user_obj']
         data_dict = {
@@ -185,11 +173,11 @@ class RequestDataController(BaseController):
             'permission': 'read'
         }
 
-        organizations = _get_action('organization_list_for_user', data_dict)
+        organizations = utils.get_action('organization_list_for_user', data_dict)
 
         orgs = []
         for i in organizations:
-                orgs.append(i['display_name'])
+            orgs.append(i['display_name'])
         org = ','.join(orgs)
         dataset_name = package['name']
         dataset_title = package['title']
@@ -197,7 +185,7 @@ class RequestDataController(BaseController):
         message = data['message_content']
         creator_user_id = package['creator_user_id']
         data_owner =\
-            _get_action('user_show', {'id': creator_user_id}).get('name')
+            utils.get_action('user_show', {'id': creator_user_id}).get('name')
         if len(get_sysadmins()) > 0:
             sysadmin = get_sysadmins()[0].name
             context_sysadmin = {
@@ -206,7 +194,7 @@ class RequestDataController(BaseController):
                 'user': sysadmin,
                 'auth_user_obj': c.userobj
             }
-            to = package['maintainer']
+            to = package[maintainer_field_name]
             if to is None:
                 message = {
                     'success': False,
@@ -256,14 +244,14 @@ class RequestDataController(BaseController):
                 emailer.send_email(content, users_email, mail_subject)
 
             # notify package creator that new data request was made
-            _get_action('requestdata_notification_create', data_dict)
+            utils.get_action('requestdata_notification_create', data_dict)
             data_dict = {
                 'package_id': data['package_id'],
                 'flag': 'request'
             }
 
             action_name = 'requestdata_increment_request_data_counters'
-            _get_action(action_name, data_dict)
+            utils.get_action(action_name, data_dict)
 
             return json.dumps(response_message)
         else:
@@ -275,11 +263,11 @@ class RequestDataController(BaseController):
             return json.dumps(message)
 
     def _org_admins_for_dataset(self, dataset_name):
-        package = _get_action('package_show', {'id': dataset_name})
+        package = utils.get_action('package_show', {'id': dataset_name})
         owner_org = package['owner_org']
         admins = []
 
-        org = _get_action('organization_show', {'id': owner_org})
+        org = utils.get_action('organization_show', {'id': owner_org})
 
         for user in org['users']:
             if user['capacity'] == 'admin':

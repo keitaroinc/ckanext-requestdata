@@ -1,12 +1,18 @@
 import re
-from pylons import config
-from ckan import logic, model
+from ckan import model
 from ckan.plugins import toolkit
 from ckan.common import c
 
+try:
+    # CKAN 2.7 and later
+    from ckan.common import config
+except ImportError:
+    # CKAN 2.6 and earlier
+    from pylons import config
+
 
 def match_uuidv4(val):
-    return re.match('^[a-f0-9]{8}-?[a-f0-9]{4}-?4[a-f0-9]{3}-?[89ab][a-f0-9]{3}-?[a-f0-9]{12}\Z', val, re.I) is not None
+    return re.match(r'^[a-f0-9]{8}-?[a-f0-9]{4}-?4[a-f0-9]{3}-?[89ab][a-f0-9]{3}-?[a-f0-9]{12}\Z', val, re.I) is not None
 
 
 def looks_like_ckan_id(val):
@@ -32,32 +38,15 @@ def _get_context():
     }
 
 
-def _user_show_override(user_show):
-    def _user_show(context, data_dict):
-        if data_dict.get('id'):
-            print ' -> user_show: id=', data_dict['id']
-            if looks_like_an_email(data_dict['id']):
-                print ' -> looks like an email'
-                user = model.User.by_email(data_dict['id'])
-                print ' -> got user: ', user
-                if user:
-                    if type(user) == list:
-                        user = user[0]
-                    data_dict['id'] = user.id
-            else:
-                print ' -> doe NOT look like an email'
-        print ' -> pass to CKAN user show: ', data_dict
-        user_dict = user_show(context, data_dict)
-        print user_dict
-        return user_dict
-
-    return _user_show
-
-
-
 def get_action(action, data_dict):
-    if action == 'user_show':
-        # special handling for user_show to enable search by email as well
-        user_show = toolkit.get_action('user_show')
-        return _user_show_override(user_show)(_get_context(), data_dict)
     return toolkit.get_action(action)(_get_context(), data_dict)
+
+
+def use_standard_package_type():
+    return _parse_bool(config.get('ckanext.requestdata.use_standard_package_type', 'false'))
+
+
+def _parse_bool(val):
+    if not val:
+        return False
+    return str(val).lower() in ("yes", "true", "t", "1")

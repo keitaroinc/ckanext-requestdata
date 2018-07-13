@@ -75,7 +75,6 @@ def send_email(content, to, subject, file=None):
             if SMTP_TLS:
                 s.ehlo()
                 s.starttls()
-        print '[%s][%s]' % (SMTP_USER, SMTP_PASSWORD)
         s.login(SMTP_USER, SMTP_PASSWORD)
         s.sendmail(from_, to, msg.as_string())
         s.quit()

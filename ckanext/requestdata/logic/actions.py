@@ -8,6 +8,7 @@ from ckanext.requestdata.logic import schema
 from ckanext.requestdata.model import ckanextRequestdata,\
     ckanextUserNotification, ckanextMaintainers, ckanextRequestDataCounters
 from ckanext.requestdata import helpers
+from ckanext.requestdata import utils
 
 
 def request_create(context, data_dict):
@@ -41,6 +42,7 @@ def request_create(context, data_dict):
     if errors:
         raise toolkit.ValidationError(errors)
 
+    maintainer_field_name = utils.get_maintainer_field_name()
     sender_name = data.get('sender_name')
     organization = data.get('organization')
     email_address = data.get('email_address')
@@ -51,7 +53,7 @@ def request_create(context, data_dict):
 
     sender_user_id = User.get(context['user']).id
 
-    maintainers = package['maintainer'].split(',')
+    maintainers = package[maintainer_field_name].split(',')
 
     data = {
         'sender_name': sender_name,
@@ -447,3 +449,18 @@ def request_data_counters_get_by_org(context, data_dict):
     counters = ckanextRequestDataCounters.search_by_organization(**data)
 
     return counters
+
+
+def user_show_override(user_show):
+    def _user_show(context, data_dict):
+        if data_dict.get('id'):
+            if utils.looks_like_an_email(data_dict['id']):
+                user = User.by_email(data_dict['id'])
+                if user:
+                    if isinstance(user, list):
+                        user = user[0]
+                    data_dict['id'] = user.id
+        user_dict = user_show(context, data_dict)
+        return user_dict
+
+    return _user_show

@@ -27,8 +27,7 @@ def state_validator(key, data, errors, context):
 def boolean_validator(key, data, errors, context):
     data[key] = asbool(data[key])
     if not isinstance(data[key], bool):
-        message = _('The {0} parameter must be a Boolean value.'
-                    .format(key[0]))
+        message = _('The {0} parameter must be a Boolean value.').format(key[0])
         errors[key].append(message)
 
 
@@ -38,8 +37,6 @@ def members_in_org_validator(key, data, errors, context):
     owner_org = data.get(('owner_org',))
     if owner_org is None:
         owner_org = data.get('owner_org')
-    print ' ===> owner org ->', owner_org
-    print ' ===> type:', type(owner_org)
     data_dict = {
         'id': owner_org
     }
@@ -75,12 +72,11 @@ def members_in_org_validator(key, data, errors, context):
                 user_ids.append(user.id)
             else:
                 message = _('The user with email "{0}" is not part of this '
-                            'organization.'.format(email))
+                            'organization.').format(email)
                 errors[key].append(message)
 
         else:
-            message = _('The user with email "{0}" does not exist.'
-                        .format(email))
+            message = _('The user with email "{0}" does not exist.').format(email)
             errors[key].append(message)
 
     data[key] = ','.join(user_ids)

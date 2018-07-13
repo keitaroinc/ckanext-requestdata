@@ -9,6 +9,7 @@ from ckan import authz
 import ckan.lib.helpers as h
 from ckanext.requestdata.emailer import send_email
 from ckanext.requestdata import helpers
+from ckanext.requestdata import utils
 
 get_action = logic.get_action
 NotFound = logic.NotFound
@@ -46,10 +47,11 @@ class UserController(BaseController):
         '''
 
         try:
-            requests = _get_action('requestdata_request_list_for_current_user',
-                                   {})
+            requests = utils.get_action('requestdata_request_list_for_current_user', {})
         except NotAuthorized:
             abort(403, _('Not authorized to see this page.'))
+
+        maintainer_field_name = utils.get_maintainer_field_name()
 
         c.is_myself = id == c.user
 
@@ -84,19 +86,17 @@ class UserController(BaseController):
                 order = 'last_request_created_at'
 
             for item in requests:
-                package =\
-                    _get_action('package_show', {'id': item['package_id']})
-                count = _get_action('requestdata_request_data_counters_get',
-                                    {'package_id': item['package_id']})
+                package = utils.get_action('package_show', {'id': item['package_id']})
+                count = utils.get_action('requestdata_request_data_counters_get',
+                                         {'package_id': item['package_id']})
                 item['title'] = package['title']
                 item['shared'] = count.shared
                 item['requests'] = count.requests
 
         for item in requests:
             try:
-                package =\
-                    _get_action('package_show', {'id': item['package_id']})
-                package_maintainers_ids = package['maintainer'].split(',')
+                package = utils.get_action('package_show', {'id': item['package_id']})
+                package_maintainers_ids = package[maintainer_field_name].split(',')
                 item['title'] = package['title']
             except NotFound, e:
                 # package was not found, possibly deleted
@@ -104,7 +104,7 @@ class UserController(BaseController):
             maintainers = []
             for i in package_maintainers_ids:
                 try:
-                    user = _get_action('user_show', {'id': i})
+                    user = utils.get_action('user_show', {'id': i})
                     payload = {
                         'id': i,
                         'fullname': user['fullname']
@@ -151,7 +151,7 @@ class UserController(BaseController):
         data_dict = {
             'user_id': user_id
         }
-        _get_action('requestdata_notification_change', data_dict)
+        utils.get_action('requestdata_notification_change', data_dict)
 
         data_dict = {
             'id': id,
@@ -164,7 +164,7 @@ class UserController(BaseController):
     def _setup_template_variables(self, context, data_dict):
         c.is_sysadmin = authz.is_sysadmin(c.user)
         try:
-            user_dict = get_action('user_show')(context, data_dict)
+            user_dict = utils.get_action('user_show')(context, data_dict)
         except NotFound:
             abort(404, _('User not found'))
         except NotAuthorized:
@@ -232,7 +232,7 @@ class UserController(BaseController):
             return json.dumps(payload)
 
         try:
-            _get_action('requestdata_request_patch', data)
+            utils.get_action('requestdata_request_patch', data)
         except NotAuthorized:
             abort(403, _('Not authorized to use this action.'))
         except ValidationError as e:
@@ -276,7 +276,7 @@ class UserController(BaseController):
         }
 
         action_name = 'requestdata_increment_request_data_counters'
-        _get_action(action_name, counters_data_dict)
+        utils.get_action(action_name, counters_data_dict)
 
         return json.dumps(success)
 
@@ -308,10 +308,10 @@ class UserController(BaseController):
             data_dict['flag'] = 'declined'
 
         action_name = 'requestdata_increment_request_data_counters'
-        _get_action(action_name, data_dict)
+        utils.get_action(action_name, data_dict)
 
         try:
-            _get_action('requestdata_request_patch', data)
+            utils.get_action('requestdata_request_patch', data)
         except NotAuthorized:
             abort(403, _('Not authorized to use this action.'))
         except ValidationError as e:

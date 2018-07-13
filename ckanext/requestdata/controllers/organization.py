@@ -30,12 +30,9 @@ class OrganizationController(organization.OrganizationController):
         '''
 
         try:
-            requests = utils.get_action('requestdata_request_list_for_organization',
-                                   {'org_id': id})
-
+            requests = utils.get_action('requestdata_request_list_for_organization', {'org_id': id})
         except NotAuthorized:
             abort(403, _('Not authorized to see this page.'))
-
 
         maintainer_field_name = utils.get_maintainer_field_name()
         users_cache = {}  # temporay cache, to avoid making unnecessary calls to 'user_show'
@@ -100,11 +97,9 @@ class OrganizationController(organization.OrganizationController):
                     current_order_name = _('Requests Rate')
 
                 for x in requests:
-                    package = \
-                        utils.get_action('package_show', {'id': x['package_id']})
-                    count = \
-                        utils.get_action('requestdata_request_data_counters_get',
-                                    {'package_id': x['package_id']})
+                    package = utils.get_action('package_show', {'id': x['package_id']})
+                    count = utils.get_action('requestdata_request_data_counters_get',
+                                             {'package_id': x['package_id']})
                     x['title'] = package['title']
                     x['shared'] = count.shared
                     x['requests'] = count.requests
@@ -121,7 +116,8 @@ class OrganizationController(organization.OrganizationController):
 
             for maint_id in package_maintainer_ids:
                 try:
-                    user = users_cache.get(maint_id) or utils.get_action('user_show', {'id': maint_id})
+                    user = users_cache.get(maint_id) or \
+                           utils.get_action('user_show', {'id': maint_id})
                     users_cache[maint_id] = user
                     username = user['name']
                     name = user['fullname']
@@ -130,10 +126,10 @@ class OrganizationController(organization.OrganizationController):
                         name = username
 
                     payload = {
-                               'id': user['id'],
-                               'name': name,
-                               'username': username,
-                               'fullname': name}
+                                'id': user['id'],
+                                'name': name,
+                                'username': username,
+                                'fullname': name}
                     maintainers.append(payload)
                     package_maintainers.append(payload)
                 except NotFound:
@@ -166,7 +162,8 @@ class OrganizationController(organization.OrganizationController):
                 maintainer_ids = []
                 for maintainer_name in package_maintainer_ids:
                     try:
-                        main_ids = users_cache.get(maintainer_name) or utils.get_action('user_show', {'id': maintainer_name})
+                        main_ids = users_cache.get(maintainer_name) or \
+                                   utils.get_action('user_show', {'id': maintainer_name})
                         users_cache[maintainer_name] = main_ids
                         maintainer_ids.append(main_ids['id'])
                     except NotFound:
@@ -217,9 +214,8 @@ class OrganizationController(organization.OrganizationController):
                                               key=lambda x: x[order],
                                               reverse=reverse)
 
-        counters =\
-            utils.get_action('requestdata_request_data_counters_get_by_org',
-                        {'org_id': organ['id']})
+        counters = utils.get_action('requestdata_request_data_counters_get_by_org',
+                                    {'org_id': organ['id']})
 
         extra_vars = {
             'requests_new': requests_new,
