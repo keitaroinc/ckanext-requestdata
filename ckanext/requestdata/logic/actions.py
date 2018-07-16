@@ -75,7 +75,12 @@ def request_create(context, data_dict):
                 main_ids = toolkit.get_action('user_show')(context, {'id': id})
                 user = User.get(main_ids['id'])
             else:
-                user = User.get(id)
+                if utils.looks_like_an_email(id):
+                    user = User.by_email(id)
+                    if isinstance(user, list):
+                        user = user[0]
+                else:
+                    user = User.get(id)
             data = ckanextMaintainers()
             data.request_data_id = requestdata.id
             if user:

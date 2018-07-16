@@ -164,7 +164,7 @@ class UserController(BaseController):
     def _setup_template_variables(self, context, data_dict):
         c.is_sysadmin = authz.is_sysadmin(c.user)
         try:
-            user_dict = utils.get_action('user_show')(context, data_dict)
+            user_dict = get_action('user_show')(context, data_dict)
         except NotFound:
             abort(404, _('User not found'))
         except NotAuthorized:
