@@ -1,6 +1,7 @@
 from ckan.plugins.toolkit import _
 from ckan.plugins.toolkit import get_action
 from ckan import logic
+from ckanext.requestdata import utils
 
 
 def request_create(context, data_dict):
@@ -15,6 +16,8 @@ def request_create(context, data_dict):
 
 
 def request_show(context, data_dict):
+    if utils.is_allowed_public_view():
+        return {'success': True}
     if _user_has_access_to_request(context, data_dict):
         return {'success': True}
     else:
@@ -28,6 +31,28 @@ def request_list_for_current_user(context, data_dict):
 
 
 def request_list_for_organization(context, data_dict):
+    if utils.is_allowed_public_view():
+        return {'success': True}
+    current_user_id = context['auth_user_obj'].id
+
+    payload = {'id': data_dict['org_id']}
+
+    try:
+        organization = get_action('organization_show')(context, payload)
+    except logic.NotFound:
+        raise logic.ValidationError(_('Organization not found.'))
+
+    for user in organization['users']:
+
+        # Checks whether the current logged in user is admin on the
+        # organization
+        if user['id'] == current_user_id and user['capacity'] == 'admin':
+            return {'success': True}
+
+    return {'success': False}
+
+
+def requestdata_request_list_for_organization_update(context, data_dict):
     current_user_id = context['auth_user_obj'].id
 
     payload = {'id': data_dict['org_id']}

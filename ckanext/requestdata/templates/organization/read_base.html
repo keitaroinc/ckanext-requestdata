@@ -5,7 +5,7 @@
   {% set is_hdx_portal = h.requestdata_is_hdx_portal() %}
 
   {% if not is_hdx_portal %}
-    {% if h.check_access('organization_update', {'id': c.group_dict.id}) %}
+    {% if h.requestdata_check_access('organization_update', {'id': c.group_dict.id}, True) %}
       {{ h.build_nav_icon('requestdata_organization_requests', _('Dataset Requests'), id=c.group_dict.name) }}
     {% endif %}
   {% endif %}

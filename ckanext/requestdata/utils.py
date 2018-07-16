@@ -50,3 +50,7 @@ def _parse_bool(val):
     if not val:
         return False
     return str(val).lower() in ("yes", "true", "t", "1")
+
+
+def is_allowed_public_view():
+    return config.get('ckanext.requestdata.public_view', False)

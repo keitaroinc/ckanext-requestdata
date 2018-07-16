@@ -1,6 +1,6 @@
 import ckan.plugins as plugins
 import ckan.plugins.toolkit as toolkit
-from ckan.logic import get_action
+from ckan.logic import get_action, auth_allow_anonymous_access
 
 from ckanext.requestdata.model import setup as model_setup
 from ckanext.requestdata.logic import actions
@@ -166,13 +166,19 @@ class RequestdataPlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm,
     # IAuthFunctions
 
     def get_auth_functions(self):
+        requestdata_request_list_for_organization = auth.request_list_for_organization
+        if utils.is_allowed_public_view():
+            requestdata_request_list_for_organization = auth_allow_anonymous_access(requestdata_request_list_for_organization)
+        
         return {
             'requestdata_request_create': auth.request_create,
             'requestdata_request_show': auth.request_show,
             'requestdata_request_list_for_current_user':
             auth.request_list_for_current_user,
             'requestdata_request_list_for_organization':
-            auth.request_list_for_organization,
+            requestdata_request_list_for_organization,
+            'requestdata_request_list_for_organization_update':
+            auth.requestdata_request_list_for_organization_update,
             'requestdata_request_patch': auth.request_patch,
             'requestdata_request_list_for_sysadmin':
             auth.request_list_for_sysadmin
@@ -206,7 +212,9 @@ class RequestdataPlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm,
             'requestdata_check_ckan_version':
                 helpers.check_ckan_version,
             'requestdata_enable_visibility':
-                helpers.enable_visibility
+                helpers.enable_visibility,
+            'requestdata_check_access':
+                helpers.requestdata_check_access,
         }
 
     # IDatasetForm

@@ -11,6 +11,8 @@ from ckan.common import c, _, request, config
 from ckan.lib import base
 from ckan.plugins import toolkit
 from ckan.model.user import User
+from ckan.lib.helpers import check_access as helper_check_access
+from ckanext.requestdata.utils import is_allowed_public_view
 
 try:
     # CKAN 2.7 and later
@@ -208,3 +210,9 @@ def enable_visibility():
     if isinstance(visibility, str):
         return visibility.lower() in ['true', 'yes', 't', '1']
     return False
+
+
+def requestdata_check_access(action, data_dict, allow_public_if_set=False):
+    if allow_public_if_set and is_allowed_public_view():
+        return True
+    return helper_check_access(action, data_dict)
