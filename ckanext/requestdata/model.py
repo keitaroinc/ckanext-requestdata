@@ -5,7 +5,8 @@ from sqlalchemy import Table, Column, Index, ForeignKey
 from sqlalchemy import types, func
 
 from sqlalchemy.engine.reflection import Inspector
-from ckan.model.meta import metadata, mapper, Session, engine
+from ckan.model.meta import metadata, mapper, Session
+from ckan.model import meta
 from ckan.model.types import make_uuid
 from ckan.model.domain_object import DomainObject
 
@@ -26,7 +27,7 @@ def setup():
         request_data_table.create()
     else:
         log.debug('Requestdata table already exists.')
-    inspector = Inspector.from_engine(engine)
+    inspector = Inspector.from_engine(meta.engine)
 
     index_names =\
         [index['name'] for index in
@@ -45,7 +46,7 @@ def setup():
         user_notification_table.create()
     else:
         log.debug('UserNotification table already exists.')
-    inspector = Inspector.from_engine(engine)
+    inspector = Inspector.from_engine(meta.engine)
 
     index_names = \
         [index['name'] for index in
@@ -64,7 +65,7 @@ def setup():
         maintainers_table.create()
     else:
         log.debug('Maintainers table already exists.')
-    inspector = Inspector.from_engine(engine)
+    inspector = Inspector.from_engine(meta.engine)
 
     index_names = \
         [index['name'] for index in
@@ -83,7 +84,7 @@ def setup():
         request_data_counters_table.create()
     else:
         log.debug('Request data counters table already exists.')
-    inspector = Inspector.from_engine(engine)
+    inspector = Inspector.from_engine(meta.engine)
 
     index_names = \
         [index['name'] for index in
