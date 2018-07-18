@@ -12,6 +12,7 @@
   <div class="requested-data-container__content-item--requested-by-info" {% if type == 'archive' %}
     style="float: right; margin-right: 14px;"
   {% endif %}>
+    {%- block requested_by_container_user-%}
     <a href="{{ sender_profile }}" title="{{ _('View profile') }}">{{ item.sender_name }}</a>
     {% if c.userobj.sysadmin %}
       | <span>{{ g.site_title }}</span>
@@ -29,7 +30,9 @@
         | <a href="{{ org_url }}">{{ orgs[0].title }}</a> <span title="{{ more_orgs }}">({{ _('more') }})</span>
       {% endif %}
     {% endif %}
-    <p class="requested-data-container__content-item--requested-by-date">
+    {%- endblock -%}
+    <div class="requested-data-container__content-item--requested-by-date">
+      {%- block requested_by_container_info_details -%}
       {% if one_org %}
         {% set role = h.requestdata_role_in_org(item.sender_user_id, orgs[0].name) %}
         <span><b>{{ role | capitalize }} -</b></span>
@@ -39,8 +42,9 @@
          <span><b>{{ _('Sysadmin') }} -</b></span>
       {% endif %}
       <span>{{ _('Requested on') }} {{ h.render_datetime(item.created_at, date_format='%-d %B %Y') }}</span>
-    </p>
-
+      {%- endblock -%}
+    </div>
     <p class="requested-data-container__content-item--requested-by-message">{{ item.message_content }}</p>
   </div>
+
 </div>
