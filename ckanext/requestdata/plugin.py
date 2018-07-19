@@ -85,6 +85,11 @@ class RequestdataPlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm,
                     controller=request_data_controller,
                     action='send_request')
 
+        map.connect('requestdata_read_data_request',
+                    '/request_data/dataset/{package_id}/request/{request_id}',
+                    controller=request_data_controller,
+                    action='read_request')
+
         is_ckan_greater_than_27 = helpers.check_ckan_version(min_version='2.7')
         if is_ckan_greater_than_27:
             envelope_icon = 'envelope-o'
