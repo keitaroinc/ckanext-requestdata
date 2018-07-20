@@ -27,9 +27,11 @@ Example usage:
 
   {% if requests | length > 0 %}
     <div class="requested-data-container__content">
+      {%- block requests_list -%}
       {% for item in requests %}
-        {% snippet 'requestdata/snippets/section_item_' + state + '.html', item=item, template_type=template_type, index=loop.index %}
+        {% snippet 'requestdata/snippets/section_item_' + state + '.html', item=item, template_type=template_type, index=loop.index%}
       {% endfor %}
+      {%- endblock -%}
     </div>
   {% else %}
     <p>{{ _('No requests found.') }}</p>
