@@ -1,0 +1,750 @@
+# Albanian translations for ckanext-requestdata.
+# Copyright (C) 2018 ORGANIZATION
+# This file is distributed under the same license as the ckanext-requestdata
+# project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2018.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: ckanext-requestdata 0.0.1\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2018-07-19 12:57+0200\n"
+"PO-Revision-Date: 2018-07-19 15:30+0200\n"
+"Language: sq\n"
+"Language-Team: sq <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.3.4\n"
+"Last-Translator: \n"
+"X-Generator: Poedit 2.0.4\n"
+
+#: ckanext/requestdata/emailer.py:83
+msgid "Email message was successfully sent."
+msgstr "Mesazhi me email u dërgua me sukses."
+
+#: ckanext/requestdata/emailer.py:91
+msgid "Invalid email recepient, maintainer not found"
+msgstr "Marrësi i pavlefshëm i email, kontenieri nuk u gjet"
+
+#: ckanext/requestdata/emailer.py:103
+msgid "An error occured while sending the email. Try again."
+msgstr "Ndodhi një gabim gjatë dërgimit të emailit. Provo përsëri."
+
+#: ckanext/requestdata/helpers.py:69
+msgid "Not authorized to see this package."
+msgstr "Nuk është i autorizuar për të parë këtë set të dhënash."
+
+#: ckanext/requestdata/helpers.py:71
+msgid "Package not found."
+msgstr "Seti i të dhënave nuk u gjet"
+
+#: ckanext/requestdata/helpers.py:157
+msgid "string cannot be parsed"
+msgstr "vargu nuk mund të analizohet"
+
+#: ckanext/requestdata/controllers/admin.py:45
+msgid "Successfully updated."
+msgstr "Përditësuar me sukses."
+
+#: ckanext/requestdata/controllers/admin.py:74
+#: ckanext/requestdata/controllers/organization.py:35
+#: ckanext/requestdata/controllers/user.py:52
+#: ckanext/requestdata/controllers/user.py:59
+msgid "Not authorized to see this page."
+msgstr "Nuk jeni i autorizuar për të parë këtë faqe."
+
+#: ckanext/requestdata/controllers/admin.py:120
+#: ckanext/requestdata/controllers/organization.py:86
+#: ckanext/requestdata/controllers/user.py:79
+#: ckanext/requestdata/templates/requestdata/snippets/order_requests.html:23
+msgid "Alphabetical (A-Z)"
+msgstr "Alfabetik (A-Zh)"
+
+#: ckanext/requestdata/controllers/admin.py:124
+#: ckanext/requestdata/controllers/organization.py:90
+#: ckanext/requestdata/controllers/user.py:83
+#: ckanext/requestdata/templates/requestdata/snippets/order_requests.html:24
+msgid "Alphabetical (Z-A)"
+msgstr "Alfabetik (Zh-A)"
+
+#: ckanext/requestdata/controllers/admin.py:128
+#: ckanext/requestdata/controllers/admin.py:320
+#: ckanext/requestdata/controllers/organization.py:53
+#: ckanext/requestdata/controllers/user.py:67
+#: ckanext/requestdata/templates/requestdata/snippets/order_requests.html:22
+msgid "Most Recent"
+msgstr "Me e fundit"
+
+#: ckanext/requestdata/controllers/admin.py:130
+#: ckanext/requestdata/controllers/organization.py:95
+#: ckanext/requestdata/controllers/user.py:72
+#: ckanext/requestdata/templates/requestdata/snippets/order_requests.html:26
+msgid "Sharing Rate"
+msgstr "Norma ndarjen"
+
+#: ckanext/requestdata/controllers/admin.py:132
+#: ckanext/requestdata/controllers/organization.py:97
+#: ckanext/requestdata/controllers/user.py:75
+#: ckanext/requestdata/templates/requestdata/snippets/order_requests.html:25
+msgid "Requests Rate"
+msgstr "Norma e Kërkesave"
+
+#: ckanext/requestdata/controllers/package.py:64
+msgid "Unauthorized to create a dataset."
+msgstr "I paautorizuar për të krijuar një seti i të dhënave"
+
+#: ckanext/requestdata/controllers/request_data.py:84
+msgid ""
+"<br><br> This dataset's maintainer does not exist.        Go to your "
+"organisation's <a href=\"\">Requested Data</a>         page to see the new "
+"request. Please also edit the dataset and assign          a new maintainer."
+msgstr ""
+"<br><br> Ky mirëmbajtës i të dhënave nuk ekziston.       Shkoni në "
+"institucionin tuaj <a href=\"\">Të dhënat e kërkuara</a>         faqe për të "
+"parë kërkesën e re. Ju lutemi gjithashtu, redaktoni grupin e të dhënave dhe "
+"caktoni          një mirëmbajtës të ri."
+
+#: ckanext/requestdata/controllers/request_data.py:92
+msgid ""
+"<br><br><strong> Please accept or decline the request        as soon as you "
+"can by visiting the         <a href=\"\">My Requests</a> page.</strong>"
+msgstr ""
+"<br> <br> <strong> Lutemi pranoni ose refuzoni kërkesën sa më shpejt që të "
+"jetë e mundur duke vizituar faqen <a href=\"\"> Kërkesat e mia </a>faqe.</ "
+"strong>"
+
+#: ckanext/requestdata/controllers/request_data.py:108
+msgid ""
+"<br><br> Go to <a href=\"\">                    Requested data</a> page in "
+"organization admin."
+msgstr ""
+"<br><br> Shko te <a href=\"\">                    Të dhënat e kërkuara</a> "
+"faqe në organizatë admin."
+
+#: ckanext/requestdata/controllers/request_data.py:117
+msgid ""
+"\n"
+"        <br/><br/>\n"
+"        <small>\n"
+"          <p>\n"
+"            <a href=\"  \"></a>\n"
+"          </p>\n"
+"          <p>\n"
+"            <a href=\"  \">            Sign up for our newsletter</a> "
+"|             <a href=\"  \">Follow us on Twitter</a>             | <a href="
+"\"mailto: \">Contact us</a>\n"
+"          </p>\n"
+"        </small>\n"
+"\n"
+"    "
+msgstr ""
+"\n"
+"        <br/><br/>\n"
+"        <small>\n"
+"          <p>\n"
+"            <a href=\"  \"></a>\n"
+"          </p>\n"
+"          <p>\n"
+"            <a href=\"  \">            Regjistrohu për gazetën tonë</a> "
+"|             <a href=\"  \">Na ndiqni në Twitter</a>             | <a href="
+"\"mailto: \">Na kontaktoni</a>\n"
+"          </p>\n"
+"        </small>\n"
+"\n"
+"    "
+
+#: ckanext/requestdata/controllers/request_data.py:156
+msgid "Unauthorized to update this dataset."
+msgstr "Të paautorizuar të ndryshoni këtë setin e të dhënave"
+
+#: ckanext/requestdata/controllers/request_data.py:203
+msgid "Dataset maintainer email not found."
+msgstr "Emaili i mirëmbajtjes së të dhënave nuk u gjet."
+
+#: ckanext/requestdata/controllers/request_data.py:228
+msgid ": New data request \""
+msgstr ": Kërkesë e re e të dhënave\""
+
+#: ckanext/requestdata/controllers/request_data.py:260
+msgid "Request sent, but email message was not sent."
+msgstr "Kërkesa u dërgua, por mesazhi me email nuk u dërgua."
+
+#: ckanext/requestdata/controllers/user.py:169
+msgid "User not found"
+msgstr "Përdoruesi nuk u gjet."
+
+#: ckanext/requestdata/controllers/user.py:171
+msgid "Not authorized to see this page"
+msgstr "Nuk jeni i autorizuar për të parë këtë faqe"
+
+#: ckanext/requestdata/controllers/user.py:203
+msgid "The email you provided is invalid."
+msgstr "Emaili që jepet është i pavlefshëm."
+
+#: ckanext/requestdata/controllers/user.py:228
+#: ckanext/requestdata/fanstatic/modal-form.js:119
+msgid "Missing value"
+msgstr "Vlera mungon"
+
+#: ckanext/requestdata/controllers/user.py:237
+#: ckanext/requestdata/controllers/user.py:316
+msgid "Not authorized to use this action."
+msgstr "Nuk është i autorizuar për të përdorur këtë veprim."
+
+#: ckanext/requestdata/controllers/user.py:250
+msgid ": Data request "
+msgstr ": Kërkesa për të dhëna"
+
+#: ckanext/requestdata/controllers/user.py:256
+msgid "<br><br> You can contact the maintainer on this email address: "
+msgstr "<br> <br> Mund të kontaktoni mirëmbajtësin në këtë adresë e-mail:"
+
+#: ckanext/requestdata/controllers/user.py:275
+msgid "Message was sent successfully"
+msgstr "Mesazhi u dërgua me sukses"
+
+#: ckanext/requestdata/controllers/user.py:329
+msgid "Request's state successfully updated."
+msgstr "Përditësohet me sukses gjendja e kërkesës."
+
+#: ckanext/requestdata/fanstatic/modal-form.js:37
+msgid ""
+"Request own dataset\n"
+"\n"
+"WARNING: You are a maintainer of the dataset you are requesting. Do you wish "
+"to continue making this request?"
+msgstr ""
+"Kërkoni një skedar të dhënash\n"
+"\n"
+"PARALAJMËRIM: Ju jeni një mbajtës i grupit të të dhënave që kërkoni. A "
+"dëshironi të vazhdoni ta bëni këtë kërkesë?"
+
+#: ckanext/requestdata/logic/actions.py:128
+msgid "Request with provided 'id' cannot be found"
+msgstr "Kërkesa me 'id' me kusht nuk mund të gjendet"
+
+#: ckanext/requestdata/logic/auth.py:13
+msgid "Only registered users can request data."
+msgstr "Vetëm përdoruesit e regjistruar mund të kërkojnë të dhëna."
+
+#: ckanext/requestdata/logic/auth.py:24 ckanext/requestdata/logic/auth.py:79
+#: ckanext/requestdata/logic/auth.py:92
+msgid "You don't have access to this request data."
+msgstr "Ju nuk keni qasje në të dhënat e kërkesës."
+
+#: ckanext/requestdata/logic/auth.py:43 ckanext/requestdata/logic/auth.py:63
+msgid "Organization not found."
+msgstr "Institucioni nuk u gjet."
+
+#: ckanext/requestdata/logic/validators.py:15
+msgid "Please provide a valid email address."
+msgstr "Ju lutemi jepni një adresë të vlefshme email"
+
+#: ckanext/requestdata/logic/validators.py:23
+msgid "The state parameter must be new, open or archive."
+msgstr "Parametri i shtetit duhet të jetë i ri, i hapur ose arkiv."
+
+#: ckanext/requestdata/logic/validators.py:30
+msgid "The {0} parameter must be a Boolean value."
+msgstr "Parametri {0} duhet të jetë një vlerë boolean."
+
+#: ckanext/requestdata/logic/validators.py:74
+msgid "The user with email \"{0}\" is not part of this organization."
+msgstr "Përdoruesi me email \"{0}\" nuk është pjesë e këtij institucioni"
+
+#: ckanext/requestdata/logic/validators.py:79
+msgid "The user with email \"{0}\" does not exist."
+msgstr "Përdoruesi me email \"{0}\" nuk ekziston."
+
+#: ckanext/requestdata/logic/validators.py:90
+msgid "The flag parameter must be request, replied, declined, or shared"
+msgstr ""
+"Parametri i flamurit duhet të jetë kërkesë, përgjigjur, refuzuar ose ndarë"
+
+#: ckanext/requestdata/templates/header.html:12
+msgid "Sysadmin settings"
+msgstr "Cilësimet e Administratorit të sistemit"
+
+#: ckanext/requestdata/templates/header.html:19
+msgid "Admin"
+msgstr "Admin"
+
+#: ckanext/requestdata/templates/header.html:27
+#: ckanext/requestdata/templates/header.html:34
+msgid "New data request"
+msgstr "kërkesë e re për të dhëna"
+
+#: ckanext/requestdata/templates/header.html:39
+#: ckanext/requestdata/templates/requestdata/snippets/requested_by_container.html:15
+#: ckanext/requestdata/templates/requestdata/snippets/section_item_new.html:34
+msgid "View profile"
+msgstr "Shiko Profili"
+
+#: ckanext/requestdata/templates/header.html:46
+#, python-format
+msgid "Dashboard (%(num)d new item)"
+msgid_plural "Dashboard (%(num)d new items)"
+msgstr[0] "Paneli (%(num)d new item)"
+msgstr[1] "Paneli (%(num)d new items)"
+
+#: ckanext/requestdata/templates/header.html:49
+msgid "Dashboard"
+msgstr "Paneli"
+
+#: ckanext/requestdata/templates/header.html:55
+msgid "Edit settings"
+msgstr "Redakto cilësimet"
+
+#: ckanext/requestdata/templates/header.html:62
+msgid "Settings"
+msgstr "Cilësimet"
+
+#: ckanext/requestdata/templates/header.html:68
+#: ckanext/requestdata/templates/header.html:75
+msgid "Log out"
+msgstr "Dilni nga sistemi"
+
+#: ckanext/requestdata/templates/header.html:85
+msgid "Login"
+msgstr "Identifikohu"
+
+#: ckanext/requestdata/templates/header.html:87
+msgid "Register"
+msgstr "Regjistrohu"
+
+#: ckanext/requestdata/templates/admin/all_requests_data.html:21
+msgid "Data Requests"
+msgstr "Kërkesat e të dhënave"
+
+#: ckanext/requestdata/templates/admin/all_requests_data.html:33
+#: ckanext/requestdata/templates/requestdata/my_requested_data.html:28
+#: ckanext/requestdata/templates/requestdata/organization_requested_data.html:30
+msgid "New"
+msgstr "I ri"
+
+#: ckanext/requestdata/templates/admin/all_requests_data.html:34
+#: ckanext/requestdata/templates/requestdata/my_requested_data.html:29
+#: ckanext/requestdata/templates/requestdata/organization_requested_data.html:31
+msgid "Open"
+msgstr "Hapur"
+
+#: ckanext/requestdata/templates/admin/all_requests_data.html:41
+#: ckanext/requestdata/templates/requestdata/organization_requested_data.html:38
+msgid "Archive"
+msgstr "Arkivi"
+
+#: ckanext/requestdata/templates/admin/base.html:5
+#: ckanext/requestdata/templates/ajax_snippets/request_contact.html:14
+msgid "Email"
+msgstr "Email"
+
+#: ckanext/requestdata/templates/admin/base.html:6
+msgid "Requested Data"
+msgstr "Të dhënat e kërkuara"
+
+#: ckanext/requestdata/templates/admin/email.html:8
+msgid "Header"
+msgstr "Header"
+
+#: ckanext/requestdata/templates/admin/email.html:9
+msgid "Body"
+msgstr "Body"
+
+#: ckanext/requestdata/templates/admin/email.html:10
+msgid "Footer"
+msgstr "Footer"
+
+#: ckanext/requestdata/templates/admin/email.html:12
+msgid "Update Email Form"
+msgstr "Përditëso formularin e emailit"
+
+#: ckanext/requestdata/templates/admin/email.html:26
+msgid "CKAN email options"
+msgstr "Opsionet e emailit të CKAN"
+
+#: ckanext/requestdata/templates/admin/email.html:30
+msgid ""
+"<p><strong>Header:</strong>This sentence contains important alerts to be read "
+"before a user reads your message.</p>"
+msgstr ""
+"<p><strong>Header:</strong>Ky fjali përmban njoftime të rëndësishme që duhet "
+"lexuar para se një përdorues lexon mesazhin tuaj.</p>"
+
+#: ckanext/requestdata/templates/admin/email.html:31
+msgid ""
+"<p><strong>Body:</strong>This is for the message you want to deliver. All "
+"necessary information should go here.</p>"
+msgstr ""
+"<p><strong>Body:</strong>Kjo është për mesazhin që doni të jepni. Të gjitha "
+"informatat e nevojshme duhet të shkojnë këtu.</p>"
+
+#: ckanext/requestdata/templates/admin/email.html:32
+msgid ""
+"<p><strong>Footer:</strong>The last sentence. Here you can add copyrights, "
+"links, disclosures or portal/organization information.</p>"
+msgstr ""
+"<p> <strong> Footer: </ strong> Fjalia e fundit. Këtu mund të shtoni të "
+"drejtat e autorit, lidhjet, zbulimet ose informacionet e portalit / "
+"institucionit. </ P>"
+
+#: ckanext/requestdata/templates/admin/email.html:33
+msgid ""
+"<p><strong>Formating:</strong>You can use generic terms for the email "
+"template. Just surround one of the available terms in <b>{ }</b> and they will "
+"be converted."
+msgstr ""
+"<p> <strong> Formulimi: </ strong> Mund të përdorni terma të përgjithshëm për "
+"modelin e emailit. Vetëm rrethoni një nga kushtet në dispozicion në <b> {} </ "
+"b> dhe ata do të konvertohen."
+
+#: ckanext/requestdata/templates/admin/email.html:34
+msgid "<b>e.g</b>"
+msgstr "<b>p.sh.</b>"
+
+#: ckanext/requestdata/templates/admin/email.html:35
+msgid "<p>Hi {maintainers} will be displayed as Hi Chris, John and Erica</p></p>"
+msgstr ""
+"<p> Përshëndetje {maintainers} do të shfaqet si Hi Chris, John dhe Erica </p></"
+"p>"
+
+#: ckanext/requestdata/templates/admin/email.html:36
+msgid "<p><strong>Available terms:</strong>"
+msgstr "<p><strong>Kushtet e disponueshme:</strong>"
+
+#: ckanext/requestdata/templates/admin/email.html:38
+msgid "<li><b>name</b>: full name or user name of the requester</li>"
+msgstr ""
+"<li><b> emër </b>: emri i plotë ose emri i përdoruesit të kërkuesit </li>"
+
+#: ckanext/requestdata/templates/admin/email.html:39
+msgid ""
+"<li><b>data_maintainers</b>: full name or user name of the dataset "
+"maintainers</li>"
+msgstr ""
+"<li><b> data_maintainers </b>: emri i plotë ose emri i përdoruesit të "
+"mirëmbajtësve të datasetit </li>"
+
+#: ckanext/requestdata/templates/admin/email.html:40
+msgid "<li><b>dataset</b>: requested dataset title </li>"
+msgstr "<li><b>set i të dhënave</b>: titulli i kërkuar i të dhënave </li>"
+
+#: ckanext/requestdata/templates/admin/email.html:41
+msgid "<li><b>message</b>: comment field from data request form</li>"
+msgstr ""
+"<li><b>mesazh</b>: fushë komentesh nga forma e kërkesës së të dhënave</li>"
+
+#: ckanext/requestdata/templates/admin/email.html:42
+msgid "<li><b>organization</b>: list of all organizations</li>"
+msgstr "<li><b>institucion</b>: lista e të gjitha institucioneve</li>"
+
+#: ckanext/requestdata/templates/admin/email.html:43
+msgid "<li><b>email</b>: email address from the data requester</li>"
+msgstr "<li><b>email</b>: adresën e emailit nga kërkuesi i të dhënave</li>"
+
+#: ckanext/requestdata/templates/ajax_snippets/reject_request_form.html:7
+msgid "Reject the request"
+msgstr "Refuzo kërkesën"
+
+#: ckanext/requestdata/templates/ajax_snippets/reject_request_form.html:12
+#: ckanext/requestdata/templates/ajax_snippets/reply_request_form.html:15
+msgid "Message content"
+msgstr "Përmbajtja e mesazhit"
+
+#: ckanext/requestdata/templates/ajax_snippets/reject_request_form.html:16
+#: ckanext/requestdata/templates/ajax_snippets/reply_request_form.html:23
+#: ckanext/requestdata/templates/ajax_snippets/request_contact.html:19
+msgid "Cancel"
+msgstr "Anuloj"
+
+#: ckanext/requestdata/templates/ajax_snippets/reject_request_form.html:17
+#: ckanext/requestdata/templates/ajax_snippets/reply_request_form.html:24
+#: ckanext/requestdata/templates/ajax_snippets/request_contact.html:20
+msgid "Submit"
+msgstr "Parashtroj"
+
+#: ckanext/requestdata/templates/ajax_snippets/reply_request_form.html:7
+msgid "Reply to the request"
+msgstr "Përgjigju kërkesës"
+
+#: ckanext/requestdata/templates/ajax_snippets/reply_request_form.html:17
+msgid "Reply email"
+msgstr "Përgjigju email"
+
+#: ckanext/requestdata/templates/ajax_snippets/reply_request_form.html:19
+msgid "Upload file"
+msgstr "Ngarko skedarin"
+
+#: ckanext/requestdata/templates/ajax_snippets/request_contact.html:7
+msgid "Contact the dataset owner"
+msgstr "Kontaktoni pronarin e skedarit"
+
+#: ckanext/requestdata/templates/ajax_snippets/request_contact.html:8
+msgid ""
+"Use the form to ask a question or provide comments about this dataset to the "
+"owner."
+msgstr ""
+"Përdorni formularin për të bërë një pyetje ose për të dhënë komente në lidhje "
+"me këtë të dhënë të të dhënave për pronarin."
+
+#: ckanext/requestdata/templates/ajax_snippets/request_contact.html:13
+msgid "Name"
+msgstr "Emër"
+
+#: ckanext/requestdata/templates/ajax_snippets/request_contact.html:13
+msgid "eg. Your name"
+msgstr "psh. Emri juaj"
+
+#: ckanext/requestdata/templates/ajax_snippets/request_contact.html:14
+msgid "Your email"
+msgstr "Emaili yt"
+
+#: ckanext/requestdata/templates/ajax_snippets/request_contact.html:15
+msgid "Comments"
+msgstr "Komente"
+
+#: ckanext/requestdata/templates/ajax_snippets/request_contact.html:15
+msgid "eg. Message content"
+msgstr "psh. Përmbajtja e mesazhit"
+
+#: ckanext/requestdata/templates/organization/read_base.html:9
+#: ckanext/requestdata/templates/requestdata/organization_requested_data.html:9
+#: ckanext/requestdata/templates/requestdata/organization_requested_data.html:14
+#: ckanext/requestdata/templates/requestdata/organization_requested_data.html:28
+msgid "Dataset Requests"
+msgstr "Kërkesat për setin e të dhënave"
+
+#: ckanext/requestdata/templates/package/snippets/additional_info.html:7
+msgid "Source"
+msgstr "Burimi"
+
+#: ckanext/requestdata/templates/package/snippets/additional_info.html:18
+#: ckanext/requestdata/templates/package/snippets/additional_info.html:23
+msgid "Author"
+msgstr "Autor"
+
+#: ckanext/requestdata/templates/package/snippets/additional_info.html:30
+#: ckanext/requestdata/templates/package/snippets/additional_info.html:35
+#: ckanext/requestdata/templates/requestdata/snippets/requests_header.html:25
+msgid "Maintainer"
+msgstr "Mirëmbajtësi"
+
+#: ckanext/requestdata/templates/package/snippets/additional_info.html:42
+msgid "Version"
+msgstr "Version"
+
+#: ckanext/requestdata/templates/package/snippets/additional_info.html:49
+msgid "State"
+msgstr "Rang"
+
+#: ckanext/requestdata/templates/package/snippets/additional_info.html:55
+msgid "Last Updated"
+msgstr "Përditësuar së fundmi"
+
+#: ckanext/requestdata/templates/package/snippets/additional_info.html:63
+msgid "Created"
+msgstr "Krijuar"
+
+#: ckanext/requestdata/templates/package/snippets/package_form.html:11
+msgid "Create"
+msgstr "Krijo"
+
+#: ckanext/requestdata/templates/package/snippets/package_form.html:13
+msgid "Next: Add Data"
+msgstr "Tjetra: Shto të dhëna"
+
+#: ckanext/requestdata/templates/package/snippets/package_metadata_fields.html:18
+msgid "Maintainers"
+msgstr "Mirëmbajtësve"
+
+#: ckanext/requestdata/templates/package/snippets/package_metadata_fields.html:18
+msgid "joe@example.com"
+msgstr "joe@shembull.com"
+
+#: ckanext/requestdata/templates/package/snippets/resources_list.html:6
+msgid "Data and Resources"
+msgstr "Të dhëna dhe burime"
+
+#: ckanext/requestdata/templates/package/snippets/resources_list.html:29
+#, python-format
+msgid ""
+" <p class=\"empty\">The metadata is available for this dataset. To access the "
+"full dataset, please request data.</p> <a href=\"#\" class=\"btn btn-default "
+"pull-right\" style=\"margin-top: 10px;\"            data-module=\"modal-form"
+"\"            data-module-template_file=\"request_contact.html\"            "
+"data-module-submit_action=\"%(requestdata_action)s\"            data-module-"
+"post_data=\"%(request_post_data)s\"            data-module-is_logged_in="
+"\"%(is_logged_in)s\"            data-module-is_hdx=\"%(is_hdx)s\"            "
+"data-module-redirect_url=\"%(redirect_url)s\"            data-module-"
+"is_current_user_a_maintainer=\"%(is_current_user_a_maintainer)s\"         "
+">Request data</a> "
+msgstr ""
+" <p class=\"empty\">Metadata është në dispozicion për këtë grup të dhënash. "
+"Për të hyrë në grupin e të dhënave të plotë, ju lutemi kërkoni të dhëna.</p> "
+"<a href=\"#\" class=\"btn btn-default pull-right\" style=\"margin-top: 10px;"
+"\"            data-module=\"modal-form\"            data-module-template_file="
+"\"request_contact.html\"            data-module-submit_action="
+"\"%(requestdata_action)s\"            data-module-post_data="
+"\"%(request_post_data)s\"            data-module-is_logged_in="
+"\"%(is_logged_in)s\"            data-module-is_hdx=\"%(is_hdx)s\"            "
+"data-module-redirect_url=\"%(redirect_url)s\"            data-module-"
+"is_current_user_a_maintainer=\"%(is_current_user_a_maintainer)s\"         "
+">Request data</a> "
+
+#: ckanext/requestdata/templates/requestdata/my_requested_data.html:6
+msgid "Users"
+msgstr "Përdoruesit"
+
+#: ckanext/requestdata/templates/requestdata/my_requested_data.html:8
+#: ckanext/requestdata/templates/requestdata/my_requested_data.html:12
+#: ckanext/requestdata/templates/requestdata/my_requested_data.html:26
+#: ckanext/requestdata/templates/user/read_base.html:7
+msgid "My Requests"
+msgstr "Kërkesat e mia"
+
+#: ckanext/requestdata/templates/requestdata/my_requested_data.html:35
+msgid "Archived"
+msgstr "Arkivuar"
+
+#: ckanext/requestdata/templates/requestdata/organization_requested_data.html:4
+msgid "Organizations"
+msgstr "Institucionet"
+
+#: ckanext/requestdata/templates/requestdata/snippets/filter_requests.html:20
+msgid "Filter by"
+msgstr "Filtro sipas"
+
+#: ckanext/requestdata/templates/requestdata/snippets/filter_requests.html:43
+msgid "Apply"
+msgstr "Aplikoni"
+
+#: ckanext/requestdata/templates/requestdata/snippets/filter_requests.html:44
+msgid "Reset"
+msgstr "Rivendosur"
+
+#: ckanext/requestdata/templates/requestdata/snippets/order_requests.html:16
+msgid "Order by"
+msgstr "Rendit nga"
+
+#: ckanext/requestdata/templates/requestdata/snippets/requested_by_container.html:29
+msgid "more"
+msgstr "më shumë"
+
+#: ckanext/requestdata/templates/requestdata/snippets/requested_by_container.html:39
+msgid "Sysadmin"
+msgstr "Administrator Sistemi"
+
+#: ckanext/requestdata/templates/requestdata/snippets/requested_by_container.html:41
+msgid "Requested on"
+msgstr "Kërkuar më"
+
+#: ckanext/requestdata/templates/requestdata/snippets/requests_header.html:9
+#: ckanext/requestdata/templates/requestdata/snippets/section_item_archive.html:27
+#: ckanext/requestdata/templates/requestdata/snippets/section_item_archive.html:65
+msgid "Replied"
+msgstr "Përgjigjur"
+
+#: ckanext/requestdata/templates/requestdata/snippets/requests_header.html:14
+#: ckanext/requestdata/templates/requestdata/snippets/section_item_archive.html:32
+#: ckanext/requestdata/templates/requestdata/snippets/section_item_archive.html:61
+msgid "Denied"
+msgstr "Mohuar"
+
+#: ckanext/requestdata/templates/requestdata/snippets/requests_header.html:19
+#: ckanext/requestdata/templates/requestdata/snippets/section_item_archive.html:37
+msgid "Shared"
+msgstr "Përbashkët"
+
+#: ckanext/requestdata/templates/requestdata/snippets/section_base.html:23
+msgid "Requested by"
+msgstr "Kërkuar nga"
+
+#: ckanext/requestdata/templates/requestdata/snippets/section_base.html:24
+msgid "Actions"
+msgstr "Aksionet"
+
+#: ckanext/requestdata/templates/requestdata/snippets/section_base.html:35
+msgid "No requests found."
+msgstr "Asnjë kërkesë nuk u gjet."
+
+#: ckanext/requestdata/templates/requestdata/snippets/section_item_archive.html:24
+msgid "Requests"
+msgstr "Kërkesat"
+
+#: ckanext/requestdata/templates/requestdata/snippets/section_item_archive.html:70
+msgid "Dataset Shared"
+msgstr "Grupi i të dhënave i ndarë"
+
+#: ckanext/requestdata/templates/requestdata/snippets/section_item_archive.html:73
+msgid "Dataset Not Shared"
+msgstr "Seti i të dhënave nuk i ndarë"
+
+#: ckanext/requestdata/templates/requestdata/snippets/section_item_new.html:30
+msgid "Maintained by"
+msgstr "Mirëmbajtur nga"
+
+#: ckanext/requestdata/templates/requestdata/snippets/section_item_new.html:37
+msgid "Not found"
+msgstr "Nuk u gjet"
+
+#: ckanext/requestdata/templates/requestdata/snippets/section_item_new.html:73
+msgid "Reply"
+msgstr "Përgjigje"
+
+#: ckanext/requestdata/templates/requestdata/snippets/section_item_new.html:86
+msgid "Decline"
+msgstr "Rënie"
+
+#: ckanext/requestdata/templates/requestdata/snippets/section_item_open.html:32
+msgid "Keep track of who you share datasets with. Did you share the dataset?"
+msgstr ""
+"Mbani gjurmët e kujt i ndan setet e të dhënave. A e keni ndarë setin e të "
+"dhënave?"
+
+#: ckanext/requestdata/templates/requestdata/snippets/section_item_open.html:41
+msgid "Yes"
+msgstr "Po"
+
+#: ckanext/requestdata/templates/requestdata/snippets/section_item_open.html:50
+msgid "No"
+msgstr "Jo"
+
+#: ckanext/requestdata/templates/snippets/add_dataset.html:10
+#: ckanext/requestdata/templates/snippets/add_dataset.html:25
+msgid "Add Dataset"
+msgstr "Shto setin e të dhënave"
+
+#: ckanext/requestdata/templates/snippets/add_dataset.html:19
+msgid "Add full dataset"
+msgstr "Shto setin e të dhënave të plotë"
+
+#: ckanext/requestdata/templates/snippets/add_dataset.html:27
+#: ckanext/requestdata/templates/snippets/add_dataset.html:54
+msgid "This option is suitable if:"
+msgstr "Ky opsion është i përshtatshëm nëse:"
+
+#: ckanext/requestdata/templates/snippets/add_dataset.html:29
+msgid "Your data is ready to be shared"
+msgstr "Të dhënat tuaja janë gati të ndahen"
+
+#: ckanext/requestdata/templates/snippets/add_dataset.html:36
+msgid "Add metadata-only"
+msgstr "Shto meta të dhëna vetëm"
+
+#: ckanext/requestdata/templates/snippets/add_dataset.html:51
+msgid "Add metadata"
+msgstr "Shto meta të dhëna"
+
+#: ckanext/requestdata/templates/snippets/add_dataset.html:56
+msgid "You want to be in control of who can access your data"
+msgstr ""
+"Ju dëshironi të jeni në kontrollin e kujt mund t'i qaseni të dhënave tuaja"
+
+#: ckanext/requestdata/templates/snippets/add_dataset.html:57
+msgid "You are not finished collecting data"
+msgstr "Ju nuk keni përfunduar mbledhjen e të dhënave"
+
+#: ckanext/requestdata/templates/snippets/add_dataset.html:58
+msgid "You have a plan to collect data"
+msgstr "Ju keni një plan për të mbledhur të dhëna"
