@@ -17,6 +17,11 @@ Example usage:
   <div class="requested-data-container__content-item--sections" style="align-items: center;">
     <h4>
       <a href="{{ package_url }}" title="{{ item.title }}">{{ item.title }}</a>
+      <div>
+        {% set requested_data_url = h.url_for(controller='ckanext.requestdata.controllers.request_data:RequestDataController', 
+            action='read_request', request_id=item.id, package_id=item.package_id) %}
+        <a href="{{ requested_data_url }}">{{ _('See More') }}</a>
+      </div>
     </h4>
 
     {% set counters = h.requestdata_get_request_counters(item.package_id) %}

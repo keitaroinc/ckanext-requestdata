@@ -18,6 +18,11 @@ Example usage:
   <div class="requested-data-container__content-item--sections" style="padding-top: 15px; padding-bottom: 15px;">
     <h4>
       <a href="{{ package_url }}" title="{{ item.title }}">{{ item.title }}</a>
+      <div>
+        {% set requested_data_url = h.url_for(controller='ckanext.requestdata.controllers.request_data:RequestDataController', 
+            action='read_request', request_id=item.id, package_id=item.package_id) %}
+        <a href="{{ requested_data_url }}">{{ _('See More') }}</a>
+      </div>
     </h4>
 
     {% snippet 'requestdata/snippets/requested_by_container.html', item=item %}

@@ -289,9 +289,11 @@ class RequestDataController(BaseController):
 
             maintainer_field_name = utils.get_maintainer_field_name()
 
-            data_request = toolkit.get_action('requestdata_request_show')(context, {'id': request_id, 'package_id': package_id})
-            pkg_dict = toolkit.get_action('package_show')(context, {'id': package_id})
-            
+            try:
+                data_request = toolkit.get_action('requestdata_request_show')(context, {'id': request_id, 'package_id': package_id})
+                pkg_dict = toolkit.get_action('package_show')(context, {'id': package_id})
+            except NotFound as e:
+                base.abort(404, e.message)
 
             maintainers = []
 
@@ -311,11 +313,17 @@ class RequestDataController(BaseController):
                     pass
             
             pkg_dict['maintainers'] = data_maintainers
-
+            data_request['title'] = pkg_dict['name']
             extra_vars = {
                 'data_request': data_request,
                 'pkg_dict': pkg_dict
             }
+
+            import json
+            print json.dumps(data_request, indent=2)
+
+            if data_request['state'] == 'archive':
+                data_request['requests_archived'] = [data_request]
 
             return base.render('requestdata/read_data_request.html',
                         extra_vars)

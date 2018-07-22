@@ -23,73 +23,7 @@
 {% block primary %}
   <div class="requests-main-container">
     {%- block read_data_request_section -%}
-        {%- block read_data_request_section_dataset -%}
-        <h2 title="{{ pkg_dict.title }}"><a href="{{ package_url }}">{{ pkg_dict.title }}</a></h2>
-        {%- block read_data_request_section_dataset_maintainers -%}
-        <div style="font-weight: initial;">
-            <span>{{ _('Maintained by') }} </span>
-            {% if pkg_dict.maintainers %}
-                {% for m in pkg_dict.maintainers %}
-                {% set profile = h.url_for(controller='user', action='read', id=m.id) %}
-                <a href="{{ profile }}" title="{{ _('View profile') }}">{{ m.fullname }}</a>{% if not loop.last %}, {% endif %}
-                {% endfor %}
-            {% else %}
-                <span>{{ _('Not found') }}</span>
-            {% endif %}
-        {%- endblock -%}
-        {%- endblock -%}
-        <section class="requestdata-content">
-            <div class="panel">
-                <div class="panel-body">
-                    <div class="row">
-                        <div class="col-md-12">
-                            {{ data_request.message_content }}
-                        </div>
-                    </div>
-                    <div class="row">
-                        {% set sender_profile = h.url_for(controller='user', action='read', id=data_request.sender_user_id) %}
-                        <div class="col-md-8">
-                            <a href="{{ sender_profile }}">
-                            {{ h.gravatar((c.userobj.email_hash if c and c.userobj else ''), size=24) }}{# FIXME: gravatar for the actual user #}
-                            </a>
-                            {% set orgs = h.requestdata_get_orgs_for_user(data_request.sender_user_id) %}
-                            <a href="{{ sender_profile }}" title="{{ _('View profile') }}">{{ data_request.sender_name }}</a>
-                            {% if c.userobj.sysadmin %}
-                            | <span>{{ g.site_title }}</span>
-                            {% else %}
-                            {% if orgs | length == 1 %}
-                                {% set org_url = h.url_for(controller='organization', action='read', id=orgs[0].name) %}
-                                {% set one_org = orgs[0] %}
-                                | <a href="{{ org_url }}">{{ orgs[0].title }}</a>
-                            {% elif orgs | length > 1 %}
-                                {% set more_orgs = [] %}
-                                {% for org in orgs[1:] %}
-                                {% if more_orgs.append(org.title) %}{% endif %}
-                                {% endfor %}
-                                {% set more_orgs = more_orgs | join(', ') %}
-                                | <a href="{{ org_url }}">{{ orgs[0].title }}</a> <span title="{{ more_orgs }}">({{ _('more') }})</span>
-                            {% endif %}
-                            {% endif %}
-                            <div class="requested-data-container__content-item--requested-by-date">
-                            {% if one_org %}
-                                {% set role = h.requestdata_role_in_org(data_request.sender_user_id, orgs[0].name) %}
-                                <span><b>{{ role | capitalize }} -</b></span>
-                            {% endif %}
-
-                            {% if c.userobj.sysadmin %}
-                                <span><b>{{ _('Sysadmin') }} -</b></span>
-                            {% endif %}
-                            <span>{{ _('Requested on') }} {{ h.render_datetime(data_request.created_at, date_format='%-d %B %Y') }}</span>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </div>
+        {% snippet 'requestdata/snippets/section_item_' + data_request.state + '.html', item=data_request, template_type='user', index=0%}
     {%- endblock -%}
   </div>
 {% endblock %}

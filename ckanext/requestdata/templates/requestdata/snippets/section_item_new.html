@@ -36,6 +36,11 @@ Example usage:
           {% else %}
             <span>{{ _('Not found') }}</span>
           {% endif %}
+          <div>
+            {% set requested_data_url = h.url_for(controller='ckanext.requestdata.controllers.request_data:RequestDataController', 
+                action='read_request', request_id=item.id, package_id=item.package_id) %}
+            <a href="{{ requested_data_url }}">{{ _('See More') }}</a>
+          </div>
         </p>
       {% endif %}
     </h4>
@@ -46,10 +51,11 @@ Example usage:
       {% set reply_action = h.url_for('requestdata_handle_new_request_action', username=c.userobj.name, request_action='reply') %}
 
       {% set maintainers = item.maintainers or [] %}
-
+      
       {% set reply_post_data = h.dump_json({'id': item.id, 'package_id': item.package_id, 'state': 'open', 'send_to': item.email_address, 'package_name': item.title, 'maintainers': maintainers, 'requested_by': item.sender_name, 'sender_id': item.sender_user_id}) %}
 
       {% set reject_action = h.url_for('requestdata_handle_new_request_action', username=c.userobj.name, request_action='reject') %}
+
       {% set reject_post_data = h.dump_json({'id': item.id, 'package_id': item.package_id, 'state': 'archive', 'send_to': item.email_address, 'rejected': True, 'package_name': item.title, 'maintainers': maintainers, 'requested_by': item.sender_name, 'sender_id': item.sender_user_id}) %}
 
       {% if c.userobj %}
