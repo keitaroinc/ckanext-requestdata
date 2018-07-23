@@ -23,7 +23,7 @@
 {% block primary %}
   <div class="requests-main-container">
     {%- block read_data_request_section -%}
-        {% snippet 'requestdata/snippets/section_item_' + data_request.state + '.html', item=data_request, template_type='user', index=0%}
+        {% snippet 'requestdata/snippets/section_item_' + data_request.state + '.html', item=data_request, template_type='user', index=0, single_item=True%}
     {%- endblock -%}
   </div>
 {% endblock %}

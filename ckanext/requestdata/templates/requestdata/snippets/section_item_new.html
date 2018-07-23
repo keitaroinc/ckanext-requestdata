@@ -19,35 +19,42 @@ Example usage:
 {% endif %}
 
 {% set package_url = h.url_for(controller='package', action='read', id=item.package_id) %}
+{% set single_item = single_item if single_item is defined else False %}
 
-<div class="requested-data-container__content-item" style="background-color: #FEFBED; {% if index == 1 %} border-top: 1px solid #CCCCCC {% endif %}">
-  <div class="requested-data-container__content-item--sections" style="padding-top: 15px;">
-    <h4>
+<div class="row {{ '' if single_item else 'row-striped' }}" style="{% if not single_item %}background-color: #FEFBED; {% if index == 1 %} border-top: 1px solid #CCCCCC {% endif %}{% endif %}">
+    <div class="{{ 'col-md-12' if single_item else 'col-md-4' }}">
+    <div class="{{ 'h2' if single_item else 'h4'}}">
+      {% block data_request_section_title_inner %}
       <a href="{{ package_url }}" title="{{ item.title }}">{{ item.title }}</a>
+      {% endblock %}
+    </div>
+    {% if template_type != 'user' %}
+      <p style="font-weight: initial;">
+        <span>{{ _('Maintained by') }} </span>
+        {% if item.maintainers %}
+          {% for m in item.maintainers %}
+            {% set profile = h.url_for(controller='user', action='read', id=m.id) %}
+            <a href="{{ profile }}" title="{{ _('View profile') }}">{{ m.fullname }}</a>{% if not loop.last %}, {% endif %}
+          {% endfor %}
+        {% else %}
+          <span>{{ _('Not found') }}</span>
+        {% endif %}
+      </p>
+    {% endif %}
+    {% if not single_item %}
+    <div>
+      {% set requested_data_url = h.url_for(controller='ckanext.requestdata.controllers.request_data:RequestDataController', 
+          action='read_request', request_id=item.id, package_id=item.package_id) %}
+      <a href="{{ requested_data_url }}">{{ _('See More') }}</a>
+    </div>
+    {% endif %}
+    </div>
 
-      {% if template_type != 'user' %}
-        <p style="font-weight: initial;">
-          <span>{{ _('Maintained by') }} </span>
-          {% if item.maintainers %}
-            {% for m in item.maintainers %}
-              {% set profile = h.url_for(controller='user', action='read', id=m.id) %}
-              <a href="{{ profile }}" title="{{ _('View profile') }}">{{ m.fullname }}</a>{% if not loop.last %}, {% endif %}
-            {% endfor %}
-          {% else %}
-            <span>{{ _('Not found') }}</span>
-          {% endif %}
-          <div>
-            {% set requested_data_url = h.url_for(controller='ckanext.requestdata.controllers.request_data:RequestDataController', 
-                action='read_request', request_id=item.id, package_id=item.package_id) %}
-            <a href="{{ requested_data_url }}">{{ _('See More') }}</a>
-          </div>
-        </p>
-      {% endif %}
-    </h4>
+    <div class="{{ 'col-md-12' if single_item else 'col-md-6' }}">
+    {% snippet 'requestdata/snippets/requested_by_container.html', item=item, single_item=single_item %}
+    </div>
 
-    {% snippet 'requestdata/snippets/requested_by_container.html', item=item %}
-
-    <div class="requested-data-container__content-item--actions requested-data-container__content-item--actions-new">
+    <div class="{{ 'col-md-2 col-md-offset-10' if single_item else 'col-md-2' }}">
       {% set reply_action = h.url_for('requestdata_handle_new_request_action', username=c.userobj.name, request_action='reply') %}
 
       {% set maintainers = item.maintainers or [] %}
@@ -92,5 +99,4 @@ Example usage:
               data-module-message_content="{{ item.message_content }}" style="border-color: transparent;">{{ _('Decline') }}</a>
       </div>
     </div>
-  </div>
 </div>
