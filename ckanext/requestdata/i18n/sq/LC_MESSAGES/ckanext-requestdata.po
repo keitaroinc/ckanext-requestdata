@@ -102,7 +102,7 @@ msgid ""
 "maintainer."
 msgstr ""
 "<br><br> Ky mirëmbajtës i të dhënave nuk ekziston.       Shkoni në "
-"institucionin tuaj <a href=\"\">Të dhënat e kërkuara</a>         faqe për"
+"organizatën tuaj <a href=\"\">Të dhënat e kërkuara</a>         faqe për"
 " të parë kërkesën e re. Ju lutemi gjithashtu, redaktoni grupin e të "
 "dhënave dhe caktoni          një mirëmbajtës të ri."
 
@@ -237,7 +237,7 @@ msgstr "Ju nuk keni qasje në të dhënat e kërkesës."
 
 #: ckanext/requestdata/logic/auth.py:43 ckanext/requestdata/logic/auth.py:63
 msgid "Organization not found."
-msgstr "Institucioni nuk u gjet."
+msgstr "Organizata nuk u gjet."
 
 #: ckanext/requestdata/logic/validators.py:15
 msgid "Please provide a valid email address."
@@ -253,7 +253,7 @@ msgstr "Parametri {0} duhet të jetë një vlerë boolean."
 
 #: ckanext/requestdata/logic/validators.py:74
 msgid "The user with email \"{0}\" is not part of this organization."
-msgstr "Përdoruesi me email \"{0}\" nuk është pjesë e këtij institucioni"
+msgstr "Përdoruesi me email \ "{0} \" nuk është pjesë e kësaj organizate."
 
 #: ckanext/requestdata/logic/validators.py:79
 msgid "The user with email \"{0}\" does not exist."
@@ -386,8 +386,8 @@ msgid ""
 "copyrights, links, disclosures or portal/organization information.</p>"
 msgstr ""
 "<p> <strong> Footer: </ strong> Fjalia e fundit. Këtu mund të shtoni të "
-"drejtat e autorit, lidhjet, zbulimet ose informacionet e portalit / "
-"institucionit. </ P>"
+"drejtat e autorit, lidhjet, zbulimet ose informatat e portalit / "
+"organizatës. </ P>"
 
 #: ckanext/requestdata/templates/admin/email.html:33
 msgid ""
@@ -435,7 +435,7 @@ msgstr "<li><b>mesazh</b>: fushë komentesh nga forma e kërkesës së të dhën
 
 #: ckanext/requestdata/templates/admin/email.html:42
 msgid "<li><b>organization</b>: list of all organizations</li>"
-msgstr "<li><b>institucion</b>: lista e të gjitha institucioneve</li>"
+msgstr "<li><b>organizatë</b>: listën e të gjitha organizatave</li>"
 
 #: ckanext/requestdata/templates/admin/email.html:43
 msgid "<li><b>email</b>: email address from the data requester</li>"
@@ -610,7 +610,7 @@ msgstr "Arkivuar"
 
 #: ckanext/requestdata/templates/requestdata/organization_requested_data.html:4
 msgid "Organizations"
-msgstr "Institucionet"
+msgstr "Organizatat"
 
 #: ckanext/requestdata/templates/requestdata/snippets/filter_requests.html:20
 msgid "Filter by"
