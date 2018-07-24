@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ckanext-requestdata 0.0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2018-07-19 12:57+0200\n"
+"POT-Creation-Date: 2018-07-23 15:47+0200\n"
 "PO-Revision-Date: 2018-06-09 00:35+0200\n"
 "Last-Translator: \n"
 "Language: mk\n"
@@ -279,7 +279,7 @@ msgid "New data request"
 msgstr "Ново барање за податоци"
 
 #: ckanext/requestdata/templates/header.html:39
-#: ckanext/requestdata/templates/requestdata/snippets/requested_by_container.html:15
+#: ckanext/requestdata/templates/requestdata/snippets/requested_by_container.html:16
 #: ckanext/requestdata/templates/requestdata/snippets/section_item_new.html:34
 msgid "View profile"
 msgstr "Видете профил"
@@ -633,15 +633,15 @@ msgstr "Ресетирај"
 msgid "Order by"
 msgstr "Редослед според"
 
-#: ckanext/requestdata/templates/requestdata/snippets/requested_by_container.html:29
+#: ckanext/requestdata/templates/requestdata/snippets/requested_by_container.html:30
 msgid "more"
 msgstr "повеќе"
 
-#: ckanext/requestdata/templates/requestdata/snippets/requested_by_container.html:39
+#: ckanext/requestdata/templates/requestdata/snippets/requested_by_container.html:42
 msgid "Sysadmin"
 msgstr "Системски администратор"
 
-#: ckanext/requestdata/templates/requestdata/snippets/requested_by_container.html:41
+#: ckanext/requestdata/templates/requestdata/snippets/requested_by_container.html:44
 msgid "Requested on"
 msgstr "Побарано на"
 
@@ -670,7 +670,7 @@ msgstr "Побарано од"
 msgid "Actions"
 msgstr "Акции"
 
-#: ckanext/requestdata/templates/requestdata/snippets/section_base.html:35
+#: ckanext/requestdata/templates/requestdata/snippets/section_base.html:37
 msgid "No requests found."
 msgstr "Не се пронајдени барања."
 
