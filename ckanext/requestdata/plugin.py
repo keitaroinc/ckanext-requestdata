@@ -172,12 +172,14 @@ class RequestdataPlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm,
 
     def get_auth_functions(self):
         requestdata_request_list_for_organization = auth.request_list_for_organization
+        requestdata_request_show = auth.request_show
         if utils.is_allowed_public_view():
             requestdata_request_list_for_organization = auth_allow_anonymous_access(requestdata_request_list_for_organization)
+            requestdata_request_show = auth_allow_anonymous_access(requestdata_request_show)
         
         return {
             'requestdata_request_create': auth.request_create,
-            'requestdata_request_show': auth.request_show,
+            'requestdata_request_show': requestdata_request_show,
             'requestdata_request_list_for_current_user':
             auth.request_list_for_current_user,
             'requestdata_request_list_for_organization':

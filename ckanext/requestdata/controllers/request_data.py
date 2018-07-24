@@ -294,6 +294,8 @@ class RequestDataController(BaseController):
                 pkg_dict = toolkit.get_action('package_show')(context, {'id': package_id})
             except NotFound as e:
                 base.abort(404, e.message)
+            except NotAuthorized:
+                base.abort(403, _('Not authorized to see this page.'))
 
             maintainers = []
 
@@ -318,9 +320,6 @@ class RequestDataController(BaseController):
                 'data_request': data_request,
                 'pkg_dict': pkg_dict
             }
-
-            import json
-            print json.dumps(data_request, indent=2)
 
             if data_request['state'] == 'archive':
                 data_request['requests_archived'] = [data_request]
