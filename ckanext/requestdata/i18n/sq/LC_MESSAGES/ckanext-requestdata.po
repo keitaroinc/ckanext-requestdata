@@ -253,7 +253,7 @@ msgstr "Parametri {0} duhet të jetë një vlerë boolean."
 
 #: ckanext/requestdata/logic/validators.py:74
 msgid "The user with email \"{0}\" is not part of this organization."
-msgstr "Përdoruesi me email \ "{0} \" nuk është pjesë e kësaj organizate."
+msgstr "Përdoruesi me email \"{0}\" nuk është pjesë e kësaj organizate."
 
 #: ckanext/requestdata/logic/validators.py:79
 msgid "The user with email \"{0}\" does not exist."
