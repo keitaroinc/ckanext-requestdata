@@ -499,3 +499,16 @@ h3 {
 .dropdown-menu {
   min-width: 180px;
 }
+
+.row-striped{
+  border-bottom: solid 1px #999;
+  padding-top: 10px;
+}
+
+.single-item-archive-content {
+  padding: 10px
+}
+
+.padded {
+  padding: 10px;
+}

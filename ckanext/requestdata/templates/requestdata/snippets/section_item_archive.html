@@ -12,15 +12,18 @@ Example usage:
 {% set is_ckan_greater_than_27 = h.requestdata_check_ckan_version(min_version='2.7') %}
 {% resource 'requestdata/expand-dataset.js' %}
 {% set package_url = h.url_for(controller='package', action='read', id=item.package_id) %}
+{% set single_item = single_item if single_item is defined else False %}
 
 <div class="requested-data-container__content-item" style="{% if index == 1 %} border-top: 1px solid #CCCCCC; {% endif %}">
   <div class="requested-data-container__content-item--sections" style="align-items: center;">
-    <h4>
+    <div class="{{ 'h2' if single_item else 'h4'}}">
+      {% block data_request_section_title_inner %}
       <a href="{{ package_url }}" title="{{ item.title }}">{{ item.title }}</a>
-    </h4>
-
+      {% endblock %}
+    </div>
     {% set counters = h.requestdata_get_request_counters(item.package_id) %}
     <div class="requested-data-container__content-item-counters">
+      {% block requests_counters_inner %}
       <span><span style="font-size: 20px;">{{ counters.requests }}</span> {{ _('Requests') }}</span>
       <span>
         <img src="/images/icons/reply.svg" class="requested-data-container__content-item-counters--icon requested-data-container__content-item-counters--replied" />
@@ -36,6 +39,7 @@ Example usage:
         <img src="/images/icons/shared.svg" class="requested-data-container__content-item-counters--icon" />
         <span>{{ counters.shared }} {{ _('Shared') }}</span>
       </span>
+      {% endblock %}
     </div>
 
     <div data-module="expand-dataset">
@@ -43,18 +47,20 @@ Example usage:
         {% set chevron_icon = 'fa fa-chevron-right' %}
       {% else %}
         {% set chevron_icon = 'icon-chevron-right' %}
-      {% endif %}   
+      {% endif %}
+      {%if not single_item %}  
       <i class="{% block collapse_icon %} {{chevron_icon}} archive-requests-arrow{% endblock %}" data-toggle="collapse" data-target="#{{ item.package_id }}"></i>
+      {% endif %}
     </div>
   </div>
 </div>
-<div id="{{ item.package_id }}" class="collapse requested-data-container__collapse">
+<div id="{{ item.package_id }}" class="collapse {{ 'fade in active single-item-archive-content' if single_item else 'requested-data-container__collapse' }}">
     {% for x in item.requests_archived %}
-      <div class="requested-data-container__collapse--sections requested-data-container__collapse--sections-archive" style="{% if loop.last %}border-bottom: none;{% endif %}">
-
-        {% snippet 'requestdata/snippets/requested_by_container.html', item=x, type='archive' %}
-
-        <div class="requested-data-container__collapse--request-status">
+      <div class="row" style="{% if loop.last %}border-bottom: none;{% endif %}">
+        <div class="{{ 'col-md-12' if single_item else 'col-md-6 col-md-offset-2' }}">
+        {% snippet 'requestdata/snippets/requested_by_container.html', item=x, type='archive', single_item=single_item %}
+        </div>
+        <div class="{{ 'col-md-4 col-md-offset-8 text-right' if single_item else 'col-md-4' }}">
           {% if x.rejected %}
             <div style="margin-right: 2px;">
               <img src="/images/icons/declined.svg" class="requested-data-container__content-item-counters--icon" />
@@ -73,6 +79,13 @@ Example usage:
               <span class="requested-data-container__collapse--status-text">{{ _('Dataset Not Shared') }}</span>
             {% endif %}
             </div>
+          {% endif %}
+          {%if not single_item %}  
+          <div class="pull-right">
+            {% set requested_data_url = h.url_for(controller='ckanext.requestdata.controllers.request_data:RequestDataController', 
+                action='read_request', request_id=x.id, package_id=x.package_id) %}
+            <a href="{{ requested_data_url }}">{{ _('See More') }}</a>
+          </div>
           {% endif %}
         </div>
       </div>

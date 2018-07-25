@@ -85,6 +85,11 @@ class RequestdataPlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm,
                     controller=request_data_controller,
                     action='send_request')
 
+        map.connect('requestdata_read_data_request',
+                    '/request_data/dataset/{package_id}/request/{request_id}',
+                    controller=request_data_controller,
+                    action='read_request')
+
         is_ckan_greater_than_27 = helpers.check_ckan_version(min_version='2.7')
         if is_ckan_greater_than_27:
             envelope_icon = 'envelope-o'
@@ -167,12 +172,14 @@ class RequestdataPlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm,
 
     def get_auth_functions(self):
         requestdata_request_list_for_organization = auth.request_list_for_organization
+        requestdata_request_show = auth.request_show
         if utils.is_allowed_public_view():
             requestdata_request_list_for_organization = auth_allow_anonymous_access(requestdata_request_list_for_organization)
+            requestdata_request_show = auth_allow_anonymous_access(requestdata_request_show)
         
         return {
             'requestdata_request_create': auth.request_create,
-            'requestdata_request_show': auth.request_show,
+            'requestdata_request_show': requestdata_request_show,
             'requestdata_request_list_for_current_user':
             auth.request_list_for_current_user,
             'requestdata_request_list_for_organization':

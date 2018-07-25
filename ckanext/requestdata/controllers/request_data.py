@@ -279,3 +279,50 @@ class RequestDataController(BaseController):
                 admins.append(data)
 
         return admins
+
+    def read_request(self, package_id, request_id):
+            context = {
+                'model': model,
+                'session': model.Session,
+                'user': c.user
+            }
+
+            maintainer_field_name = utils.get_maintainer_field_name()
+
+            try:
+                data_request = toolkit.get_action('requestdata_request_show')(context, {'id': request_id, 'package_id': package_id})
+                pkg_dict = toolkit.get_action('package_show')(context, {'id': package_id})
+            except NotFound as e:
+                base.abort(404, e.message)
+            except NotAuthorized:
+                base.abort(403, _('Not authorized to see this page.'))
+
+            maintainers = []
+
+            if pkg_dict.get(maintainer_field_name):
+                maintainers = pkg_dict.get(maintainer_field_name).split(',')
+
+
+            data_maintainers = []
+            # Get users objects from maintainers list
+            for id in maintainers:
+                try:
+                    user =\
+                        toolkit.get_action('user_show')({'skip_auth': True},
+                                                        {'id': id})
+                    data_maintainers.append({'id': user['id'], 'fullname': user.get('fullname') or user.get('name')})
+                except NotFound:
+                    pass
+            
+            pkg_dict['maintainers'] = data_maintainers
+            data_request['title'] = pkg_dict['name']
+            extra_vars = {
+                'data_request': data_request,
+                'pkg_dict': pkg_dict
+            }
+
+            if data_request['state'] == 'archive':
+                data_request['requests_archived'] = [data_request]
+
+            return base.render('requestdata/read_data_request.html',
+                        extra_vars)
