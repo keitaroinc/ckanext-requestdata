@@ -200,11 +200,11 @@ def enable_visibility():
     """Check whether to enable the visibility dropdown in dataset/new.
 
     The default is to disable. This value is controlled by the CKAN configuration value
-    ``ckanext.requestdata.enable_visibilty``.
+    ``ckanext.requestdata.enable_visibility``.
 
     Returns ``True`` if visibility is enabled in the configuration, otherwise ``False``.
     """
-    visibility = config.get('ckanext.requestdata.enable_visibilty', False)
+    visibility = config.get('ckanext.requestdata.enable_visibility', False)
     if not visibility:
         return False
     if isinstance(visibility, str):
