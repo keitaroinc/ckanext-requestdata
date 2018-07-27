@@ -8,6 +8,7 @@ from ckanext.requestdata.logic import auth
 from ckanext.requestdata import helpers
 from ckanext.requestdata.logic import validators
 from ckan.lib.plugins import DefaultTranslation
+from ckan.lib import helpers as core_helpers
 
 import ckanext.requestdata.utils as utils
 
@@ -176,7 +177,7 @@ class RequestdataPlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm,
         if utils.is_allowed_public_view():
             requestdata_request_list_for_organization = auth_allow_anonymous_access(requestdata_request_list_for_organization)
             requestdata_request_show = auth_allow_anonymous_access(requestdata_request_show)
-        
+
         return {
             'requestdata_request_create': auth.request_create,
             'requestdata_request_show': requestdata_request_show,
@@ -287,6 +288,8 @@ class RequestdataPlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm,
 def package_show_override(package_show):
     def _package_show(context, data_dict):
         result = package_show(context, data_dict)
+        result['title'] = core_helpers.dataset_display_name(result)
+        result['notes'] = core_helpers.get_translated(result, 'notes')
         from ckan.controllers.admin import get_sysadmins
         sysadmin = get_sysadmins()[0].name
         sysadmin_context = {'user': sysadmin, 'ignore_auth': True}
@@ -306,9 +309,9 @@ def package_show_override(package_show):
                     except:
                         raise
                 maintainer_emails.append(maintainer_email)
-            
+
             result[maintainer_field_name] = ','.join(maintainer_emails)
 
         return result
-    
+
     return _package_show
