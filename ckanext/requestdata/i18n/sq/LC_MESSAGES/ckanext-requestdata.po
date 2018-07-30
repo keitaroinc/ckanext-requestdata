@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ckanext-requestdata 0.0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2018-07-23 15:47+0200\n"
+"POT-Creation-Date: 2018-07-30 23:26+0200\n"
 "PO-Revision-Date: 2018-07-19 15:30+0200\n"
 "Last-Translator: \n"
 "Language: sq\n"
@@ -49,6 +49,7 @@ msgstr "Përditësuar me sukses."
 
 #: ckanext/requestdata/controllers/admin.py:74
 #: ckanext/requestdata/controllers/organization.py:35
+#: ckanext/requestdata/controllers/request_data.py:298
 #: ckanext/requestdata/controllers/user.py:52
 #: ckanext/requestdata/controllers/user.py:59
 msgid "Not authorized to see this page."
@@ -102,8 +103,8 @@ msgid ""
 "maintainer."
 msgstr ""
 "<br><br> Ky mirëmbajtës i të dhënave nuk ekziston.       Shkoni në "
-"organizatën tuaj <a href=\"\">Të dhënat e kërkuara</a>         faqe për"
-" të parë kërkesën e re. Ju lutemi gjithashtu, redaktoni grupin e të "
+"organizatën tuaj <a href=\"\">Të dhënat e kërkuara</a>         faqe për "
+"të parë kërkesën e re. Ju lutemi gjithashtu, redaktoni grupin e të "
 "dhënave dhe caktoni          një mirëmbajtës të ri."
 
 #: ckanext/requestdata/controllers/request_data.py:92
@@ -277,8 +278,8 @@ msgid "New data request"
 msgstr "kërkesë e re për të dhëna"
 
 #: ckanext/requestdata/templates/header.html:39
-#: ckanext/requestdata/templates/requestdata/snippets/requested_by_container.html:16
-#: ckanext/requestdata/templates/requestdata/snippets/section_item_new.html:34
+#: ckanext/requestdata/templates/requestdata/snippets/requested_by_container.html:12
+#: ckanext/requestdata/templates/requestdata/snippets/section_item_new.html:37
 msgid "View profile"
 msgstr "Shiko Profili"
 
@@ -510,6 +511,8 @@ msgstr "psh. Përmbajtja e mesazhit"
 #: ckanext/requestdata/templates/requestdata/organization_requested_data.html:9
 #: ckanext/requestdata/templates/requestdata/organization_requested_data.html:14
 #: ckanext/requestdata/templates/requestdata/organization_requested_data.html:28
+#: ckanext/requestdata/templates/requestdata/read_data_request.html:11
+#: ckanext/requestdata/templates/requestdata/read_data_request.html:21
 msgid "Dataset Requests"
 msgstr "Kërkesat për setin e të dhënave"
 
@@ -564,34 +567,18 @@ msgstr "joe@shembull.com"
 msgid "Data and Resources"
 msgstr "Të dhëna dhe burime"
 
-#: ckanext/requestdata/templates/package/snippets/resources_list.html:29
-#, python-format
+#: ckanext/requestdata/templates/package/snippets/resources_list.html:30
 msgid ""
-" <p class=\"empty\">The metadata is available for this dataset. To access"
-" the full dataset, please request data.</p> <a href=\"#\" class=\"btn "
-"btn-default pull-right\" style=\"margin-top: 10px;\"            data-"
-"module=\"modal-form\"            data-module-"
-"template_file=\"request_contact.html\"            data-module-"
-"submit_action=\"%(requestdata_action)s\"            data-module-"
-"post_data=\"%(request_post_data)s\"            data-module-"
-"is_logged_in=\"%(is_logged_in)s\"            data-module-"
-"is_hdx=\"%(is_hdx)s\"            data-module-"
-"redirect_url=\"%(redirect_url)s\"            data-module-"
-"is_current_user_a_maintainer=\"%(is_current_user_a_maintainer)s\""
-"         >Request data</a> "
+"The metadata is available for this dataset. To access the full dataset, "
+"please request data."
 msgstr ""
-" <p class=\"empty\">Metadata është në dispozicion për këtë grup të "
+"Metadata është në dispozicion për këtë grup të "
 "dhënash. Për të hyrë në grupin e të dhënave të plotë, ju lutemi kërkoni "
-"të dhëna.</p> <a href=\"#\" class=\"btn btn-default pull-right\" style"
-"=\"margin-top: 10px;\"            data-module=\"modal-form\"            "
-"data-module-template_file=\"request_contact.html\"            data-"
-"module-submit_action=\"%(requestdata_action)s\"            data-module-"
-"post_data=\"%(request_post_data)s\"            data-module-"
-"is_logged_in=\"%(is_logged_in)s\"            data-module-"
-"is_hdx=\"%(is_hdx)s\"            data-module-"
-"redirect_url=\"%(redirect_url)s\"            data-module-"
-"is_current_user_a_maintainer=\"%(is_current_user_a_maintainer)s\""
-"         >Request data</a> "
+"të dhëna."
+
+#: ckanext/requestdata/templates/package/snippets/resources_list.html:40
+msgid "Request data"
+msgstr "Kërkoni të dhëna"
 
 #: ckanext/requestdata/templates/requestdata/my_requested_data.html:6
 msgid "Users"
@@ -609,8 +596,13 @@ msgid "Archived"
 msgstr "Arkivuar"
 
 #: ckanext/requestdata/templates/requestdata/organization_requested_data.html:4
+#: ckanext/requestdata/templates/requestdata/read_data_request.html:6
 msgid "Organizations"
 msgstr "Organizatat"
+
+#: ckanext/requestdata/templates/requestdata/read_data_request.html:16
+msgid "Dataset Request"
+msgstr "Kërkesa e setit të të dhënave"
 
 #: ckanext/requestdata/templates/requestdata/snippets/filter_requests.html:20
 msgid "Filter by"
@@ -628,7 +620,7 @@ msgstr "Rivendosur"
 msgid "Order by"
 msgstr "Rendit nga"
 
-#: ckanext/requestdata/templates/requestdata/snippets/requested_by_container.html:30
+#: ckanext/requestdata/templates/requestdata/snippets/requested_by_container.html:26
 msgid "more"
 msgstr "më shumë"
 
@@ -641,19 +633,19 @@ msgid "Requested on"
 msgstr "Kërkuar më"
 
 #: ckanext/requestdata/templates/requestdata/snippets/requests_header.html:9
-#: ckanext/requestdata/templates/requestdata/snippets/section_item_archive.html:27
-#: ckanext/requestdata/templates/requestdata/snippets/section_item_archive.html:65
+#: ckanext/requestdata/templates/requestdata/snippets/section_item_archive.html:30
+#: ckanext/requestdata/templates/requestdata/snippets/section_item_archive.html:71
 msgid "Replied"
 msgstr "Përgjigjur"
 
 #: ckanext/requestdata/templates/requestdata/snippets/requests_header.html:14
-#: ckanext/requestdata/templates/requestdata/snippets/section_item_archive.html:32
-#: ckanext/requestdata/templates/requestdata/snippets/section_item_archive.html:61
+#: ckanext/requestdata/templates/requestdata/snippets/section_item_archive.html:35
+#: ckanext/requestdata/templates/requestdata/snippets/section_item_archive.html:67
 msgid "Denied"
 msgstr "Mohuar"
 
 #: ckanext/requestdata/templates/requestdata/snippets/requests_header.html:19
-#: ckanext/requestdata/templates/requestdata/snippets/section_item_archive.html:37
+#: ckanext/requestdata/templates/requestdata/snippets/section_item_archive.html:40
 msgid "Shared"
 msgstr "Përbashkët"
 
@@ -669,45 +661,51 @@ msgstr "Aksionet"
 msgid "No requests found."
 msgstr "Asnjë kërkesë nuk u gjet."
 
-#: ckanext/requestdata/templates/requestdata/snippets/section_item_archive.html:24
+#: ckanext/requestdata/templates/requestdata/snippets/section_item_archive.html:27
 msgid "Requests"
 msgstr "Kërkesat"
 
-#: ckanext/requestdata/templates/requestdata/snippets/section_item_archive.html:70
+#: ckanext/requestdata/templates/requestdata/snippets/section_item_archive.html:76
 msgid "Dataset Shared"
 msgstr "Grupi i të dhënave i ndarë"
 
-#: ckanext/requestdata/templates/requestdata/snippets/section_item_archive.html:73
+#: ckanext/requestdata/templates/requestdata/snippets/section_item_archive.html:79
 msgid "Dataset Not Shared"
 msgstr "Seti i të dhënave nuk i ndarë"
 
-#: ckanext/requestdata/templates/requestdata/snippets/section_item_new.html:30
+#: ckanext/requestdata/templates/requestdata/snippets/section_item_archive.html:87
+#: ckanext/requestdata/templates/requestdata/snippets/section_item_new.html:48
+#: ckanext/requestdata/templates/requestdata/snippets/section_item_open.html:29
+msgid "See More"
+msgstr "Shiko më shumë"
+
+#: ckanext/requestdata/templates/requestdata/snippets/section_item_new.html:33
 msgid "Maintained by"
 msgstr "Mirëmbajtur nga"
 
-#: ckanext/requestdata/templates/requestdata/snippets/section_item_new.html:37
+#: ckanext/requestdata/templates/requestdata/snippets/section_item_new.html:40
 msgid "Not found"
 msgstr "Nuk u gjet"
 
-#: ckanext/requestdata/templates/requestdata/snippets/section_item_new.html:73
+#: ckanext/requestdata/templates/requestdata/snippets/section_item_new.html:86
 msgid "Reply"
 msgstr "Përgjigje"
 
-#: ckanext/requestdata/templates/requestdata/snippets/section_item_new.html:86
+#: ckanext/requestdata/templates/requestdata/snippets/section_item_new.html:99
 msgid "Decline"
 msgstr "Rënie"
 
-#: ckanext/requestdata/templates/requestdata/snippets/section_item_open.html:32
+#: ckanext/requestdata/templates/requestdata/snippets/section_item_open.html:44
 msgid "Keep track of who you share datasets with. Did you share the dataset?"
 msgstr ""
 "Mbani gjurmët e kujt i ndan setet e të dhënave. A e keni ndarë setin e të"
 " dhënave?"
 
-#: ckanext/requestdata/templates/requestdata/snippets/section_item_open.html:41
+#: ckanext/requestdata/templates/requestdata/snippets/section_item_open.html:53
 msgid "Yes"
 msgstr "Po"
 
-#: ckanext/requestdata/templates/requestdata/snippets/section_item_open.html:50
+#: ckanext/requestdata/templates/requestdata/snippets/section_item_open.html:62
 msgid "No"
 msgstr "Jo"
 
@@ -748,4 +746,42 @@ msgstr "Ju nuk keni përfunduar mbledhjen e të dhënave"
 #: ckanext/requestdata/templates/snippets/add_dataset.html:58
 msgid "You have a plan to collect data"
 msgstr "Ju keni një plan për të mbledhur të dhëna"
+
+#~ msgid ""
+#~ " <p class=\"empty\">The metadata is "
+#~ "available for this dataset. To access"
+#~ " the full dataset, please request "
+#~ "data.</p> <a href=\"#\" class=\"btn btn-"
+#~ "default pull-right\" style=\"margin-top: "
+#~ "10px;\"            data-module=\"modal-form\""
+#~ "            data-module-"
+#~ "template_file=\"request_contact.html\"            data-"
+#~ "module-submit_action=\"%(requestdata_action)s\"            "
+#~ "data-module-post_data=\"%(request_post_data)s\""
+#~ "            data-module-"
+#~ "is_logged_in=\"%(is_logged_in)s\"            data-"
+#~ "module-is_hdx=\"%(is_hdx)s\"            data-module-"
+#~ "redirect_url=\"%(redirect_url)s\"            data-"
+#~ "module-"
+#~ "is_current_user_a_maintainer=\"%(is_current_user_a_maintainer)s\""
+#~ "         >Request data</a> "
+#~ msgstr ""
+#~ " <p class=\"empty\">Metadata është në "
+#~ "dispozicion për këtë grup të dhënash."
+#~ " Për të hyrë në grupin e të "
+#~ "dhënave të plotë, ju lutemi kërkoni "
+#~ "të dhëna.</p> <a href=\"#\" class=\"btn "
+#~ "btn-default pull-right\" style=\"margin-"
+#~ "top: 10px;\"            data-module=\"modal-"
+#~ "form\"            data-module-"
+#~ "template_file=\"request_contact.html\"            data-"
+#~ "module-submit_action=\"%(requestdata_action)s\"            "
+#~ "data-module-post_data=\"%(request_post_data)s\""
+#~ "            data-module-"
+#~ "is_logged_in=\"%(is_logged_in)s\"            data-"
+#~ "module-is_hdx=\"%(is_hdx)s\"            data-module-"
+#~ "redirect_url=\"%(redirect_url)s\"            data-"
+#~ "module-"
+#~ "is_current_user_a_maintainer=\"%(is_current_user_a_maintainer)s\""
+#~ "         >Request data</a> "
 

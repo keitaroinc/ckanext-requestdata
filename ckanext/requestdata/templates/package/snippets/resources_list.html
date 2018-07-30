@@ -26,8 +26,8 @@
       {% set request_post_data = h.dump_json({'package_id':pkg.id, 'package_name': pkg.name, 'package_title':pkg.title}) %}
       {% set is_current_user_a_maintainer = h.requestdata_is_current_user_a_maintainer(pkg.maintainer) %}
 
-      {% trans url=h.url_for(controller='package', action='new_resource', id=pkg.name) %}
-        <p class="empty">The metadata is available for this dataset. To access the full dataset, please request data.</p>
+      {% set url=h.url_for(controller='package', action='new_resource', id=pkg.name) %}
+        <p class="empty">{{ _('The metadata is available for this dataset. To access the full dataset, please request data.')}}</p>
         <a href="#" class="btn btn-default pull-right" style="margin-top: 10px;"
            data-module="modal-form"
            data-module-template_file="request_contact.html"
@@ -37,8 +37,7 @@
            data-module-is_hdx="{{ is_hdx }}"
            data-module-redirect_url="{{ redirect_url }}"
            data-module-is_current_user_a_maintainer="{{ is_current_user_a_maintainer }}"
-        >Request data</a>
-      {% endtrans %}
+        >{{ _('Request data')}}</a>
     {% endif %}
     {% if pkg.type == 'hdx-requestdata-metadata-only' %}
       <div class="container-subpanel">
