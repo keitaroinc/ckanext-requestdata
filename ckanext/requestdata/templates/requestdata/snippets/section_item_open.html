@@ -35,6 +35,7 @@ Example usage:
     {% snippet 'requestdata/snippets/requested_by_container.html', item=item, single_item=single_item %}
   </div>
   <div class="{{ 'col-md-2 col-md-offset-10' if single_item else 'col-md-2' }} padded" >
+      {% if c.userobj %}
       {% set action_shared = h.url_for('requestdata_handle_open_request_action', username=c.userobj.name, request_action='shared') %}
       {% set post_data_shared = h.dump_json({'id': item.id, 'package_id': item.package_id, 'state': 'archive', 'data_shared': True}) %}
 
@@ -61,5 +62,6 @@ Example usage:
           data-module-refresh_on_success="1"
           data-module-disable_action_buttons="1">{{ _('No') }}</a>
       </div>
+      {% endif %}
   </div>
 </div>
