@@ -20,6 +20,10 @@ Example usage:
 
 {% set package_url = h.url_for(controller='package', action='read', id=item.package_id) %}
 {% set single_item = single_item if single_item is defined else False %}
+{% set user_is_allowed_actions = user_is_allowed_actions if user_is_allowed_actions is defined else False %}
+{% if template_type == 'user' %}
+{% set user_is_allowed_actions = True %}
+{% endif %}
 
 <div class="row {{ '' if single_item else 'row-striped' }}" style="{% if not single_item %}background-color: #FEFBED; {% if index == 1 %} border-top: 1px solid #CCCCCC {% endif %}{% endif %}">
     <div class="{{ 'col-md-12' if single_item else 'col-md-4' }}">
@@ -72,6 +76,7 @@ Example usage:
       {% endif %}
 
       {% set redirect_url = h.url_for(controller='user', action='login') %}
+      {% if c.userobj and user_is_allowed_actions %}
       <div class="requested-data-container-inline">
          <a {% block reply_button_class %} class="btn btn-primary requested-data-container__actions--reply" {% endblock %}
             style="margin-right: 8px;"
@@ -98,5 +103,6 @@ Example usage:
               data-module-disable_action_buttons="1"
               data-module-message_content="{{ item.message_content }}" style="border-color: transparent;">{{ _('Decline') }}</a>
       </div>
+      {% endif %}
     </div>
 </div>

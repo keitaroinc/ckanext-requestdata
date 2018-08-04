@@ -223,6 +223,8 @@ class RequestdataPlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm,
                 helpers.enable_visibility,
             'requestdata_check_access':
                 helpers.requestdata_check_access,
+            'requestdata_is_allowed_to_take_actions':
+                helpers.is_allowed_to_take_actions,
         }
 
     # IDatasetForm

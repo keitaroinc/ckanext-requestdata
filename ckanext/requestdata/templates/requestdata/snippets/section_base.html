@@ -5,12 +5,14 @@ Creates base layout for a section.
 state - The state in which a request belongs to. Can be new|open|archive.
 title - The title of the section.
 requests - The requests that need to be shown.
+user_is_allowed_actions - (optional) is the user allowed to perform actions like to 'Reply' or 'Close' the request
 
 Example usage:
   {% snippet 'requestdata/snippets/section_base.html', state='new', title='New', requests=requests_new %}
 
 #}
 
+{% set user_is_allowed_actions = user_is_allowed_actions if user_is_allowed_actions is defined else False %}
 {% set total_requests = requests|length  %}
 
 <section class="requested-data-container">
@@ -29,7 +31,7 @@ Example usage:
     <div class="requested-data-container__content">
       {%- block requests_list -%}
       {% for item in requests %}
-        {% snippet 'requestdata/snippets/section_item_' + state + '.html', item=item, template_type=template_type, index=loop.index%}
+        {% snippet 'requestdata/snippets/section_item_' + state + '.html', item=item, template_type=template_type, index=loop.index, user_is_allowed_actions=user_is_allowed_actions%}
       {% endfor %}
       {%- endblock -%}
     </div>
