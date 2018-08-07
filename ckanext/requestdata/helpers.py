@@ -12,7 +12,7 @@ from ckan.lib import base
 from ckan.plugins import toolkit
 from ckan.model.user import User
 from ckan.lib.helpers import check_access as helper_check_access
-from ckanext.requestdata.utils import is_allowed_public_view
+from ckanext.requestdata.utils import is_allowed_public_view, looks_like_ckan_id
 
 try:
     # CKAN 2.7 and later
@@ -216,3 +216,29 @@ def requestdata_check_access(action, data_dict, allow_public_if_set=False):
     if allow_public_if_set and is_allowed_public_view():
         return True
     return helper_check_access(action, data_dict)
+
+
+def is_allowed_to_take_actions(user, organization):
+    if not user:
+        return False
+    context = {'ignore_auth': True}
+    try:
+        user = toolkit.get_action('user_show')(context, {'id': user})
+        if user.get('sysadmin'):
+           return True
+    except toolkit.NotFound:
+        return False
+    
+    user_orgs = toolkit.get_action('organization_list_for_user')(context, {
+        'id': user['id'],
+        'permission': 'admin',
+    })
+    
+    if user_orgs:
+        for org in user_orgs:
+            if looks_like_ckan_id(organization) and organization == org['id']:
+                return True
+            elif organization == org['name']:
+                return True
+
+    return False

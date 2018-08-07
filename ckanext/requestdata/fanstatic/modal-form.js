@@ -24,8 +24,21 @@ this.ckan.module('modal-form', function($) {
     return {
         initialize: function() {
             $.proxyAll(this, /_on/);
+            var locale = $('html').attr('lang')
 
             this.el.on('click', this._onClick);
+            this.sandbox.client.getTemplate = function (filename, params, success, error) {
+                var url = this.url(locale +'/api/1/util/snippet/' + encodeURIComponent(filename));
+          
+                // Allow function to be called without params argument.
+                if (typeof params === 'function') {
+                  error   = success;
+                  success = params;
+                  params  = {};
+                }
+          
+                return jQuery.get(url, params || {}).then(success, error);
+              }
         },
         // Whether or not the rendered snippet has already been received from CKAN.
         _snippetReceived: false,

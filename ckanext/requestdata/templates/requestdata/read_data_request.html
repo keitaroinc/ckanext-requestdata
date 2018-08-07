@@ -1,6 +1,10 @@
 {% extends "page.html" %}
 
 {% set package_url = h.url_for(controller='package', action='read', id=pkg_dict.id) %}
+{% set user_is_allowed_actions = False%}
+{% if c.user %}
+{% set user_is_allowed_actions = h.requestdata_is_allowed_to_take_actions(c.user, pkg_dict.organization.id)%}
+{% endif %}
 
 {% block breadcrumb_content %}
   <li>{% link_for _('Organizations'), controller='organization', action='index' %}</li>
@@ -23,7 +27,7 @@
 {% block primary %}
   <div class="requests-main-container">
     {%- block read_data_request_section -%}
-        {% snippet 'requestdata/snippets/section_item_' + data_request.state + '.html', item=data_request, template_type='user', index=0, single_item=True%}
+        {% snippet 'requestdata/snippets/section_item_' + data_request.state + '.html', item=data_request, template_type='user', index=0, single_item=True, user_is_allowed_actions=user_is_allowed_actions%}
     {%- endblock -%}
   </div>
 {% endblock %}

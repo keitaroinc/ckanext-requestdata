@@ -1,4 +1,8 @@
 {% extends "page.html" %}
+{% set user_is_allowed_actions = False %}
+{% if c.user %}
+{% set user_is_allowed_actions = h.requestdata_is_allowed_to_take_actions(c.user, org_name) %}
+{% endif %}
 
 {% block breadcrumb_content %}
   <li>{% link_for _('Organizations'), controller='organization', action='index' %}</li>
@@ -27,7 +31,7 @@
   <div class="requests-main-container">
     {% snippet 'requestdata/snippets/requests_header.html', title=_('Dataset Requests'), total_requests=total_requests, type='organization', maintainers=maintainers, org_name=org_name, counters=counters %}
     <br>
-    {% snippet 'requestdata/snippets/section_base.html', state='new', title=_('New'), requests=requests_new %}
+    {% snippet 'requestdata/snippets/section_base.html', state='new', title=_('New'), requests=requests_new, user_is_allowed_actions=user_is_allowed_actions %}
     {% snippet 'requestdata/snippets/section_base.html', state='open', title=_('Open'), requests=requests_open %}
 
     {% if requests_archive %}
