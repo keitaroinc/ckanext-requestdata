@@ -179,7 +179,8 @@ def request_list_for_organization(context, data_dict):
 
     data_dict = {
         'fq': 'organization:' + org['name'],
-        'rows': 1000000
+        'rows': 1000000,
+        'include_private': True
     }
 
     packages = toolkit.get_action('package_search')(context, data_dict)
