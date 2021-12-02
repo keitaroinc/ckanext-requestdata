@@ -2,7 +2,7 @@
 
 import logging
 import json
-import unicodecsv as csv
+import csv
 from io import StringIO
 from collections import Counter
 
@@ -44,7 +44,7 @@ def email():
     data = request.form
     if 'save' in data:
         try:
-            data_dict = dict(request.POST)
+            data_dict = request.form
             del data_dict['save']
             data = utils.get_action('config_option_update', data_dict)
             h.flash_success(_('Successfully updated.'))
@@ -87,64 +87,64 @@ def requests_data():
     organizations_for_filters = {}
     reverse = True
     q_organizations = []
-    request_params = request.values
+    request_params = request.args
     order = 'last_request_created_at'
 
     for item in request_params:
         if item == 'filter_by_maintainers':
-            for x in request_params[item]:
-                params = x.split('|')
-                org = params[0].split(':')[1]
-                maintainers = params[1].split(':')[1].split(',')
-                maintainers_ids = []
+            x = request_params[item]
+            params = x.split('|')
+            org = params[0].split(':')[1]
+            maintainers = params[1].split(':')[1].split(',')
+            maintainers_ids = []
 
-                if maintainers[0] != '*all*':
-                    for i in maintainers:
-                        try:
-                            user = utils.get_action('user_show', {'id': i})
-                            maintainers_ids.append(user['id'])
-                        except NotFound:
-                            pass
-
-                    data = {
-                        'org': org,
-                        'maintainers': maintainers_ids
-                    }
-
-                    filtered_maintainers.append(data)
-        elif item == 'filter_by_organizations':
-            filtered_organizations = request_params[item][0].split(',')
-        elif item == 'order_by':
-            for x in request_params[item]:
-                params = x.split('|')
-                q_organization = params[1].split(':')[1]
-                order = params[0]
-
-                if 'asc' in order:
-                    reverse = False
-                    order = 'title'
-                    current_order_name = _('Alphabetical (A-Z)')
-                elif 'desc' in order:
-                    reverse = True
-                    order = 'title'
-                    current_order_name = _('Alphabetical (Z-A)')
-                elif 'most_recent' in order:
-                    reverse = True
-                    order = 'last_request_created_at'
-                    current_order_name = _('Most Recent')
-                elif 'shared' in order:
-                    current_order_name = _('Sharing Rate')
-                elif 'requests' in order:
-                    current_order_name = _('Requests Rate')
+            if maintainers[0] != '*all*':
+                for i in maintainers:
+                    try:
+                        user = utils.get_action('user_show', {'id': i})
+                        maintainers_ids.append(user['id'])
+                    except NotFound:
+                        pass
 
                 data = {
-                    'org': q_organization,
-                    'order': order,
-                    'reverse': reverse,
-                    'current_order_name': current_order_name
+                    'org': org,
+                    'maintainers': maintainers_ids
                 }
 
-                q_organizations.append(data)
+                filtered_maintainers.append(data)
+        elif item == 'filter_by_organizations':
+            filtered_organizations = request_params[item].split(',')
+        elif item == 'order_by':
+            x = request_params[item]
+            params = x.split('|')
+            q_organization = params[1].split(':')[1]
+            order = params[0]
+
+            if 'asc' in order:
+                reverse = False
+                order = 'title'
+                current_order_name = _('Alphabetical (A-Z)')
+            elif 'desc' in order:
+                reverse = True
+                order = 'title'
+                current_order_name = _('Alphabetical (Z-A)')
+            elif 'most_recent' in order:
+                reverse = True
+                order = 'last_request_created_at'
+                current_order_name = _('Most Recent')
+            elif 'shared' in order:
+                current_order_name = _('Sharing Rate')
+            elif 'requests' in order:
+                current_order_name = _('Requests Rate')
+
+            data = {
+                'org': q_organization,
+                'order': order,
+                'reverse': reverse,
+                'current_order_name': current_order_name
+            }
+
+            q_organizations.append(data)
 
             for x in requests:
                 package = utils.get_action('package_show', {'id': x['package_id']})
@@ -378,10 +378,9 @@ def download_requests_data():
         return resp
 
     if 'csv' in file_format.lower():
-        writer = csv.writer(s, encoding='utf-8')
+        writer = csv.writer(s, delimiter=',')
         header = True
         for k in requests:
-            print(type(k.values()))
             if header:
                 writer.writerow(k.keys())
                 header = False

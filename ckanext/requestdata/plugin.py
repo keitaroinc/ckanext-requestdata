@@ -307,7 +307,8 @@ def package_show_override(package_show):
         result['title'] = core_helpers.dataset_display_name(result)
         result['notes'] = core_helpers.get_translated(result, 'notes')
         from ckan.views.admin import _get_sysadmins
-        sysadmin = _get_sysadmins()[0].name
+        sysadmins = [a.name for a in _get_sysadmins()]
+        sysadmin = sysadmins[0]
         sysadmin_context = {'user': sysadmin, 'ignore_auth': True}
 
         maintainer_field_name = utils.get_maintainer_field_name()
