@@ -40,6 +40,7 @@ def request_create(context, data_dict):
                                context)
 
     if errors:
+        print(errors)
         raise toolkit.ValidationError(errors)
 
     maintainer_field_name = utils.get_maintainer_field_name()

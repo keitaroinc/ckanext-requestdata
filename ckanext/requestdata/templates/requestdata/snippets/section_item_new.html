@@ -10,15 +10,15 @@ Example usage:
 
 #}
 
-{% resource 'requestdata/modal-form.js' %}
+{% asset 'requestdata/modal-form' %}
 
 {% set is_hdx_portal = h.requestdata_is_hdx_portal() %}
 
 {% if not is_hdx_portal %}
-  {% resource 'requestdata/css/new-requests.css' %}
+  {% asset 'requestdata/new-requests-style' %}
 {% endif %}
 
-{% set package_url = h.url_for(controller='package', action='read', id=item.package_id) %}
+{% set package_url = h.url_for('dataset.read', id=item.package_id) %}
 {% set single_item = single_item if single_item is defined else False %}
 {% set user_is_allowed_actions = user_is_allowed_actions if user_is_allowed_actions is defined else False %}
 {% if template_type == 'user' %}
@@ -47,8 +47,7 @@ Example usage:
     {% endif %}
     {% if not single_item %}
     <div>
-      {% set requested_data_url = h.url_for(controller='ckanext.requestdata.controllers.request_data:RequestDataController', 
-          action='read_request', request_id=item.id, package_id=item.package_id) %}
+      {% set requested_data_url = h.url_for('request_data_blueprint.read_request', request_id=item.id, package_id=item.package_id) %}
       <a href="{{ requested_data_url }}">{{ _('See More') }}</a>
     </div>
     {% endif %}
@@ -59,13 +58,13 @@ Example usage:
     </div>
 
     <div class="{{ 'col-md-2 col-md-offset-10' if single_item else 'col-md-2' }}">
-      {% set reply_action = h.url_for('requestdata_handle_new_request_action', username=c.userobj.name, request_action='reply') %}
+      {% set reply_action = h.url_for('user_blueprint.handle_new_request_action', username=c.userobj.name, request_action='reply') %}
 
       {% set maintainers = item.maintainers or [] %}
       
       {% set reply_post_data = h.dump_json({'id': item.id, 'package_id': item.package_id, 'state': 'open', 'send_to': item.email_address, 'package_name': item.title, 'maintainers': maintainers, 'requested_by': item.sender_name, 'sender_id': item.sender_user_id}) %}
 
-      {% set reject_action = h.url_for('requestdata_handle_new_request_action', username=c.userobj.name, request_action='reject') %}
+      {% set reject_action = h.url_for('user_blueprint.handle_new_request_action', username=c.userobj.name, request_action='reject') %}
 
       {% set reject_post_data = h.dump_json({'id': item.id, 'package_id': item.package_id, 'state': 'archive', 'send_to': item.email_address, 'rejected': True, 'package_name': item.title, 'maintainers': maintainers, 'requested_by': item.sender_name, 'sender_id': item.sender_user_id}) %}
 

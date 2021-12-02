@@ -10,7 +10,9 @@ Example usage:
 #}
 
 {% set is_ckan_greater_than_27 = h.requestdata_check_ckan_version(min_version='2.7') %}
-{% resource 'requestdata/expand-dataset.js' %}
+
+{% asset 'requestdata/expand-dataset' %}
+
 {% set package_url = h.url_for(controller='package', action='read', id=item.package_id) %}
 {% set single_item = single_item if single_item is defined else False %}
 
@@ -82,8 +84,7 @@ Example usage:
           {% endif %}
           {%if not single_item %}  
           <div class="pull-right">
-            {% set requested_data_url = h.url_for(controller='ckanext.requestdata.controllers.request_data:RequestDataController', 
-                action='read_request', request_id=x.id, package_id=x.package_id) %}
+            {% set requested_data_url = h.url_for('request_data_blueprint.read_request', request_id=x.id, package_id=x.package_id) %}
             <a href="{{ requested_data_url }}">{{ _('See More') }}</a>
           </div>
           {% endif %}

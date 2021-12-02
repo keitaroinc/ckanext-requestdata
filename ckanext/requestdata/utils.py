@@ -43,7 +43,7 @@ def get_action(action, data_dict):
 
 
 def use_standard_package_type():
-    return _parse_bool(config.get('ckanext.requestdata.use_standard_package_type', 'false'))
+    return _parse_bool(config.get('ckanext.requestdata.use_standard_package_type', 'true'))
 
 
 def _parse_bool(val):

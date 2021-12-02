@@ -1,5 +1,0 @@
-{% set is_metadata = h.requestdata_has_query_param('metadata') %}
-
-{% if not is_metadata %}
-  {% ckan_extends %}
-{% endif %}

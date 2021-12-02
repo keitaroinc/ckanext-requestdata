@@ -3,6 +3,7 @@ import datetime
 
 from sqlalchemy import Table, Column, Index, ForeignKey
 from sqlalchemy import types, func
+from sqlalchemy.sql import text
 
 from sqlalchemy.engine.reflection import Inspector
 from ckan.model.meta import metadata, mapper, Session
@@ -116,7 +117,7 @@ class ckanextRequestdata(DomainObject):
 
         query = Session.query(self).autoflush(False)
         query = query.filter_by(**kwds)
-        query = query.order_by(order)
+        query = query.order_by(text(order))
         return query.all()
 
     @classmethod
@@ -132,7 +133,7 @@ class ckanextRequestdata(DomainObject):
                                   ckanextMaintainers.request_data_id,
                                   ckanextMaintainers.maintainer_id ==
                                   maintainer_id)\
-                          .order_by(order).all()
+                          .order_by(text(order)).all()
 
         requests_data = []
         for r in requests:

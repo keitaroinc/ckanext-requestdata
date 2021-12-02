@@ -1,8 +1,8 @@
-{%- if not h.requestdata_enable_visibility() -%}
-{% resource 'requestdata/disable-visibility.js' %}
-{%- endif -%}
-
 {% ckan_extends %}
+
+{%- if not h.requestdata_enable_visibility() -%}
+  {% asset 'requestdata/disable-visibility' %}
+{%- endif -%}
 
 {% block save_button %}
   {% set is_metadata = h.requestdata_has_query_param('metadata') %}

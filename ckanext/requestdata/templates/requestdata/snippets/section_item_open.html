@@ -9,7 +9,7 @@ Example usage:
 
 #}
 
-{% resource 'requestdata/handle-open-request.js' %}
+{% asset 'requestdata/handle-open-request' %}
 
 {% set package_url = h.url_for(controller='package', action='read', id=item.package_id) %}
 {% set sender_profile = h.url_for(controller='user', action='read', id=item.sender_user_id) %}
@@ -24,8 +24,7 @@ Example usage:
     </div>
     {% if not single_item %}
     <div>
-      {% set requested_data_url = h.url_for(controller='ckanext.requestdata.controllers.request_data:RequestDataController', 
-          action='read_request', request_id=item.id, package_id=item.package_id) %}
+      {% set requested_data_url = h.url_for('request_data_blueprint.read_request', request_id=item.id, package_id=item.package_id) %}
       <a href="{{ requested_data_url }}">{{ _('See More') }}</a>
     </div>
     {% endif %}
@@ -36,10 +35,10 @@ Example usage:
   </div>
   <div class="{{ 'col-md-2 col-md-offset-10' if single_item else 'col-md-2' }} padded" >
       {% if c.userobj %}
-      {% set action_shared = h.url_for('requestdata_handle_open_request_action', username=c.userobj.name, request_action='shared') %}
+      {% set action_shared = h.url_for('user_blueprint.handle_open_request_action', username=c.userobj.name, request_action='shared') %}
       {% set post_data_shared = h.dump_json({'id': item.id, 'package_id': item.package_id, 'state': 'archive', 'data_shared': True}) %}
 
-      {% set action_notshared = h.url_for('requestdata_handle_open_request_action', username=c.userobj.name, request_action='shared') %}
+      {% set action_notshared = h.url_for('user_blueprint.handle_open_request_action', username=c.userobj.name, request_action='shared') %}
       {% set post_data_notshared = h.dump_json({'id': item.id, 'package_id': item.package_id, 'state': 'archive', 'data_shared': False}) %}
 
       <div class="requested-data-container__content-item--actions-text">{% trans %}Keep track of who you share datasets with. Did you share the dataset?{% endtrans %}</div>

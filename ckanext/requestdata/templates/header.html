@@ -24,7 +24,7 @@
     {% set notification_seen = h.requestdata_get_notification() %}
     {% if not notification_seen and not is_hdx_portal %}
       <li>
-        <a href="{{ h.url_for('requestdata_my_requests', id=c.userobj.name) }}" title="{{ _('New data request') }}">
+        <a href="{{ h.url_for('user_blueprint.my_requested_data', id=c.userobj.name) }}" title="{{ _('New data request') }}">
           {% if is_ckan_greater_than_27 %}
             {% set circle_icon = 'fa fa-circle' %}
           {% else %}

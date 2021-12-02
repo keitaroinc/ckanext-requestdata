@@ -1,6 +1,6 @@
 {% extends "page.html" %}
 
-{% set package_url = h.url_for(controller='package', action='read', id=pkg_dict.id) %}
+{% set package_url = h.url_for('dataset.read', id=pkg_dict.id) %}
 {% set user_is_allowed_actions = False%}
 {% if c.user %}
 {% set user_is_allowed_actions = h.requestdata_is_allowed_to_take_actions(c.user, pkg_dict.organization.id)%}
@@ -15,8 +15,7 @@
       <a href="{{ requested_data_url }}">{{ _('Dataset Requests') }}</a>
     </li>
     <li class="active">
-        {% set requested_data_url = h.url_for(controller='ckanext.requestdata.controllers.request_data:RequestDataController', 
-                                              action='read_request', request_id=data_request.id, package_id=pkg_dict.id) %}
+        {% set requested_data_url = h.url_for('request_data_blueprint.read_request', request_id=data_request.id, package_id=pkg_dict.id) %}
         <a href="{{ requested_data_url }}">{{ _('Dataset Request') }} - {{ pkg_dict.title }}</a>
     </li>
   {% endblock %}

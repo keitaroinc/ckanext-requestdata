@@ -1,13 +1,8 @@
-{% resource 'requestdata/add-dataset.js' %}
-{% set is_ckan_greater_than_27 = h.requestdata_check_ckan_version(min_version='2.7') %}
+{% asset 'requestdata/add-dataset' %}
+
 
 <a class="btn btn-primary" data-module="add-dataset-modal">
-    {% if is_ckan_greater_than_27 %}
-      {% set square_icon = 'fa fa-plus-square' %}
-    {% else %}
-      {% set square_icon = 'icon-plus-sign-alt' %}
-    {% endif %}
-  <i class="{{ square_icon }}"></i> {{ _('Add Dataset') }}
+  <i class="fa fa-plus-square"></i> {{ _('Add Dataset') }}
 </a>
 
 <div class="modal-backdrop add-dataset-modal-backdrop"></div>
@@ -17,12 +12,7 @@
   <div class="add-dataset-modal-box">
     <div class="modal-body">
       <h3>{{ _('Add full dataset') }}</h3>
-      {% if is_ckan_greater_than_27 %}
-        {% set square_icon = 'plus-square' %}
-      {% else %}
-        {% set square_icon = 'icon-plus-sign-alt' %}
-      {% endif %}
-      {% link_for _('Add Dataset'), controller='package', action='new', group=group, class_='btn btn-primary', icon=square_icon %}
+      {% link_for _('Add Dataset'), named_route='requestdata_dataset_blueprint.new', group=group, class_='btn btn-primary', icon='plus-square' %}
       <div class="add-dataset-modal-description">
         <p>{{ _('This option is suitable if:') }}</p>
         <ul>
@@ -34,21 +24,14 @@
   <div class="add-dataset-modal-box">
     <div class="modal-body">
       <h3>{{ _('Add metadata-only') }}</h3>
-
       {% if group %}
         {% set params = {'group': group, 'metadata': 'true'} %}
       {% else %}
         {% set params = {'metadata': 'true'} %}
       {% endif %}
-      {% set url = h.add_url_param(controller='package', action='new', new_params=params) %}
-
+      {% set url = h.add_url_param(controller='requestdata_dataset_blueprint', action='new', new_params=params) %}
       <a class="btn btn-primary" href="{{ url }}">
-        {% if is_ckan_greater_than_27 %}
-          {% set square_icon = 'fa fa-plus-square' %}
-        {% else %}
-          {% set square_icon = 'icon-plus-sign-alt' %}
-        {% endif %}
-        <i class="{{ square_icon }}"></i> {{ _('Add metadata') }}
+        <i class="fa fa-plus-square"></i> {{ _('Add metadata') }}
       </a>
       <div class="add-dataset-modal-description">
         <p>{{ _('This option is suitable if:') }}</p>

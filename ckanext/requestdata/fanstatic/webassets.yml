@@ -1,0 +1,58 @@
+request-data-main-style:
+  contents:
+    - css/request-data-main.css
+  output: requestdata/%(version)s_request-data-main.css
+  filter: cssrewrite
+
+new-requests-style:
+  contents:
+    - css/new-requests.css
+  output: requestdata/%(version)s_new-requests.css
+  filter: cssrewrite
+
+add-dataset:
+  output: requestdata/%(version)s_add-dataset.js
+  contents:
+    - add-dataset.js
+  extra:
+    preload:
+      - base/main
+      - base/ckan
+
+disable-visibility:
+  filter: rjsmin
+  output: requestdata/%(version)s_disable-visibility.js
+  contents:
+    - disable-visibility.js
+
+expand-dataset:
+  filter: rjsmin
+  output: requestdata/%(version)s_expand-dataset.js
+  contents:
+    - expand-dataset.js
+
+filter-requests:
+  filter: rjsmin
+  output: requestdata/%(version)s_filter-requests.js
+  contents:
+    - filter-requests.js
+  extra:
+    preload:
+      - base/main
+      - base/ckan
+
+handle-open-request:
+  filter: rjsmin
+  output: requestdata/%(version)s_handle-open-request.js
+  contents:
+    - handle-open-request.js
+
+modal-form:
+  filter: rjsmin
+  output: requestdata/%(version)s_modal-form.js
+  contents:
+    - modal-form.js
+  extra:
+    preload:
+      - base/main
+      - base/ckan

@@ -3,7 +3,7 @@
 {% import 'macros/form.html' as form %}
 
 {% block primary %}
-  {% set service_url = h.url_for('download_requests_data') %}
+  {% set service_url = h.url_for('requestdata_admin.download_requests_data') %}
   {% set csv = '?format=csv'%}
   {% set json = '?format=json'%}
   {% if organizations %}
@@ -34,7 +34,7 @@
       {% snippet 'requestdata/snippets/section_base.html', state='open', title=_('Open'), requests=org['requests_open'], template_type='admin' %}
 
       {% if org['requests_archive'] %}
-        {% set service_url = h.url_for('ckanadmin_requests_data') %}
+        {% set service_url = h.url_for('requestdata_admin.requests_data') %}
         {% snippet 'requestdata/snippets/order_requests.html', service_url=service_url, org_name=org.name, current_order_name=org.current_order_name %}
       {% endif %}
 

@@ -1,3 +1,5 @@
+import six
+
 import ckan.plugins as plugins
 import ckan.plugins.toolkit as toolkit
 from ckan.logic import get_action, auth_allow_anonymous_access
@@ -11,12 +13,16 @@ from ckan.lib.plugins import DefaultTranslation
 from ckan.lib import helpers as core_helpers
 
 import ckanext.requestdata.utils as utils
+import ckanext.requestdata.views.user as user_blueprint
+import ckanext.requestdata.views.dataset as dataset_blueprint
+import ckanext.requestdata.views.request_data as request_data_blueprint
+import ckanext.requestdata.views.admin as admin_blueprint
 
 
 class RequestdataPlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm,
                         DefaultTranslation):
     plugins.implements(plugins.IConfigurer)
-    plugins.implements(plugins.IRoutes, inherit=True)
+    # plugins.implements(plugins.IRoutes, inherit=True)
     plugins.implements(plugins.IConfigurable)
     plugins.implements(plugins.IActions)
     plugins.implements(plugins.IAuthFunctions)
@@ -24,6 +30,7 @@ class RequestdataPlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm,
     plugins.implements(plugins.IDatasetForm)
     plugins.implements(plugins.IPackageController, inherit=True)
     plugins.implements(plugins.ITranslation)
+    plugins.implements(plugins.IBlueprint)
 
     # IConfigurer
 
@@ -36,9 +43,9 @@ class RequestdataPlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm,
         ignore_missing = toolkit.get_validator('ignore_missing')
 
         email_body = {}
-        email_body.update({'email_header': [ignore_missing, unicode],
-                           'email_body': [ignore_missing, unicode],
-                           'email_footer': [ignore_missing, unicode]})
+        email_body.update({'email_header': [ignore_missing, six.text_type],
+                           'email_body': [ignore_missing, six.text_type],
+                           'email_footer': [ignore_missing, six.text_type]})
 
         schema.update(email_body)
 
@@ -285,6 +292,13 @@ class RequestdataPlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm,
 
         return search_params
 
+    # IBlueprint
+
+    def get_blueprint(self):
+        return user_blueprint.get_blueprints() + \
+               dataset_blueprint.get_blueprints() + \
+               request_data_blueprint.get_blueprints() + \
+               admin_blueprint.get_blueprints()
 
 
 def package_show_override(package_show):
@@ -292,8 +306,8 @@ def package_show_override(package_show):
         result = package_show(context, data_dict)
         result['title'] = core_helpers.dataset_display_name(result)
         result['notes'] = core_helpers.get_translated(result, 'notes')
-        from ckan.controllers.admin import get_sysadmins
-        sysadmin = get_sysadmins()[0].name
+        from ckan.views.admin import _get_sysadmins
+        sysadmin = _get_sysadmins()[0].name
         sysadmin_context = {'user': sysadmin, 'ignore_auth': True}
 
         maintainer_field_name = utils.get_maintainer_field_name()
