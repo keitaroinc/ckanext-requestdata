@@ -1,4 +1,4 @@
-{% set sender_profile = h.url_for(controller='user', action='read', id=item.sender_user_id) %}
+{% set sender_profile = h.url_for('user.read', id=item.sender_user_id) %}
 {% set single_item = single_item if single_item is defined else False %}
 
 <div class="row" {% if type == 'archive' and not single_item %}
@@ -14,7 +14,7 @@
       | <span>{{ g.site_title }}</span>
     {% else %}
       {% if orgs | length == 1 %}
-        {% set org_url = h.url_for(controller='organization', action='read', id=orgs[0].name) %}
+        {% set org_url = h.url_for('organization.read', id=orgs[0].name) %}
         {% set one_org = orgs[0] %}
         | <a href="{{ org_url }}">{{ orgs[0].title }}</a>
       {% elif orgs | length > 1 %}

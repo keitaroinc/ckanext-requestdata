@@ -37,7 +37,7 @@ Example usage:
         <span>{{ _('Maintained by') }} </span>
         {% if item.maintainers %}
           {% for m in item.maintainers %}
-            {% set profile = h.url_for(controller='user', action='read', id=m.id) %}
+            {% set profile = h.url_for('user.read', id=m.id) %}
             <a href="{{ profile }}" title="{{ _('View profile') }}">{{ m.fullname }}</a>{% if not loop.last %}, {% endif %}
           {% endfor %}
         {% else %}

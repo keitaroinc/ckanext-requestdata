@@ -13,7 +13,7 @@ Example usage:
 
 {% asset 'requestdata/expand-dataset' %}
 
-{% set package_url = h.url_for(controller='package', action='read', id=item.package_id) %}
+{% set package_url = h.url_for('dataset.read', id=item.package_id) %}
 {% set single_item = single_item if single_item is defined else False %}
 
 <div class="requested-data-container__content-item" style="{% if index == 1 %} border-top: 1px solid #CCCCCC; {% endif %}">

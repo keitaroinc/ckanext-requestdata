@@ -11,7 +11,7 @@
   {% block breadcrumb_content_inner %}
     <li>{% link_for pkg_dict.organization.title|truncate(35), controller='organization', action='read', id=pkg_dict.organization.name %}</li>
     <li>
-      {% set requested_data_url = h.url_for('requestdata_organization_requests', id=pkg_dict.organization.name) %}
+      {% set requested_data_url = h.url_for('requestdata_organization.requested_data', id=pkg_dict.organization.name) %}
       <a href="{{ requested_data_url }}">{{ _('Dataset Requests') }}</a>
     </li>
     <li class="active">

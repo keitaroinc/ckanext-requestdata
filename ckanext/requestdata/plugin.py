@@ -17,6 +17,7 @@ import ckanext.requestdata.views.user as user_blueprint
 import ckanext.requestdata.views.dataset as dataset_blueprint
 import ckanext.requestdata.views.request_data as request_data_blueprint
 import ckanext.requestdata.views.admin as admin_blueprint
+import ckanext.requestdata.views.organization as organization_blueprint
 
 
 class RequestdataPlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm,
@@ -182,7 +183,8 @@ class RequestdataPlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm,
         requestdata_request_list_for_organization = auth.request_list_for_organization
         requestdata_request_show = auth.request_show
         if utils.is_allowed_public_view():
-            requestdata_request_list_for_organization = auth_allow_anonymous_access(requestdata_request_list_for_organization)
+            requestdata_request_list_for_organization = \
+                auth_allow_anonymous_access(requestdata_request_list_for_organization)
             requestdata_request_show = auth_allow_anonymous_access(requestdata_request_show)
 
         return {
@@ -298,7 +300,8 @@ class RequestdataPlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm,
         return user_blueprint.get_blueprints() + \
                dataset_blueprint.get_blueprints() + \
                request_data_blueprint.get_blueprints() + \
-               admin_blueprint.get_blueprints()
+               admin_blueprint.get_blueprints() + \
+               organization_blueprint.get_blueprints()
 
 
 def package_show_override(package_show):

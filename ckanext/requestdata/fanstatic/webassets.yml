@@ -24,12 +24,20 @@ disable-visibility:
   output: requestdata/%(version)s_disable-visibility.js
   contents:
     - disable-visibility.js
+  extra:
+    preload:
+      - base/main
+      - base/ckan
 
 expand-dataset:
   filter: rjsmin
   output: requestdata/%(version)s_expand-dataset.js
   contents:
     - expand-dataset.js
+  extra:
+    preload:
+      - base/main
+      - base/ckan
 
 filter-requests:
   filter: rjsmin
@@ -46,6 +54,10 @@ handle-open-request:
   output: requestdata/%(version)s_handle-open-request.js
   contents:
     - handle-open-request.js
+  extra:
+    preload:
+      - base/main
+      - base/ckan
 
 modal-form:
   filter: rjsmin

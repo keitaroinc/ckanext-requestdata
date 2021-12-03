@@ -11,8 +11,8 @@ Example usage:
 
 {% asset 'requestdata/handle-open-request' %}
 
-{% set package_url = h.url_for(controller='package', action='read', id=item.package_id) %}
-{% set sender_profile = h.url_for(controller='user', action='read', id=item.sender_user_id) %}
+{% set package_url = h.url_for('dataset.read', id=item.package_id) %}
+{% set sender_profile = h.url_for('user.read', id=item.sender_user_id) %}
 {% set single_item = single_item if single_item is defined else False %}
 
 <div class="row {{ '' if single_item else 'row-striped' }}" style="{% if not single_item %}{% if index == 1 %} border-top: 1px solid #CCCCCC {% endif %}{%endif%}">

@@ -194,7 +194,7 @@ def handle_new_request_action(username, request_action):
 
     '''
 
-    data = toolkit.request.form
+    data = dict(toolkit.request.form)
 
     if request_action == 'reply':
         reply_email = data.get('email')
@@ -302,7 +302,7 @@ def handle_open_request_action(username, request_action):
 
     '''
 
-    data = dict(toolkit.request.POST)
+    data = dict(toolkit.request.form)
     if 'data_shared' in data:
         data['data_shared'] = asbool(data['data_shared'])
     data_dict = {
