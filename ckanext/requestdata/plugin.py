@@ -23,7 +23,6 @@ import ckanext.requestdata.views.organization as organization_blueprint
 class RequestdataPlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm,
                         DefaultTranslation):
     plugins.implements(plugins.IConfigurer)
-    # plugins.implements(plugins.IRoutes, inherit=True)
     plugins.implements(plugins.IConfigurable)
     plugins.implements(plugins.IActions)
     plugins.implements(plugins.IAuthFunctions)
@@ -51,84 +50,6 @@ class RequestdataPlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm,
         schema.update(email_body)
 
         return schema
-
-    # IRoutes
-
-    def before_map(self, map):
-
-        package_controller =\
-            'ckanext.requestdata.controllers.package:PackageController'
-        user_controller =\
-            'ckanext.requestdata.controllers.user:UserController'
-        request_data_controller = 'ckanext.requestdata.controllers.'\
-            'request_data:RequestDataController'
-        admin_controller = \
-            'ckanext.requestdata.controllers.admin:AdminController'
-        organization_controller = 'ckanext.requestdata.controllers.'\
-            'organization:OrganizationController'
-        search_controller =\
-            'ckanext.requestdata.controllers.search:SearchController'
-
-        map.connect('/dataset/new',
-                    controller=package_controller,
-                    action='create_metadata_package')
-
-        map.connect('requestdata_my_requests',
-                    '/user/my_requested_data/{id}',
-                    controller=user_controller,
-                    action='my_requested_data', ckan_icon='list')
-
-        map.connect('requestdata_handle_new_request_action',
-                    '/user/my_requested_data/{username}/' +
-                    '{request_action:reply|reject}',
-                    controller=user_controller,
-                    action='handle_new_request_action')
-
-        map.connect('requestdata_handle_open_request_action',
-                    '/user/my_requested_data/{username}/' +
-                    '{request_action:shared|notshared}',
-                    controller=user_controller,
-                    action='handle_open_request_action')
-
-        map.connect('requestdata_send_request', '/request_data',
-                    controller=request_data_controller,
-                    action='send_request')
-
-        map.connect('requestdata_read_data_request',
-                    '/request_data/dataset/{package_id}/request/{request_id}',
-                    controller=request_data_controller,
-                    action='read_request')
-
-        is_ckan_greater_than_27 = helpers.check_ckan_version(min_version='2.7')
-        if is_ckan_greater_than_27:
-            envelope_icon = 'envelope-o'
-        else:
-            envelope_icon = 'envelope-alt'
-        map.connect('ckanadmin_email', '/ckan-admin/email',
-                    controller=admin_controller,
-                    action='email', ckan_icon=envelope_icon)
-
-        map.connect('ckanadmin_requests_data', '/ckan-admin/requests_data',
-                    controller=admin_controller,
-                    action='requests_data', ckan_icon='list')
-
-        map.connect('download_requests_data',
-                    '/ckan-admin/requests_data/download',
-                    controller=admin_controller,
-                    action='download_requests_data')
-
-        map.connect('requestdata_organization_requests',
-                    '/organization/requested_data/{id}',
-                    controller=organization_controller,
-                    action='requested_data', ckan_icon='list')
-
-        map.connect('simple_search', '/dataset', controller=search_controller,
-                    action='search_datasets')
-
-        map.connect('search', '/search', controller=search_controller,
-                    action='search_datasets')
-
-        return map
 
     # IConfigurable
 
