@@ -307,8 +307,14 @@ class RequestdataPlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm,
 def package_show_override(package_show):
     def _package_show(context, data_dict):
         result = package_show(context, data_dict)
-        result['title'] = core_helpers.dataset_display_name(result)
-        result['notes'] = core_helpers.get_translated(result, 'notes')
+
+        try:
+            result['title'] = core_helpers.dataset_display_name(result)
+            result['notes'] = core_helpers.get_translated(result, 'notes')
+        except RuntimeError:
+            # Translated fields are not needed in
+            # the case of validation the resource
+            pass
         from ckan.views.admin import _get_sysadmins
         sysadmins = [a.name for a in _get_sysadmins()]
         sysadmin = sysadmins[0]
