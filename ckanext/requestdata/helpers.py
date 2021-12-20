@@ -4,7 +4,7 @@ import itertools
 from operator import itemgetter
 import json
 
-from paste.deploy.converters import asbool
+from ckan.common import asbool
 
 from ckan import model, logic
 from ckan.common import c, _, request, config
